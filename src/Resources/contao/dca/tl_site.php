@@ -31,9 +31,9 @@
          (
              'sql'                     => "int(10) unsigned NOT NULL default '0'"
          ),
-         'question' => array
+         'name' => array
          (
-             'label'                   => &$GLOBALS['TL_LANG']['tl_site']['question'],
+             'label'                   => 'name',
              'exclude'                 => true,
              'search'                  => true,
              'sorting'                 => true,
@@ -43,6 +43,12 @@
              'sql'                     => "varchar(255) NOT NULL default ''"
          )
      )
+
+     // Palettes
+     'palettes' => array
+     (
+         'site' => '{site_legend},name'
+    )
  );
 
 
