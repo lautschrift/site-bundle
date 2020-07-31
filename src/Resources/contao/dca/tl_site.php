@@ -49,7 +49,7 @@
                 'icon' => 'show.svg'
             ],
         ],
-     ),
+    ],
      // Fields
      'fields' => array
      (
