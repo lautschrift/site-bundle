@@ -17,7 +17,7 @@ $GLOBALS['TL_DCA']['tl_site'] = array
 	)
 );
 
-$GLOBALS['TL_DCA']['tl_content']['palettes']['Site'] = '
+$GLOBALS['TL_DCA']['tl_site']['palettes']['Site'] = '
 	{type_legend},type,headline;
 	{museum_legend},title,museum_name, museum_street, museum_nr, museum_plz, museum_ort, museum_land, museum_email, museum_website, museum_lang, museum_pic, museum_geox, museum_geoy;
 	{museumtext_legend},text, museum_openings;
