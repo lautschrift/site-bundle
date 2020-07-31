@@ -2,6 +2,54 @@
 /**
  * Table tl_site
  */
+
+ $GLOBALS['TL_DCA']['tl_site'] = array
+ (
+
+     // Config
+     'config' => array
+     (
+         'dataContainer'               => 'Table',
+         'enableVersioning'            => true,
+                 'sql' => array
+         (
+             'keys' => array
+             (
+                 'id' => 'primary',
+                 'alias' => 'index',
+             )
+         )
+     ),
+
+     // Fields
+     'fields' => array
+     (
+         'id' => array
+         (
+             'sql'                     => "int(10) unsigned NOT NULL auto_increment"
+         ),
+         'tstamp' => array
+         (
+             'sql'                     => "int(10) unsigned NOT NULL default '0'"
+         ),
+         'question' => array
+         (
+             'label'                   => &$GLOBALS['TL_LANG']['tl_site']['question'],
+             'exclude'                 => true,
+             'search'                  => true,
+             'sorting'                 => true,
+             'flag'                    => 1,
+             'inputType'               => 'text',
+             'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'long'),
+             'sql'                     => "varchar(255) NOT NULL default ''"
+         )
+     )
+ );
+
+
+/*
+
+
 $GLOBALS['TL_DCA']['tl_site']['config']['tl_Site'] = array
 (
 	'dataContainer'               => 'Table',
@@ -109,7 +157,7 @@ $GLOBALS['TL_DCA']['tl_site']['fields']['museum_geoy'] = array(
 );
 
 
-/*
+
 $GLOBALS['TL_DCA']['tl_site']['fields']['museum_locstyle'] = array
 (
 		'label'                   => &$GLOBALS['TL_LANG']['tl_calendar_events']['c4g_locstyle'],
@@ -119,7 +167,7 @@ $GLOBALS['TL_DCA']['tl_site']['fields']['museum_locstyle'] = array
 		'options_callback'        => array('tl_calendar_events_c4g_maps','getLocStyles'),
 		'sql'                     => "int(10) unsigned NOT NULL default '0'"
 );
-*/
+
 $GLOBALS['TL_DCA']['tl_site']['fields']['museum_lang'] = array(
 		'label' 	=> array('Anzeigesprache', 'Anzeigesprache'),
 		'eval' 		=> array('tl_class' => 'w50'),
@@ -142,3 +190,4 @@ $GLOBALS['TL_DCA']['tl_site']['fields']['museum_pic'] = array
 		'inputType' 			=> 'text',
 		'sql'       			=> "varchar(255) NOT NULL default ''"
 );
+*/
