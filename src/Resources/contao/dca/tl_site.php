@@ -33,7 +33,7 @@
          ),
          'name' => array
          (
-             'label'                   => 'name',
+             'label'                   => array('Name', 'Name der Fundstelle'),
              'exclude'                 => true,
              'search'                  => true,
              'sorting'                 => true,
@@ -47,7 +47,7 @@
      // Palettes
      'palettes' => array
      (
-         'Site' => 'name'
+         'Site' => '{site_legend}, name;'
     )
  );
 
