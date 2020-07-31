@@ -68,12 +68,19 @@
             'eval' => ['tl_class' => 'w50', 'maxlength' => 255, 'mandatory' => true],
             'sql' => ['type' => 'string', 'length' => 255, 'default' => '']
         ],
+        'tl_museum_country' => [
+           'label' => &$GLOBALS['TL_LANG']['tl_site']['country'],
+           'search' => true,
+           'inputType' => 'text',
+           'eval' => ['tl_class' => 'w50', 'maxlength' => 255, 'mandatory' => true],
+           'sql' => ['type' => 'string', 'length' => 255, 'default' => '']
+       ],
      ),
 
      // Palettes
      'palettes' => array
      (
-         'default' => '{site_legend},name;'
+         'default' => '{site_legend},name,country;'
     )
  );
 
