@@ -42,12 +42,12 @@
              'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'long'),
              'sql'                     => "varchar(255) NOT NULL default ''"
          )
-     )
+     ),
 
      // Palettes
      'palettes' => array
      (
-         'site' => '{site_legend},name;'
+         'default' => '{site_legend},name;'
     )
  );
 
