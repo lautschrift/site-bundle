@@ -17,6 +17,18 @@ $GLOBALS['TL_DCA']['tl_site'] = array
 	)
 );
 
+$GLOBALS['TL_DCA']['tl_content']['palettes']['Site'] = '
+	{type_legend},type,headline;
+	{museum_legend},title,museum_name, museum_street, museum_nr, museum_plz, museum_ort, museum_land, museum_email, museum_website, museum_lang, museum_pic, museum_geox, museum_geoy;
+	{museumtext_legend},text, museum_openings;
+	{image_legend},addImage;
+	{template_legend:hide},customTpl;
+	{protected_legend:hide},protected;
+	{expert_legend:hide},guests,cssID;
+	{invisible_legend:hide},invisible,start,stop
+';
+
+
 $GLOBALS['TL_DCA']['tl_site']['fields']['museum_name'] = array(
 		'label' 	=> array('Name', 'Name der Fundstelle'),
 		'eval' 		=> array('tl_class' ),
