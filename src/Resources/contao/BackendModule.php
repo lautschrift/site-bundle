@@ -1,4 +1,4 @@
-
+<?php
 namespace App\Contao;
 
 class BackendModule
