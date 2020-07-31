@@ -47,7 +47,7 @@
      // Palettes
      'palettes' => array
      (
-         'default' => '{site_legend},name;'
+         'Site' => 'name'
     )
  );
 
