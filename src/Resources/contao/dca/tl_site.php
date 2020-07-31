@@ -61,23 +61,19 @@
          (
              'sql'                     => "int(10) unsigned NOT NULL default '0'"
          ),
-         'name' => array
-         (
-             'label'                   => array('Name', 'Name der Fundstelle'),
-             'exclude'                 => true,
-             'search'                  => true,
-             'sorting'                 => true,
-             'flag'                    => 1,
-             'inputType'               => 'text',
-             'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'long'),
-             'sql'                     => "varchar(255) NOT NULL default ''"
-         )
+         'name' => [
+            'label' => &$GLOBALS['TL_LANG']['tl_site']['name'],
+            'search' => true,
+            'inputType' => 'text',
+            'eval' => ['tl_class' => 'w50', 'maxlength' => 255, 'mandatory' => true],
+            'sql' => ['type' => 'string', 'length' => 255, 'default' => '']
+        ],
      ),
 
      // Palettes
      'palettes' => array
      (
-         'Site' => '{site_legend}, name;'
+         'default' => '{site_legend},name;'
     )
  );
 
