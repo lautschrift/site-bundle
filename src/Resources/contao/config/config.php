@@ -39,7 +39,7 @@ array_insert($GLOBALS['TL_CTE']['Museum'] ,1, array(
 
 $GLOBALS['BE_MOD']['content']['Site'] = array(
     'tables' => 'tl_site',
-    'callback' => \App\Contao\BackendModule::class
+
 );
 
 $GLOBALS['TL_CTE']['Site'] = array(

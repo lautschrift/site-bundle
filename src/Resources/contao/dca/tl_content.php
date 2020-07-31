@@ -1,106 +1,13 @@
 <?php
+
+use \con4gis\MapsBundle\Classes\GeoPicker;
 /**
  * Table tl_site
  */
-
- $GLOBALS['TL_DCA']['tl_site'] = array
- (
-
-     // Config
-     'config' => array
-     (
-         'dataContainer'               => 'Table',
-         'enableVersioning'            => true,
-                 'sql' => array
-         (
-             'keys' => array
-             (
-                 'id' => 'primary'
-             )
-         )
-     ),
-     // List
-     'list' => [
-        'sorting' => [
-            'mode' => 1,
-            'fields' => ['name'],
-            'flag' => 1,
-            'panelLayout' => 'search,limit'
-        ],
-        'label' => [
-            'fields' => ['name'],
-            'format' => '%s',
-        ],
-        'operations' => [
-            'edit' => [
-                'href' => 'table=tl_site',
-                'icon' => 'edit.svg',
-            ],
-            'editheader' => [
-                'href' => 'act=edit',
-                'icon' => 'header.svg',
-            ],
-            'delete' => [
-                'href' => 'act=delete',
-                'icon' => 'delete.svg',
-            ],
-            'show' => [
-                'href' => 'act=show',
-                'icon' => 'show.svg'
-            ],
-        ],
-     ),
-     // Fields
-     'fields' => array
-     (
-         'id' => array
-         (
-             'sql'                     => "int(10) unsigned NOT NULL auto_increment"
-         ),
-         'tstamp' => array
-         (
-             'sql'                     => "int(10) unsigned NOT NULL default '0'"
-         ),
-         'name' => array
-         (
-             'label'                   => array('Name', 'Name der Fundstelle'),
-             'exclude'                 => true,
-             'search'                  => true,
-             'sorting'                 => true,
-             'flag'                    => 1,
-             'inputType'               => 'text',
-             'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'long'),
-             'sql'                     => "varchar(255) NOT NULL default ''"
-         )
-     ),
-
-     // Palettes
-     'palettes' => array
-     (
-         'Site' => '{site_legend}, name;'
-    )
- );
-
-
 /*
 
 
-$GLOBALS['TL_DCA']['tl_site']['config']['tl_Site'] = array
-(
-	'dataContainer'               => 'Table',
-	'switchToEdit'                => true,
-	'enableVersioning'            => true,
-	'sql' => array
-	(
-		'keys' => array
-		(
-			'id' => 'primary',
-			'alias' => 'index',
-		)
-	)
-);
-
-$GLOBALS['TL_DCA']['tl_site']['palettes']['Site'] = '
+$GLOBALS['TL_DCA']['']['palettes']['Museum'] = '
 	{type_legend},type,headline;
 	{museum_legend},title,museum_name, museum_street, museum_nr, museum_plz, museum_ort, museum_land, museum_email, museum_website, museum_lang, museum_pic, museum_geox, museum_geoy;
 	{museumtext_legend},text, museum_openings;
@@ -112,6 +19,9 @@ $GLOBALS['TL_DCA']['tl_site']['palettes']['Site'] = '
 ';
 
 
+/***
+ * Fields
+ */
 $GLOBALS['TL_DCA']['tl_site']['fields']['museum_name'] = array(
 		'label' 	=> array('Name', 'Name der Fundstelle'),
 		'eval' 		=> array('tl_class' ),
@@ -177,7 +87,7 @@ $GLOBALS['TL_DCA']['tl_site']['fields']['museum_geox'] = array(
 		'label' 				  => array('Karte geoX', ''),
 		'inputType'               => 'c4g_text',
 		'eval'                    => array('mandatory'=>false, 'maxlength'=>20, 'tl_class'=>'w50 wizard' ),
-        'save_callback'           => [['tl_content_c4g_maps', 'setLocLon']],
+        'save_callback'           => [['tl_site_c4g_maps', 'setLocLon']],
         'wizard'                  => [['\con4gis\MapsBundle\Classes\GeoPicker', 'getPickerLink']],
 		'sql'                     => "varchar(20) NOT NULL default ''"
 );
@@ -192,7 +102,7 @@ $GLOBALS['TL_DCA']['tl_site']['fields']['museum_geoy'] = array(
 );
 
 
-
+/*
 $GLOBALS['TL_DCA']['tl_site']['fields']['museum_locstyle'] = array
 (
 		'label'                   => &$GLOBALS['TL_LANG']['tl_calendar_events']['c4g_locstyle'],
@@ -202,7 +112,7 @@ $GLOBALS['TL_DCA']['tl_site']['fields']['museum_locstyle'] = array
 		'options_callback'        => array('tl_calendar_events_c4g_maps','getLocStyles'),
 		'sql'                     => "int(10) unsigned NOT NULL default '0'"
 );
-
+*/
 $GLOBALS['TL_DCA']['tl_site']['fields']['museum_lang'] = array(
 		'label' 	=> array('Anzeigesprache', 'Anzeigesprache'),
 		'eval' 		=> array('tl_class' => 'w50'),
@@ -225,4 +135,3 @@ $GLOBALS['TL_DCA']['tl_site']['fields']['museum_pic'] = array
 		'inputType' 			=> 'text',
 		'sql'       			=> "varchar(255) NOT NULL default ''"
 );
-*/
