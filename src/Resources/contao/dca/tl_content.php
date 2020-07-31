@@ -22,10 +22,23 @@ $GLOBALS['TL_DCA']['']['palettes']['Museum'] = '
 /***
  * Fields
  */
-
+ $GLOBALS['TL_DCA']['tl_site'] = array
+ (
+ 	'dataContainer'               => 'Table',
+ 	'switchToEdit'                => true,
+ 	'enableVersioning'            => true,
+ 	'sql' => array
+ 	(
+ 		'keys' => array
+ 		(
+ 			'id' => 'primary',
+ 			'alias' => 'index',
+ 		)
+ 	)
+ );
 
 $GLOBALS['TL_DCA']['tl_site']['fields']['museum_name'] = array(
-		'label' 	=> array('Name', 'Name des Museums'),
+		'label' 	=> array('Name', 'Name der Fundstelle'),
 		'eval' 		=> array('tl_class' ),
 		'inputType' => 'text',
 		'sql'      	=> "varchar(255) NOT NULL default ''"
