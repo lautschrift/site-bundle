@@ -1,6 +1,6 @@
 <?php
 /**
- * Table tl_museum
+ * Table tl_site
  */
 $GLOBALS['TL_DCA']['tl_site'] = array
 (
