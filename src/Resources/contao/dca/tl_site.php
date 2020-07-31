@@ -69,7 +69,7 @@
             'sql' => ['type' => 'string', 'length' => 255, 'default' => '']
         ],
         'site_country' => [
-           'label' => &$GLOBALS['TL_LANG']['tl_site']['country'],
+           'label' => &$GLOBALS['TL_LANG']['tl_site']['site_country'],
            'search' => true,
            'inputType' => 'text',
            'eval' => ['tl_class' => 'w50', 'maxlength' => 255, 'mandatory' => true],
