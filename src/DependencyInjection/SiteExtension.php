@@ -8,14 +8,14 @@
  * @license LGPL-3.0-or-later
  */
 
-namespace Lautschrift\MuseumBundle\DependencyInjection;
+namespace Lautschrift\SiteBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
-class MuseumExtension extends Extension
+class SiteExtension extends Extension
 {
     /**
      * {@inheritdoc}

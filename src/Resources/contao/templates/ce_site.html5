@@ -1,9 +1,9 @@
-<?php $this->extend('block_searchable'); ?>
++<?php $this->extend('block_searchable'); ?>
 
 <?php $this->block('content'); ?>
 
-<?= $this->museum_name ?>	
-	
+<?= $this->museum_name ?>
+
   <?php if (!$this->addBefore): ?>
     <?= $this->text ?>
   <?php endif; ?>
