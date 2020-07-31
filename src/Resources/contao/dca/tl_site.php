@@ -142,8 +142,3 @@ $GLOBALS['TL_DCA']['tl_site']['fields']['museum_pic'] = array
 		'inputType' 			=> 'text',
 		'sql'       			=> "varchar(255) NOT NULL default ''"
 );
-
-class tl_site extends Backend
-{
-
-}
