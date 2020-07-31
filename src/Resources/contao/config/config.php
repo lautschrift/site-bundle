@@ -47,4 +47,3 @@ $GLOBALS['TL_CTE']['Site'] = array(
 );
 
 //$GLOBALS['TL_CTE']['Museum']['Museum'] = '\\lautschrift\\museum-bundle\\src\\Resources\\contao\\classes\\ContentMuseum';
-$GLOBALS['TL_LANG']['CTE']['Site'] = array('Site','Einbinden einer Fundstelle.');
