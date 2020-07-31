@@ -37,6 +37,9 @@ array_insert($GLOBALS['TL_CTE']['Museum'] ,1, array(
 ));
 */
 
+$GLOBALS['BE_MOD']['content']['Site'] = array(
+    'tables' => 'tl_site',
+);
 
 $GLOBALS['TL_CTE']['Site'] = array(
 	'Site' => 'Lautschrift\\SiteBundle\\Resources\\contao\\classes\\ContentSite'
