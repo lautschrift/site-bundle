@@ -1,0 +1,30 @@
+
+{
+  "name": "lautschrift/museum-bundle",
+  "description": "Erfassen von Museen mit Text, Bild, Öffnungszeiten & Geo-Referenz",
+  "keywords": ["museen","con4gis","contao", "c4g"],
+  "type": "contao-bundle",
+  "homepage": "https://lautschrift.com",
+  "license": "LGPL-3.0+",
+  "authors":[
+    {
+      "name":"lautschrift, Steffen Krauth",
+      "homepage":"https://lautschrift.com"
+    }
+  ],
+  "require": {
+    "php":">=5.5",
+	  "contao/core-bundle":"^4.3"
+  },
+  "support": {
+    "issues": ""
+  },
+  "autoload": {
+    "psr-4": {
+		"Lautschrift\\MuseumBundle\\": "src"
+		}
+  },
+  "extra": {
+    "contao-manager-plugin": "Lautschrift\\MuseumBundle\\ContaoManager\\Plugin"
+  }
+}
