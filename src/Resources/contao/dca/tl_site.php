@@ -15,8 +15,7 @@
          (
              'keys' => array
              (
-                 'id' => 'primary',
-                 'alias' => 'index',
+                 'id' => 'primary'
              )
          )
      ),
