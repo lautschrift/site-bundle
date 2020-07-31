@@ -80,7 +80,7 @@
      // Palettes
      'palettes' => array
      (
-         'default' => '{site_legend},name,country;'
+         'default' => '{site_legend},name;{details_legend}country;'
     )
  );
 
