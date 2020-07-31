@@ -2,7 +2,7 @@
 /**
  * Table tl_site
  */
-$GLOBALS['TL_DCA']['tl_site'] = array
+$GLOBALS['TL_DCA']['tl_site']['config'] = array
 (
 	'dataContainer'               => 'Table',
 	'switchToEdit'                => true,
