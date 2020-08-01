@@ -52,8 +52,8 @@
     ],
      // Fields
      'fields' => [
-         'id' => [
-            'sql' => ['type' => 'integer', 'unsigned' => true, 'autoincrement' => true],
+        'id' => [
+            'sql' => ['type' => 'integer', 'unsigned' => true, 'autoincrement' => true]
         ],
         'tstamp' => [
             'sql' => ['type' => 'integer', 'unsigned' => true, 'default' => 0]
