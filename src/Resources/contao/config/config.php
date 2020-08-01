@@ -37,7 +37,7 @@ array_insert($GLOBALS['TL_CTE']['Museum'] ,1, array(
 ));
 */
 
-array_insert($GLOBALS['BE_MOD']['Site'],2, array
+array_insert($GLOBALS['BE_MOD']['Site'],1, array
 (
         'site' => array
         (
