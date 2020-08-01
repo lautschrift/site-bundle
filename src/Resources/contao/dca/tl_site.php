@@ -67,7 +67,7 @@
             'sql' => ['type' => 'string', 'length' => 255, 'default' => '']
         ],
         'country' => [
-            'label' => &$GLOBALS['TL_LANG']['tl_vendor']['country'],
+            'label' => &$GLOBALS['TL_LANG']['tl_site']['country'],
             'inputType' => 'select',
             'options' => \Contao\System::getCountries(),
             'eval' => ['tl_class' => 'w50', 'mandatory' => true, 'includeBlankOption' => true],
