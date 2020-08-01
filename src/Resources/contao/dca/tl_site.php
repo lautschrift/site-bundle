@@ -29,7 +29,7 @@
             'panelLayout' => 'search,limit'
         ],
         'label' => [
-            'fields' => ['name'],
+            'fields' => ['name', 'test'],
             'format' => '%s',
         ],
         'operations' => [
@@ -91,7 +91,7 @@
 
      // Palettes
      'palettes' => [
-         'default' => '{site_legend},name;{details_legend}country;'
+         'default' => '{site_legend},name, test;{details_legend}country;'
     ]
 ];
 
