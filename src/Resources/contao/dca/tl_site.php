@@ -34,7 +34,7 @@
         ],
         'operations' => [
             'edit' => [
-                'href' => 'act=edit',
+                'href' => 'table=tl_site_details',
                 'icon' => 'edit.svg',
             ],
             'editheader' => [
@@ -67,11 +67,11 @@
             'sql' => ['type' => 'string', 'length' => 255, 'default' => '']
         ],
         'country' => [
-            'label' => &$GLOBALS['TL_LANG']['tl_site']['country'],
-            'search' => true,
-            'inputType' => 'text',
-            'eval' => ['tl_class' => 'w50', 'maxlength' => 255, 'mandatory' => true],
-            'sql' => ['type' => 'string', 'length' => 255, 'default' => '']
+            'label' => &$GLOBALS['TL_LANG']['tl_vendor']['country'],
+            'inputType' => 'select',
+            'options' => \Contao\System::getCountries(),
+            'eval' => ['tl_class' => 'w50', 'mandatory' => true, 'includeBlankOption' => true],
+            'sql' => ['type' => 'string', 'length' => 2, 'default' => '']
         ],
         'unescoid' => [
             'label' => &$GLOBALS['TL_LANG']['tl_site']['unescoid'],
