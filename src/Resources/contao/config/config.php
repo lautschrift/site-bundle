@@ -38,7 +38,7 @@ array_insert($GLOBALS['TL_CTE']['Museum'] ,1, array(
 */
 
 if(TL_MODE == "BE") {
-    $GLOBALS['TL_CSS'][] = '/bundles/SiteBundle/palafittes.css';
+    $GLOBALS['TL_CSS'][] = '/bundles/site/palafittes.css';
 }
 
 array_insert($GLOBALS['BE_MOD'], array_search('content', array_keys($GLOBALS['BE_MOD'])) + 1, array('Site' => array()));
