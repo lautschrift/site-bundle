@@ -91,7 +91,7 @@
 
      // Palettes
      'palettes' => [
-         'default' => '{site_legend},name, test;{details_legend}country;'
+         'default' => '{site_legend},name, test;{details_legend},unescoid, country;'
     ]
 ];
 
