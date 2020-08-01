@@ -4,7 +4,7 @@
  */
 
  $GLOBALS['TL_DCA']['tl_site'] = [
- (
+
 
      // Config
      'config' => [
