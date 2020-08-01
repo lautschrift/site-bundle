@@ -22,14 +22,9 @@
      ],
      // List
      'list' => [
-        'sorting' => [
-            'mode' => 1,
-            'fields' => ['name'],
-            'flag' => 1,
-            'panelLayout' => 'search,limit'
-        ],
+
         'label' => [
-            'fields' => ['name', 'test', 'country'],
+            'fields' => ['name'],
             'format' => '%s',
         ],
         'operations' => [
