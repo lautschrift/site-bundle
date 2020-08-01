@@ -59,6 +59,13 @@
         'tstamp' => [
             'sql' => ['type' => 'integer', 'unsigned' => true, 'default' => 0]
         ],
+        'test' => [
+           'label' => &$GLOBALS['TL_LANG']['tl_site']['test'],
+           'search' => true,
+           'inputType' => 'text',
+           'eval' => ['tl_class' => 'w50', 'maxlength' => 255, 'mandatory' => true],
+           'sql' => ['type' => 'string', 'length' => 255, 'default' => '']
+       ],
          'name' => [
             'label' => &$GLOBALS['TL_LANG']['tl_site']['name'],
             'search' => true,
