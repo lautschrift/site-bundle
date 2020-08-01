@@ -51,16 +51,13 @@
         ],
     ],
      // Fields
-     'fields' => array
-     (
-         'id' => array
-         (
-             'sql'                     => "int(10) unsigned NOT NULL auto_increment"
-         ),
-         'tstamp' => array
-         (
-             'sql'                     => "int(10) unsigned NOT NULL default '0'"
-         ),
+     'fields' => [
+         'id' => [
+            'sql' => ['type' => 'integer', 'unsigned' => true, 'autoincrement' => true],
+        ],
+        'tstamp' => [
+            'sql' => ['type' => 'integer', 'unsigned' => true, 'default' => 0]
+        ],
          'name' => [
             'label' => &$GLOBALS['TL_LANG']['tl_site']['name'],
             'search' => true,
@@ -82,7 +79,7 @@
             'eval' => ['tl_class' => 'w50', 'maxlength' => 255, 'mandatory' => true],
             'sql' => ['type' => 'string', 'length' => 255, 'default' => '']
         ],
-     ),
+    ],
 
      // Palettes
      'palettes' => array
