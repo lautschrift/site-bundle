@@ -98,5 +98,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                 'sql' => ['type' => 'binary', 'length' => 16, 'notnull' => false, 'fixed' => true]
             ],
         ],
-
+        'palettes' => [
+            'default' => '{parts_legend},name,number,description,singleSRC'
+        ],
 ];
