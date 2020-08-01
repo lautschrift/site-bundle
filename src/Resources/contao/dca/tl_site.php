@@ -29,7 +29,7 @@
             'panelLayout' => 'search,limit'
         ],
         'label' => [
-            'fields' => ['name', 'test'],
+            'fields' => ['name', 'test', 'country'],
             'format' => '%s',
         ],
         'operations' => [
