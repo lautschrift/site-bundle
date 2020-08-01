@@ -3,12 +3,12 @@
  * Table tl_site
  */
 
- $GLOBALS['TL_DCA']['tl_site'] = array
+ $GLOBALS['TL_DCA']['tl_site'] = [
  (
 
      // Config
-     'config' => array
-     (
+     'config' => [
+
          'dataContainer'               => 'Table',
          'ctable'                      => ['tl_site_details'],
          'enableVersioning'            => true,
@@ -19,7 +19,7 @@
                  'id' => 'primary'
              )
          )
-     ),
+     ],
      // List
      'list' => [
         'sorting' => [
@@ -93,7 +93,7 @@
      'palettes' => [
          'default' => '{site_legend},name;{details_legend}country;'
     ]
- );
+];
 
 
 /*
