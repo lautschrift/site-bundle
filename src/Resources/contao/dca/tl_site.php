@@ -10,6 +10,7 @@
      'config' => array
      (
          'dataContainer'               => 'Table',
+         'ctable'                      => ['tl_site_details'],
          'enableVersioning'            => true,
                  'sql' => array
          (
@@ -33,7 +34,7 @@
         ],
         'operations' => [
             'edit' => [
-                'href' => 'table=tl_site',
+                'href' => 'act=edit',
                 'icon' => 'edit.svg',
             ],
             'editheader' => [
