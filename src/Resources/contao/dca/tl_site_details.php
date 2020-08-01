@@ -99,6 +99,6 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
             ],
         ],
         'palettes' => [
-            'default' => '{parts_legend},name,number,description,singleSRC'
+            'default' => 'name,number,description,singleSRC'
         ],
 ];
