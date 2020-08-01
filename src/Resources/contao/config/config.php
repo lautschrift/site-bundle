@@ -38,7 +38,7 @@ array_insert($GLOBALS['TL_CTE']['Museum'] ,1, array(
 */
 
 $GLOBALS['BE_MOD']['content']['Site'] = array(
-    'tables' => 'tl_site, tl_site_details',
+    'tables' => ['tl_site', 'tl_site_details'],
 
 );
 
