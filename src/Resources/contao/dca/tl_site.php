@@ -90,10 +90,9 @@
     ],
 
      // Palettes
-     'palettes' => array
-     (
+     'palettes' => [
          'default' => '{site_legend},name;{details_legend}country;'
-    )
+    ]
  );
 
 
