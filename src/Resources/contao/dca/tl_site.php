@@ -1,4 +1,7 @@
 <?php
+
+use \con4gis\MapsBundle\Classes\GeoPicker;
+
 /**
  * Table tl_site
  */
@@ -83,8 +86,9 @@
         'country' => [
             'label' => &$GLOBALS['TL_LANG']['tl_site']['country'],
             'inputType' => 'select',
-            'options' => \Contao\System::getCountries(),
-            'eval' => ['tl_class' => 'w50', 'mandatory' => true, 'includeBlankOption' => true],
+            'eval' 		=> array('submitOnChange' => true, 'tl_class' => 'clr'),
+    		'options' 	=> array('wert1','wert2','wert3','wert4','wert5','wert6'),
+    		'reference' => &$GLOBALS['TL_LANG']['tl_museum_country'],
             'sql' => ['type' => 'string', 'length' => 2, 'default' => '']
         ],
         'geoX' => [
