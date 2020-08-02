@@ -6,4 +6,4 @@ services:
 
         Symfony\Component\DependencyInjection\ContainerAwareInterface:
             calls:
-                - ["setContainer", ["@service_container"]
+                - ["setContainer", ["@service_container"]]
