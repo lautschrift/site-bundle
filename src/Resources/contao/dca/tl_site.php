@@ -161,7 +161,7 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
  * Class t tl_site_c4g_maps_site
  */
 
-class tl_site_c4g_maps_site extends Backend
+class tl_site_c4g_maps_site extends \Backend
 {
 
     protected $firstMapId = null;
