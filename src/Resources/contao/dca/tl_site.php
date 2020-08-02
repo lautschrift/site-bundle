@@ -87,6 +87,13 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
             'eval' => ['tl_class' => 'w50', 'maxlength' => 255, 'mandatory' => true],
             'sql' => ['type' => 'string', 'length' => 255, 'default' => '']
         ],
+        'city' => [
+           'label' => &$GLOBALS['TL_LANG']['tl_site']['city'],
+           'search' => true,
+           'inputType' => 'text',
+           'eval' => ['tl_class' => 'w50', 'maxlength' => 255, 'mandatory' => true],
+           'sql' => ['type' => 'string', 'length' => 255, 'default' => '']
+       ],
         'region' => [
            'label' => &$GLOBALS['TL_LANG']['tl_site']['region'],
            'search' => true,
@@ -97,7 +104,7 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
         'country' => [
             'label' => &$GLOBALS['TL_LANG']['tl_site']['country'],
             'inputType' => 'select',
-            'eval' 		=> array('submitOnChange' => true, 'tl_class' => 'w50'),
+            'eval' 		=> array('submitOnChange' => true, 'tl_class' => 'clr'),
     		'options' 	=> ['wert1', 'wert2', 'wert3','wert4','wert5','wert6'],
     		'reference' => &$GLOBALS['TL_LANG']['site_country'],
             'sql' => ['type' => 'string', 'length' => 20, 'default' => '']
