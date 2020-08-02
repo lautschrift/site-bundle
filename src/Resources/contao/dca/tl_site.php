@@ -6,6 +6,17 @@ use \con4gis\MapsBundle\Classes\GeoPicker;
  * Table tl_site
  */
 
+
+
+               $GLOBALS['TL_LANG']['site_country']['wert1'] = 'Deutschland';
+               $GLOBALS['TL_LANG']['site_country']['wert2'] = 'Österreich';
+               $GLOBALS['TL_LANG']['site_country']['wert3'] = 'Schweiz';
+               $GLOBALS['TL_LANG']['site_country']['wert4'] = 'Italien';
+               $GLOBALS['TL_LANG']['site_country']['wert5'] = 'Slowenien';
+               $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
+
+
+
  $GLOBALS['TL_DCA']['tl_site'] = [
 
 
@@ -83,23 +94,13 @@ use \con4gis\MapsBundle\Classes\GeoPicker;
            'eval' => ['tl_class' => 'w50', 'maxlength' => 255, 'mandatory' => true],
            'sql' => ['type' => 'string', 'length' => 255, 'default' => '']
        ],
-
-
-              $GLOBALS['TL_LANG']['site_country']['wert1'] = 'Deutschland';
-              $GLOBALS['TL_LANG']['site_country']['wert2'] = 'Österreich';
-              $GLOBALS['TL_LANG']['site_country']['wert3'] = 'Schweiz';
-              $GLOBALS['TL_LANG']['site_country']['wert4'] = 'Italien';
-              $GLOBALS['TL_LANG']['site_country']['wert5'] = 'Slowenien';
-              $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
-
-
         'country' => [
             'label' => &$GLOBALS['TL_LANG']['tl_site']['country'],
             'inputType' => 'select',
             'eval' 		=> array('submitOnChange' => true, 'tl_class' => 'w50'),
-    		'options' 	=> ['wert1', 'wert2','wert3','wert4','wert5','wert6'],
+    		'options' 	=> ['wert1', 'wert2', 'wert3','wert4','wert5','wert6'],
     		'reference' => &$GLOBALS['TL_LANG']['site_country'],
-            'sql' => ['type' => 'string', 'length' => 2, 'default' => '']
+            'sql' => ['type' => 'string', 'length' => 20, 'default' => '']
         ],
         'geoX' => [
             'label' => &$GLOBALS['TL_LANG']['tl_site']['geoX'],
