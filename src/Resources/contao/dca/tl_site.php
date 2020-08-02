@@ -1,6 +1,7 @@
 <?php
 
-use \con4gis\MapsBundle\Classes\GeoPicker;
+//use \con4gis\MapsBundle\Classes\GeoPicker;
+use con4gis\MapsBundle\Classes\Utils;
 
 /**
  * Table tl_site
@@ -143,9 +144,6 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
 /**
  * Class t tl_site_c4g_maps_site
  */
-
-
-use \con4gis\MapsBundle\Resources\contao\classes\Utils;
 
 class tl_site_c4g_maps_site extends Backend
 {
