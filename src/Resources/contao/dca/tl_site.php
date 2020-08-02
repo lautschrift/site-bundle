@@ -83,6 +83,15 @@ use \con4gis\MapsBundle\Classes\GeoPicker;
            'eval' => ['tl_class' => 'w50', 'maxlength' => 255, 'mandatory' => true],
            'sql' => ['type' => 'string', 'length' => 255, 'default' => '']
        ],
+
+
+       $GLOBALS['TL_LANG']['site_country']['wert1'] = 'Deutschland';
+       $GLOBALS['TL_LANG']['site_country']['wert2'] = 'Österreich';
+       $GLOBALS['TL_LANG']['site_country']['wert3'] = 'Schweiz';
+       $GLOBALS['TL_LANG']['site_country']['wert4'] = 'Italien';
+       $GLOBALS['TL_LANG']['site_country']['wert5'] = 'Slowenien';
+       $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
+
         'country' => [
             'label' => &$GLOBALS['TL_LANG']['tl_site']['country'],
             'inputType' => 'select',
