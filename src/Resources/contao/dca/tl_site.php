@@ -145,7 +145,7 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
  */
 
 
-use \con4gis\MapsBundle\Resources\contao\classes\Utils
+use \con4gis\MapsBundle\Resources\contao\classes\Utils;
 
 class tl_site_c4g_maps_site extends Backend
 {
