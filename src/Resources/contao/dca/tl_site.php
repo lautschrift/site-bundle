@@ -1,6 +1,7 @@
 <?php
-
-use Con4gis\MapsBundle\Classes\Utils;
+use Contao\CoreBundle\DataContainer\PaletteManipulator;
+use con4gis\MapsBundle\Classes\Utils;
+use con4gis\MapsBundle\Classes\GeoPicker;
 
 /**
  * Table tl_site
@@ -121,7 +122,7 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
             'label' => &$GLOBALS['TL_LANG']['tl_site']['geoY'],
             'eval'                    => array('mandatory'=>false, 'maxlength'=>20, 'tl_class'=>'w50 wizard' ),
             'inputType'               => 'c4g_text',
-            'save_callback'           => [['tl_site_c4g_maps_site', 'setLocLat']],
+            //'save_callback'           => [['tl_site_c4g_maps_site', 'setLocLat']],
             'wizard'                  => [['\con4gis\MapsBundle\Classes\GeoPicker', 'getPickerLink']],
             'sql' => ['type' => 'string', 'length' => 20, 'default' => '']
         ],
@@ -231,10 +232,10 @@ class tl_site_c4g_maps_site extends Backend
     {
         if ($varValue != 0)
         {
-            if (!\con4gis\MapsBundle\Resources\contao\classes\Utils::validateLon($varValue))
+            /*if (!\con4gis\MapsBundle\Resources\contao\classes\Utils::validateLon($varValue))
             {
                 throw new \Exception($GLOBALS['TL_LANG']['c4g_maps']['geox_invalid']);
-            }
+            }*/
         }
         return $varValue;
     }
