@@ -6,4 +6,17 @@ services:
 
         Symfony\Component\DependencyInjection\ContainerAwareInterface:
             calls:
-                - ["setContainer", ["@service_container"]]
+                - ["setContainer", ["@service_container"]
+
+     _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    App\:
+        resource: ../src
+        exclude: ../src/{Entity,Migrations,Model,Resources,Tests}
+
+    App\Controller\:
+        resource: ../src/Controller
+        public: true
