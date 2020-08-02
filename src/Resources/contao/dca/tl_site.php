@@ -105,12 +105,24 @@
             'wizard'                  => [['\con4gis\MapsBundle\Classes\GeoPicker', 'getPickerLink']],
             'sql' => ['type' => 'string', 'length' => 2, 'default' => '']
         ],
-
+        'singleSRC' => [
+            'label' => &$GLOBALS['TL_LANG']['tl_site_details']['singleSRC'],
+            'inputType' => 'fileTree',
+            'eval' => [
+                'tl_class' => 'clr',
+                'mandatory' => true,
+                'fieldType' => 'radio',
+                'filesOnly' => true,
+                'extensions' => \Contao\Config::get('validImageTypes'),
+                'mandatory' => true,
+            ],
+            'sql' => ['type' => 'binary', 'length' => 16, 'notnull' => false, 'fixed' => true]
+        ],
     ],
 
      // Palettes
      'palettes' => [
-         'default' => '{site_legend},unescoid, name;{place_legend},region, country, geoX, geoY;'
+         'default' => '{site_legend},unescoid, name;{place_legend},region, country, geoX, geoY;{pic_legend},singleSRC'
     ]
 ];
 
