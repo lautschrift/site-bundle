@@ -86,26 +86,26 @@ use \con4gis\MapsBundle\Classes\GeoPicker;
         'country' => [
             'label' => &$GLOBALS['TL_LANG']['tl_site']['country'],
             'inputType' => 'select',
-            'eval' 		=> array('submitOnChange' => true, 'tl_class' => 'clr'),
+            'eval' 		=> array('submitOnChange' => true, 'tl_class' => 'w50'),
     		'options' 	=> ['wert1', 'wert2','wert3','wert4','wert5','wert6'],
-    		'reference' => &$GLOBALS['TL_LANG']['country'],
+    		'reference' => &$GLOBALS['TL_LANG']['site_country'],
             'sql' => ['type' => 'string', 'length' => 2, 'default' => '']
         ],
         'geoX' => [
             'label' => &$GLOBALS['TL_LANG']['tl_site']['geoX'],
-            'inputType' => 'c4g_text',
             'eval'                    => array('mandatory'=>false, 'maxlength'=>20, 'tl_class'=>'w50 wizard' ),
+            'inputType'               => 'c4g_text',
             'save_callback'           => [['tl_content_c4g_maps', 'setLocLon']],
             'wizard'                  => [['\con4gis\MapsBundle\Classes\GeoPicker', 'getPickerLink']],
-            'sql' => ['type' => 'string', 'length' => 2, 'default' => '']
+            'sql'                     => "varchar(20) NOT NULL default ''"
         ],
         'geoY' => [
             'label' => &$GLOBALS['TL_LANG']['tl_site']['geoY'],
-            'inputType' => 'c4g_text',
             'eval'                    => array('mandatory'=>false, 'maxlength'=>20, 'tl_class'=>'w50 wizard' ),
+            'inputType'               => 'c4g_text',
             'save_callback'           => [['tl_content_c4g_maps', 'setLocLat']],
             'wizard'                  => [['\con4gis\MapsBundle\Classes\GeoPicker', 'getPickerLink']],
-            'sql' => ['type' => 'string', 'length' => 2, 'default' => '']
+            'sql'                     => "varchar(20) NOT NULL default ''"
         ],
         'singleSRC' => [
             'label' => &$GLOBALS['TL_LANG']['tl_site_details']['singleSRC'],
