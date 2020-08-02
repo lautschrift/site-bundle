@@ -6,14 +6,6 @@ use \con4gis\MapsBundle\Classes\GeoPicker;
  * Table tl_site
  */
 
-
-$GLOBALS['TL_LANG']['site_country']['wert1'] = 'Deutschland';
-$GLOBALS['TL_LANG']['site_country']['wert2'] = 'Österreich';
-$GLOBALS['TL_LANG']['site_country']['wert3'] = 'Schweiz';
-$GLOBALS['TL_LANG']['site_country']['wert4'] = 'Italien';
-$GLOBALS['TL_LANG']['site_country']['wert5'] = 'Slowenien';
-$GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
-
  $GLOBALS['TL_DCA']['tl_site'] = [
 
 
@@ -92,7 +84,16 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
            'sql' => ['type' => 'string', 'length' => 255, 'default' => '']
        ],
 
-       'country' => [
+
+              $GLOBALS['TL_LANG']['site_country']['wert1'] = 'Deutschland';
+              $GLOBALS['TL_LANG']['site_country']['wert2'] = 'Österreich';
+              $GLOBALS['TL_LANG']['site_country']['wert3'] = 'Schweiz';
+              $GLOBALS['TL_LANG']['site_country']['wert4'] = 'Italien';
+              $GLOBALS['TL_LANG']['site_country']['wert5'] = 'Slowenien';
+              $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
+
+
+        'country' => [
             'label' => &$GLOBALS['TL_LANG']['tl_site']['country'],
             'inputType' => 'select',
             'eval' 		=> array('submitOnChange' => true, 'tl_class' => 'w50'),
@@ -106,7 +107,7 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
             'inputType'               => 'c4g_text',
             'save_callback'           => [['tl_content_c4g_maps', 'setLocLon']],
             'wizard'                  => [['\con4gis\MapsBundle\Classes\GeoPicker', 'getPickerLink']],
-            'sql'                     => "varchar(20) NOT NULL default ''"
+            'sql' => ['type' => 'string', 'length' => 20, 'default' => '']
         ],
         'geoY' => [
             'label' => &$GLOBALS['TL_LANG']['tl_site']['geoY'],
@@ -114,7 +115,7 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
             'inputType'               => 'c4g_text',
             'save_callback'           => [['tl_content_c4g_maps', 'setLocLat']],
             'wizard'                  => [['\con4gis\MapsBundle\Classes\GeoPicker', 'getPickerLink']],
-            'sql'                     => "varchar(20) NOT NULL default ''"
+            'sql' => ['type' => 'string', 'length' => 20, 'default' => '']
         ],
         'singleSRC' => [
             'label' => &$GLOBALS['TL_LANG']['tl_site_details']['singleSRC'],
