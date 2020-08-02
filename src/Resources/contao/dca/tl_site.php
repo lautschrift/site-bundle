@@ -117,7 +117,7 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
             'eval'                    => array('mandatory'=>false, 'maxlength'=>20, 'tl_class'=>'w50 wizard' ),
             'inputType'               => 'c4g_text',
             'save_callback'           => [['tl_site_c4g_maps_site', 'setLocLon']],
-            'wizard'                  => [['\con4gis\MapsBundle\Classes\GeoEditor', 'getEditorLink']],
+            'wizard'                  => [['\con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
             'sql' => ['type' => 'string', 'length' => 20, 'default' => '']
         ],
         'geoY' => [
@@ -125,7 +125,7 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
             'eval'                    => array('mandatory'=>false, 'maxlength'=>20, 'tl_class'=>'w50 wizard' ),
             'inputType'               => 'c4g_text',
             'save_callback'           => [['tl_site_c4g_maps_site', 'setLocLat']],
-            'wizard'                  => [['\con4gis\MapsBundle\Classes\GeoEditor', 'getEditorLink']],
+            'wizard'                  => [['\con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
             'sql' => ['type' => 'string', 'length' => 20, 'default' => '']
         ],
         'singleSRC' => [
