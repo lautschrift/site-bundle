@@ -1,5 +1,9 @@
 <?php
-use Contao\CoreBundle\DataContainer\PaletteManipulator;
+
+<?php
+namespace Lautschrift\SiteBundle\Resources\contao\dca;
+
+
 use con4gis\MapsBundle\Classes\Utils;
 use con4gis\MapsBundle\Classes\GeoEditor;
 
