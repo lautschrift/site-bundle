@@ -1,7 +1,8 @@
 <?php
 use Contao\CoreBundle\DataContainer\PaletteManipulator;
 use con4gis\MapsBundle\Classes\Utils;
-use con4gis\MapsBundle\Classes\GeoPicker;
+use con4gis\MapsBundle\Classes\GeoEditor;
+
 
 /**
  * Table tl_site
