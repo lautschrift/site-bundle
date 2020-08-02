@@ -142,7 +142,7 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
 
      // Palettes
      'palettes' => [
-         'default' => '{site_legend},unescoid, name;{place_legend},region, country, geoX, geoY;{pic_legend},singleSRC'
+         'default' => '{site_legend},unescoid, name;{place_legend},city,region, country, geoX, geoY;{pic_legend},singleSRC'
     ]
 ];
 
