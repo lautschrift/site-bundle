@@ -92,7 +92,7 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
            'label' => &$GLOBALS['TL_LANG']['tl_site']['city'],
            'search' => true,
            'inputType' => 'text',
-           'eval' => ['tl_class' => 'w50', 'maxlength' => 255c],
+           'eval' => ['tl_class' => 'w50', 'maxlength' => 255],
            'sql' => ['type' => 'string', 'length' => 255, 'default' => '']
        ],
         'region' => [
@@ -145,7 +145,7 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
             'inputType'             => 'pageTree',
             'eval'                  => ['fieldType'=>'radio', 'tl_class'=>'clr'],
             'sql'                   => 'blob NULL'
-        ]
+        ],
     ],
 
      // Palettes
