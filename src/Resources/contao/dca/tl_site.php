@@ -24,7 +24,7 @@
      'list' => [
         'sorting' => [
             'mode' => 1,
-            'fields' => ['name'],
+            'fields' => ['unescoid','name'],
             'flag' => 1,
             'panelLayout' => 'search,limit'
         ],
@@ -59,27 +59,6 @@
         'tstamp' => [
             'sql' => ['type' => 'integer', 'unsigned' => true, 'default' => 0]
         ],
-        'test' => [
-           'label' => &$GLOBALS['TL_LANG']['tl_site']['test'],
-           'search' => true,
-           'inputType' => 'text',
-           'eval' => ['tl_class' => 'w50', 'maxlength' => 255, 'mandatory' => true],
-           'sql' => ['type' => 'string', 'length' => 255, 'default' => '']
-       ],
-         'name' => [
-            'label' => &$GLOBALS['TL_LANG']['tl_site']['name'],
-            'search' => true,
-            'inputType' => 'text',
-            'eval' => ['tl_class' => 'w50', 'maxlength' => 255, 'mandatory' => true],
-            'sql' => ['type' => 'string', 'length' => 255, 'default' => '']
-        ],
-        'country' => [
-            'label' => &$GLOBALS['TL_LANG']['tl_site']['country'],
-            'inputType' => 'select',
-            'options' => \Contao\System::getCountries(),
-            'eval' => ['tl_class' => 'w50', 'mandatory' => true, 'includeBlankOption' => true],
-            'sql' => ['type' => 'string', 'length' => 2, 'default' => '']
-        ],
         'unescoid' => [
             'label' => &$GLOBALS['TL_LANG']['tl_site']['unescoid'],
             'search' => true,
@@ -87,11 +66,51 @@
             'eval' => ['tl_class' => 'w50', 'maxlength' => 255, 'mandatory' => true],
             'sql' => ['type' => 'string', 'length' => 255, 'default' => '']
         ],
+        'name' => [
+            'label' => &$GLOBALS['TL_LANG']['tl_site']['name'],
+            'search' => true,
+            'inputType' => 'text',
+            'eval' => ['tl_class' => 'w50', 'maxlength' => 255, 'mandatory' => true],
+            'sql' => ['type' => 'string', 'length' => 255, 'default' => '']
+        ],
+        'region' => [
+           'label' => &$GLOBALS['TL_LANG']['tl_site']['region'],
+           'search' => true,
+           'inputType' => 'text',
+           'eval' => ['tl_class' => 'w50', 'maxlength' => 255, 'mandatory' => true],
+           'sql' => ['type' => 'string', 'length' => 255, 'default' => '']
+       ],
+        'country' => [
+            'label' => &$GLOBALS['TL_LANG']['tl_site']['country'],
+            'inputType' => 'select',
+            'options' => \Contao\System::getCountries(),
+            'eval' => ['tl_class' => 'w50', 'mandatory' => true, 'includeBlankOption' => true],
+            'sql' => ['type' => 'string', 'length' => 2, 'default' => '']
+        ],
+        'geoX' => [
+            'label' => &$GLOBALS['TL_LANG']['tl_site']['geoX'],
+            'inputType' => 'select',
+            'options' => \Contao\System::getCountries(),
+            'eval' => ['tl_class' => 'w50', 'mandatory' => true, 'includeBlankOption' => true],
+            'save_callback'           => [['tl_content_c4g_maps', 'setLocLon']],
+            'wizard'                  => [['\con4gis\MapsBundle\Classes\GeoPicker', 'getPickerLink']],
+            'sql' => ['type' => 'string', 'length' => 2, 'default' => '']
+        ],
+        'geoY' => [
+            'label' => &$GLOBALS['TL_LANG']['tl_site']['geoY'],
+            'inputType' => 'select',
+            'options' => \Contao\System::getCountries(),
+            'eval' => ['tl_class' => 'w50', 'mandatory' => true, 'includeBlankOption' => true],
+            'save_callback'           => [['tl_content_c4g_maps', 'setLocLat']],
+            'wizard'                  => [['\con4gis\MapsBundle\Classes\GeoPicker', 'getPickerLink']],
+            'sql' => ['type' => 'string', 'length' => 2, 'default' => '']
+        ],
+
     ],
 
      // Palettes
      'palettes' => [
-         'default' => '{site_legend},name, test;{details_legend},unescoid, country;'
+         'default' => '{site_legend},unescoid, name;{place_legend},region, country, geoX, geoY;'
     ]
 ];
 

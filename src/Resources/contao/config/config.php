@@ -42,12 +42,12 @@ if(TL_MODE == "BE") {
 }
 
 array_insert($GLOBALS['BE_MOD'], array_search('content', array_keys($GLOBALS['BE_MOD'])) + 1, array('Site' => array()));
+
 array_insert($GLOBALS['BE_MOD']['Site'],1, array
 (
         'palafittes_site' => array
         (
             'tables' => array ('tl_site', 'tl_site_details'),
-            'icon' => 'bundles/con4gismaps/images/be-icons/palafittes.svg',
         ),
 ));
 
