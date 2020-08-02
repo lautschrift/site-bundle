@@ -1,7 +1,6 @@
 <?php
 
-//use \con4gis\MapsBundle\Classes\GeoPicker;
-use con4gis\MapsBundle\Classes\Utils;
+use Con4gis\MapsBundle\Classes\Utils;
 
 /**
  * Table tl_site
