@@ -232,6 +232,7 @@ class tl_site_c4g_maps_site extends Backend
     {
         if ($varValue != 0)
         {
+            $utilTmp = \con4gis\MapsBundle\Resources\contao\classes\Utils::validateLon($varValue);
             /*if (!\con4gis\MapsBundle\Resources\contao\classes\Utils::validateLon($varValue))
             {
                 throw new \Exception($GLOBALS['TL_LANG']['c4g_maps']['geox_invalid']);
