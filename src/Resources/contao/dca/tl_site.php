@@ -87,14 +87,20 @@ use \con4gis\MapsBundle\Classes\GeoPicker;
             'label' => &$GLOBALS['TL_LANG']['tl_site']['country'],
             'inputType' => 'select',
             'eval' 		=> array('submitOnChange' => true, 'tl_class' => 'clr'),
-    		'options' 	=> array('wert1','wert2','wert3','wert4','wert5','wert6'),
+    		'options' 	=> [
+                $GLOBALS['TL_LANG']['tl_site']['country']['wert1'],
+                $GLOBALS['TL_LANG']['tl_site']['country']['wert2'],
+                $GLOBALS['TL_LANG']['tl_site']['country']['wert3'],
+                $GLOBALS['TL_LANG']['tl_site']['country']['wert4'],
+                $GLOBALS['TL_LANG']['tl_site']['country']['wert5'],
+                $GLOBALS['TL_LANG']['tl_site']['country']['wer6']
+            ],
     		'reference' => &$GLOBALS['TL_LANG']['tl_museum_country'],
             'sql' => ['type' => 'string', 'length' => 2, 'default' => '']
         ],
         'geoX' => [
             'label' => &$GLOBALS['TL_LANG']['tl_site']['geoX'],
-            'inputType' => 'select',
-            'options' => \Contao\System::getCountries(),
+            'inputType' => 'c4g_text',
             'eval' => ['tl_class' => 'w50', 'mandatory' => true, 'includeBlankOption' => true],
             'save_callback'           => [['tl_content_c4g_maps', 'setLocLon']],
             'wizard'                  => [['\con4gis\MapsBundle\Classes\GeoPicker', 'getPickerLink']],
@@ -102,8 +108,7 @@ use \con4gis\MapsBundle\Classes\GeoPicker;
         ],
         'geoY' => [
             'label' => &$GLOBALS['TL_LANG']['tl_site']['geoY'],
-            'inputType' => 'select',
-            'options' => \Contao\System::getCountries(),
+            'inputType' => 'c4g_text',
             'eval' => ['tl_class' => 'w50', 'mandatory' => true, 'includeBlankOption' => true],
             'save_callback'           => [['tl_content_c4g_maps', 'setLocLat']],
             'wizard'                  => [['\con4gis\MapsBundle\Classes\GeoPicker', 'getPickerLink']],
