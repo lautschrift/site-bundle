@@ -8,12 +8,12 @@ use \con4gis\MapsBundle\Classes\GeoPicker;
 
 
 
-               $GLOBALS['TL_LANG']['site_country']['wert1'] = 'Deutschland';
-               $GLOBALS['TL_LANG']['site_country']['wert2'] = 'Österreich';
-               $GLOBALS['TL_LANG']['site_country']['wert3'] = 'Schweiz';
-               $GLOBALS['TL_LANG']['site_country']['wert4'] = 'Italien';
-               $GLOBALS['TL_LANG']['site_country']['wert5'] = 'Slowenien';
-               $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
+$GLOBALS['TL_LANG']['site_country']['wert1'] = 'Deutschland';
+$GLOBALS['TL_LANG']['site_country']['wert2'] = 'Österreich';
+$GLOBALS['TL_LANG']['site_country']['wert3'] = 'Schweiz';
+$GLOBALS['TL_LANG']['site_country']['wert4'] = 'Italien';
+$GLOBALS['TL_LANG']['site_country']['wert5'] = 'Slowenien';
+$GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
 
 
 
@@ -106,7 +106,7 @@ use \con4gis\MapsBundle\Classes\GeoPicker;
             'label' => &$GLOBALS['TL_LANG']['tl_site']['geoX'],
             'eval'                    => array('mandatory'=>false, 'maxlength'=>20, 'tl_class'=>'w50 wizard' ),
             'inputType'               => 'c4g_text',
-            'save_callback'           => [['tl_content_c4g_maps', 'setLocLon']],
+            'save_callback'           => [['tl_site_c4g_maps_site', 'setLocLon']],
             'wizard'                  => [['\con4gis\MapsBundle\Classes\GeoPicker', 'getPickerLink']],
             'sql' => ['type' => 'string', 'length' => 20, 'default' => '']
         ],
@@ -114,7 +114,7 @@ use \con4gis\MapsBundle\Classes\GeoPicker;
             'label' => &$GLOBALS['TL_LANG']['tl_site']['geoY'],
             'eval'                    => array('mandatory'=>false, 'maxlength'=>20, 'tl_class'=>'w50 wizard' ),
             'inputType'               => 'c4g_text',
-            'save_callback'           => [['tl_content_c4g_maps', 'setLocLat']],
+            'save_callback'           => [['tl_site_c4g_maps_site', 'setLocLat']],
             'wizard'                  => [['\con4gis\MapsBundle\Classes\GeoPicker', 'getPickerLink']],
             'sql' => ['type' => 'string', 'length' => 20, 'default' => '']
         ],
@@ -140,147 +140,109 @@ use \con4gis\MapsBundle\Classes\GeoPicker;
 ];
 
 
-/*
+/**
+ * Class tl_content_c4g_maps
+ */
+class tl_site_c4g_maps_site extends Backend
+{
+
+    protected $firstMapId = null;
+
+    /**
+     * Return all base layers for current Map Profile as array
+     * @param object
+     * @return array
+     */
+    public function get_baselayers(DataContainer $dc)
+    {
+        $id = 0;
+        if ($dc->activeRecord->c4g_map_id != 0) {
+            $id = $dc->activeRecord->c4g_map_id;
+        } else {
+            // take firstMapId, because it will be chosen as DEFAULT value for c4g_map_id
+            $id = $this->firstMapId;
+        }
+
+        $profile = $this->Database->prepare(
+                "SELECT b.baselayers ".
+                "FROM tl_c4g_maps a, tl_c4g_map_profiles b ".
+                "WHERE a.id = ? and a.profile = b.id")
+                ->execute($id);
+
+        $ids = deserialize($profile->baselayers,true);
+        if (count($ids)>0) {
+            $baseLayers = $this->Database->prepare("SELECT id,name FROM tl_c4g_map_baselayers WHERE id IN (".implode(',',$ids).") ORDER BY name")->execute();
+        } else {
+            $baseLayers = $this->Database->prepare("SELECT id,name FROM tl_c4g_map_baselayers ORDER BY name")->execute();
+        }
 
 
-$GLOBALS['TL_DCA']['tl_site']['config']['tl_Site'] = array
-(
-	'dataContainer'               => 'Table',
-	'switchToEdit'                => true,
-	'enableVersioning'            => true,
-	'sql' => array
-	(
-		'keys' => array
-		(
-			'id' => 'primary',
-			'alias' => 'index',
-		)
-	)
-);
+        if ($baseLayers->numRows > 0) {
+            while ( $baseLayers->next () ) {
+                $return [$baseLayers->id] = $baseLayers->name;
+            }
+        }
+        return $return;
+    }
 
-$GLOBALS['TL_DCA']['tl_site']['palettes']['Site'] = '
-	{type_legend},type,headline;
-	{museum_legend},title,museum_name, museum_street, museum_nr, museum_plz, museum_ort, museum_land, museum_email, museum_website, museum_lang, museum_pic, museum_geox, museum_geoy;
-	{museumtext_legend},text, museum_openings;
-	{image_legend},addImage;
-	{template_legend:hide},customTpl;
-	{protected_legend:hide},protected;
-	{expert_legend:hide},guests,cssID;
-	{invisible_legend:hide},invisible,start,stop
-';
+    /**
+     * Return all defined maps
+     * @param object
+     * @return array
+     */
+    public function get_maps(DataContainer $dc)
+    {
+        $maps = $this->Database->prepare ( "SELECT * FROM tl_c4g_maps WHERE is_map=1 AND published=1" )->execute ();
+        if ($maps->numRows > 0) {
+            while ( $maps->next () ) {
+                if (!isset($this->firstMapId)) {
+                    // save first map id
+                    $this->firstMapId = $maps->id;
+                }
+                $return [$maps->id] = $maps->name;
+            }
+        }
+        return $return;
+    }
+    public function getLocStyles(\DataContainer $dc)
+    {
+        $locStyles = $this->Database->prepare("SELECT id,name FROM tl_c4g_map_locstyles ORDER BY name")
+            ->execute();
+        $return[''] = '-';
+        while ($locStyles->next())
+        {
+            $return[$locStyles->id] = $locStyles->name;
+        }
+        return $return;
+    }
 
+    /**
+     * Validate Longitude
+     */
+    public function setLocLon($varValue, \DataContainer $dc)
+    {
+        if ($varValue != 0)
+        {
+            if (!\con4gis\MapsBundle\Resources\contao\classes\Utils::validateLon($varValue))
+            {
+                throw new \Exception($GLOBALS['TL_LANG']['c4g_maps']['geox_invalid']);
+            }
+        }
+        return $varValue;
+    }
 
-$GLOBALS['TL_DCA']['tl_site']['fields']['museum_name'] = array(
-		'label' 	=> array('Name', 'Name der Fundstelle'),
-		'eval' 		=> array('tl_class' ),
-		'inputType' => 'text',
-		'sql'      	=> "varchar(255) NOT NULL default ''"
-);
-$GLOBALS['TL_DCA']['tl_site']['fields']['museum_street'] = array(
-		'label' 	=> array('Straße', 'Straße'),
-        'eval' 		=> array('tl_class' => 'w50'),
-        'inputType' => 'text',
-		'sql'       => "varchar(255) NOT NULL default ''"
-);
-$GLOBALS['TL_DCA']['tl_site']['fields']['museum_nr'] = array(
-		'label' 	=> array('Hausnumer', 'Hausnummer'),
-        'eval' 		=> array('tl_class' => 'w50'),
-        'inputType' => 'text',
-		'sql'       => "varchar(255) NOT NULL default ''"
-);
-$GLOBALS['TL_DCA']['tl_site']['fields']['museum_plz'] = array(
-		'label' 	=> array('Postleitzahl', 'Postleitzahl'),
-        'eval' 		=> array('tl_class' => 'w50'),
-        'inputType'	=> 'text',
-		'sql'       => "varchar(255) NOT NULL default ''"
-);
-$GLOBALS['TL_DCA']['tl_site']['fields']['museum_ort'] = array(
-		'label' 	=> array('Ort', 'Ort'),
-		'eval' 		=> array('tl_class' => 'w50'),
-		'inputType' => 'text',
-		'sql'       => "varchar(255) NOT NULL default ''"
-);
-
-$GLOBALS['TL_LANG']['tl_museum_country']['wert1'] = 'Deutschland';
-$GLOBALS['TL_LANG']['tl_museum_country']['wert2'] = 'Österreich';
-$GLOBALS['TL_LANG']['tl_museum_country']['wert3'] = 'Schweiz';
-$GLOBALS['TL_LANG']['tl_museum_country']['wert4'] = 'Italien';
-$GLOBALS['TL_LANG']['tl_museum_country']['wert5'] = 'Slowenien';
-$GLOBALS['TL_LANG']['tl_museum_country']['wert6'] = 'Frankreich';
-
-$GLOBALS['TL_DCA']['tl_site']['fields']['museum_land'] = array(
-		'label' 	=> array('Land', ''),
-        'eval' 		=> array('submitOnChange' => true, 'tl_class' => 'clr'),
-		'options' 	=> array('wert1','wert2','wert3','wert4','wert5','wert6'),
-		'reference' => &$GLOBALS['TL_LANG']['tl_museum_country'],
-        'inputType' => 'select',
-		'sql'       => "varchar(255) NOT NULL default ''"
-);
-$GLOBALS['TL_DCA']['tl_site']['fields']['museum_email'] = array(
-		'label' 	=> array('E-Mail', 'E-Mail Adresse'),
-		'eval' 		=> array('tl_class' => 'w50 wizard'),
-		'wizard' 	=> array(array('tl_site', 'pagePicker')),
-		'inputType' => 'text',
-		'sql'       => "varchar(255) NOT NULL default ''"
-);
-$GLOBALS['TL_DCA']['tl_site']['fields']['museum_website'] = array(
-		'label' 	=> array('Website', 'Website Adresse'),
-		'eval' 		=> array('tl_class' => 'w50 wizard'),
-		'wizard' 	=> array(array('tl_site', 'pagePicker')),
-		'inputType' => 'text',
-		'sql'       => "varchar(255) NOT NULL default ''"
-);
-
-$GLOBALS['TL_DCA']['tl_site']['fields']['museum_geox'] = array(
-		'label' 				  => array('Karte geoX', ''),
-		'inputType'               => 'c4g_text',
-		'eval'                    => array('mandatory'=>false, 'maxlength'=>20, 'tl_class'=>'w50 wizard' ),
-        'save_callback'           => [['tl_content_c4g_maps', 'setLocLon']],
-        'wizard'                  => [['\con4gis\MapsBundle\Classes\GeoPicker', 'getPickerLink']],
-		'sql'                     => "varchar(20) NOT NULL default ''"
-);
-
-$GLOBALS['TL_DCA']['tl_site']['fields']['museum_geoy'] = array(
-		'label' 				  => array('Karte geoY', ''),
-        'eval'                    => array('mandatory'=>false, 'maxlength'=>20, 'tl_class'=>'w50 wizard' ),
-        'inputType'               => 'c4g_text',
-        'save_callback'           => [['tl_content_c4g_maps', 'setLocLat']],
-        'wizard'                  => [['\con4gis\MapsBundle\Classes\GeoPicker', 'getPickerLink']],
-		'sql'                     => "varchar(20) NOT NULL default ''"
-);
-
-
-
-$GLOBALS['TL_DCA']['tl_site']['fields']['museum_locstyle'] = array
-(
-		'label'                   => &$GLOBALS['TL_LANG']['tl_calendar_events']['c4g_locstyle'],
-		'exclude'                 => true,
-		'inputType'               => 'select',
-		'eval' 					  => array('tl_class' => 'clr'),
-		'options_callback'        => array('tl_calendar_events_c4g_maps','getLocStyles'),
-		'sql'                     => "int(10) unsigned NOT NULL default '0'"
-);
-
-$GLOBALS['TL_DCA']['tl_site']['fields']['museum_lang'] = array(
-		'label' 	=> array('Anzeigesprache', 'Anzeigesprache'),
-		'eval' 		=> array('tl_class' => 'w50'),
-		'inputType' => 'text',
-		'sql'       => "varchar(255) NOT NULL default 'de'"
-);
-
-$GLOBALS['TL_DCA']['tl_site']['fields']['museum_openings'] = array(
-		'label' 	=> array('Öffnungszeiten', 'Öffnungszeiten'),
-		'eval' => array('rte' => 'tinyMCE'),
-		'inputType' => 'textarea',
-		'sql'       => "varchar(255) NOT NULL default ''"
-);
-$GLOBALS['TL_DCA']['tl_site']['fields']['museum_pic'] = array
-(
-		'label' 				=> array('Museum Bild', 'Bild das im Popup auf der Karte verwendet wird'),
-		'exclude'               => true,
-		'eval' 					=> array('tl_class' => 'w50 wizard'),
-		'wizard' 				=> array(array('tl_site', 'pagePicker')),
-		'inputType' 			=> 'text',
-		'sql'       			=> "varchar(255) NOT NULL default ''"
-);
-*/
+    /**
+     * Validate Latitude
+     */
+    public function setLocLat($varValue, \DataContainer $dc)
+    {
+        if ($varValue != 0)
+        {
+            if (!\con4gis\MapsBundle\Resources\contao\classes\Utils::validateLat($varValue))
+            {
+                throw new \Exception($GLOBALS['TL_LANG']['c4g_maps']['geoy_invalid']);
+            }
+        }
+        return $varValue;
+    }
+}
