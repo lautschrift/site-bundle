@@ -141,11 +141,14 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
 
 
 /**
- * Class tl_content_c4g_maps
+ * Class t tl_site_c4g_maps_site
  */
+
+use \con4gis\MapsBundle\Classes\Utils;
+
 class tl_site_c4g_maps_site extends Backend
 {
-    use \con4gis\MapsBundle\Classes\Utils;
+
     protected $firstMapId = null;
 
     /**
