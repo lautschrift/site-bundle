@@ -51,6 +51,10 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                 'href' => 'act=show',
                 'icon' => 'show.svg'
             ],
+            'copy' => [
+                'href' => 'act=paste&amp;mode=copy',
+                'icon' => 'copy.svg'
+            ],
         ],
     ],
 
