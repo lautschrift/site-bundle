@@ -21,6 +21,7 @@ class SiteModule extends AbstractFrontendModuleController
 {
     protected function getResponse(Template $template, ModuleModel $model, Request $request): ?Response
   {
+      print_r("mach was");
       return $template->getResponse();
   }
 }
