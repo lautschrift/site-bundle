@@ -121,7 +121,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                 'sql' => ['type' => 'text', 'notnull' => false]
             ],
             'museumlink' => [
-                'label' => &$GLOBALS['TL_LANG']['tl_site_details']['features'],
+                'label' => &$GLOBALS['TL_LANG']['tl_site_details']['museumlink'],
                 'search' => true,
                 'inputType' => 'text',
                 'eval' => ['tl_class' => 'clr', 'rte' => 'tinyMCE', 'mandatory' => false],
@@ -167,7 +167,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
            'default' => '{type_legend},type',
            'wert1' =>   '{type_legend},type;'.
                         '{details_legend},speech,genericdatation,datation,description;'.
-                        '{optionaldetails_legend},activities, features, museumlink',
+                        '{optionaldetails_legend},activities, features, museumlink;',
            'wert2' =>   '{type_legend},type;{image_legend},singleSRC, name',
        ],
 ];
