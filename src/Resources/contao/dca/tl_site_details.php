@@ -35,7 +35,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
     'list' => [
         'sorting' => [
             'mode' => 4,
-            'fields' => ['speech' 'type'],
+            'fields' => ['speech', 'type'],
             'headerFields' => ['speech', 'type'],
             'panelLayout' => 'search,limit',
             'child_record_callback' => function (array $row) {
@@ -106,6 +106,27 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                 'eval' => ['tl_class' => 'w50', 'maxlength' => 255, 'mandatory' => true],
                 'sql' => ['type' => 'string', 'length' => 255, 'default' => '']
             ],
+            'activities' => [
+                'label' => &$GLOBALS['TL_LANG']['tl_site_details']['activities'],
+                'search' => true,
+                'inputType' => 'textarea',
+                'eval' => ['tl_class' => 'clr', 'rte' => 'tinyMCE', 'mandatory' => true],
+                'sql' => ['type' => 'text', 'notnull' => false]
+            ],
+            'features' => [
+                'label' => &$GLOBALS['TL_LANG']['tl_site_details']['features'],
+                'search' => true,
+                'inputType' => 'textarea',
+                'eval' => ['tl_class' => 'clr', 'rte' => 'tinyMCE', 'mandatory' => true],
+                'sql' => ['type' => 'text', 'notnull' => false]
+            ],
+            'museumlink' => [
+                'label' => &$GLOBALS['TL_LANG']['tl_site_details']['features'],
+                'search' => true,
+                'inputType' => 'text',
+                'eval' => ['tl_class' => 'clr', 'rte' => 'tinyMCE', 'mandatory' => true],
+                'sql' => ['type' => 'text', 'notnull' => false]
+            ],
             'name' => [
                 'label' => &$GLOBALS['TL_LANG']['tl_site_details']['name'],
                 'search' => true,
@@ -145,7 +166,8 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
            '__selector__' => ['type'],
            'default' => '{type_legend},type',
            'wert1' =>   '{type_legend},type;'.
-                        '{title_legend},speech,genericdatation,datation,description',
+                        '{details_legend},speech,genericdatation,datation,description'.
+                        '{optionaldetails_legend},activities, features, museumlink',
            'wert2' =>   '{type_legend},type;{image_legend},singleSRC, name',
        ],
 ];
