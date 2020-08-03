@@ -111,7 +111,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
         ],
         'palettes' => [
            '__selector__' => ['type'],
-           'default' => '{default_legend},type',
+           'default' => '{default_legend},type, name',
            'wert1' => '{title_legend},name,description',
            'wert2' => '{image_legend},singleSRC, name',
        ],
