@@ -35,11 +35,11 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
     'list' => [
         'sorting' => [
             'mode' => 4,
-            'fields' => ['number'],
-            'headerFields' => ['name'],
+            'fields' => ['unescoid'],
+            'headerFields' => ['unescoid'],
             'panelLayout' => 'search,limit',
             'child_record_callback' => function (array $row) {
-                return '<div class="tl_content_left">'.$row['name'].' ['.$row['number'].']</div>';
+                return '<div class="tl_content_left">'.$row['unescoid'].' ['.$row['number'].']</div>';
             },
         ],
         'operations' => [
