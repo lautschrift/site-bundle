@@ -71,7 +71,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                 'inputType' => 'select',
                 'eval' 		=> array('submitOnChange' => true, 'tl_class' => 'clr', 'mandatory' => true),
         		'options' 	=> ['wert1', 'wert2'],
-        		'reference' => &$GLOBALS['TL_LANG']['site_details_type'],
+        		//'reference' => &$GLOBALS['TL_LANG']['site_details_type'],
                 'sql' => ['type' => 'string', 'length' => 20, 'default' => 0]
             ],
             'name' => [
