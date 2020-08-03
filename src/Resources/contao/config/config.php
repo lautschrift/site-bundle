@@ -22,3 +22,14 @@ $GLOBALS['TL_CTE']['Site'] = array(
 );
 
 //$GLOBALS['TL_CTE']['Museum']['Museum'] = '\\lautschrift\\museum-bundle\\src\\Resources\\contao\\classes\\ContentMuseum';
+
+/**
+  * Front end modules
+  */
+ array_insert($GLOBALS['FE_MOD'], 3, array
+ (
+     'pala_site' => array
+     (
+         'Site'   => 'Lautschrift\\SiteBundle\\Controller\\SiteModule',
+     )
+ ));

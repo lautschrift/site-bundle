@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * @FrontendModule("my_example",
+ * @FrontendModule("site_module",
  *   category="miscellaneous",
  *   template="mod_site",
  *   renderer="forward"
