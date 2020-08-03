@@ -1,8 +1,8 @@
 
 <?php
 
-$GLOBALS['TL_LANG']['site_details_type']['wert1'] = 'text';
-$GLOBALS['TL_LANG']['site_details_type']['wert2'] = 'image';
+$GLOBALS['TL_LANG']['site_details_type']['text'] = 'Text';
+$GLOBALS['TL_LANG']['site_details_type']['image'] = 'Bild';
 
 
 // contao/dca/tl_parts.php
@@ -70,7 +70,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                 'label' => &$GLOBALS['TL_LANG']['tl_site']['type'],
                 'inputType' => 'select',
                 'eval' 		=> array('submitOnChange' => true, 'tl_class' => 'clr', 'mandatory' => true),
-        		'options' 	=> ['wert1', 'wert2'],
+        		'options' 	=> ['text', 'image'],
         		'reference' => &$GLOBALS['TL_LANG']['site_details_type'],
                 'sql' => ['type' => 'string', 'length' => 20, 'default' => '']
             ],
