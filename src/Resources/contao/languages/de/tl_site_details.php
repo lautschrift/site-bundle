@@ -10,3 +10,4 @@ $GLOBALS['TL_LANG']['tl_site_details']['genericdatation'] = ['Zeitalter', 'Angab
 $GLOBALS['TL_LANG']['tl_site_details']['description'] = ['Beschreibung', 'Kurzbeschreibung der Fundstelle (350 - 600 Zeichen)'];
 $GLOBALS['TL_LANG']['tl_site_details']['activities'] = ['Aktuelle Aktivitäten', 'Kurzbeschreibung der aktuellen Aktivitätenaufe der Fundstelle'];
 $GLOBALS['TL_LANG']['tl_site_details']['features'] = ['Highlights & Besonderheiten', 'Hinweise zu speziellen Objekten, Auffindungsumständen, etc.'];
+$GLOBALS['TL_LANG']['tl_site_details']['museumlink'] = ['Museum', 'Link zum Museum mit den Funden'];
