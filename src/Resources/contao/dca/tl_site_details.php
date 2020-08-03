@@ -35,7 +35,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
     'list' => [
         'sorting' => [
             'mode' => 4,
-            'fields' => ['speech', 'type'],
+            'fields' => ['type'],
             'headerFields' => ['speech', 'type'],
             'panelLayout' => 'search,limit',
             'child_record_callback' => function (array $row) {
@@ -166,7 +166,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
            '__selector__' => ['type'],
            'default' => '{type_legend},type',
            'wert1' =>   '{type_legend},type;'.
-                        '{details_legend},speech,genericdatation,datation,description'.
+                        '{details_legend},speech,genericdatation,datation,description;'.
                         '{optionaldetails_legend},activities, features, museumlink',
            'wert2' =>   '{type_legend},type;{image_legend},singleSRC, name',
        ],
