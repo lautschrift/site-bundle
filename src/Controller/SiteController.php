@@ -11,7 +11,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * @FrontendModule(category="miscellaneous")
+ * @FrontendModule(
+    category="miscellaneous",
+    template="mod_site",
+    )
  */
 class SiteController extends AbstractFrontendModuleController
 {
