@@ -67,8 +67,8 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                 'label' => &$GLOBALS['TL_LANG']['tl_site_details']['type'],
                 'inputType' => 'select',
                 'eval' 		=> array('submitOnChange' => true, 'tl_class' => 'clr', 'mandatory' => true),
-        		'options' 	=> ['default','text', 'image'],
-        		'reference' => &$GLOBALS['TL_LANG']['type'],
+        		'options' 	=> ['default' => 'Standard', 'text' => 'Text', 'image' => "Bild"],
+        		//'reference' => &$GLOBALS['TL_LANG']['type'],
                 'sql' => ['type' => 'string', 'length' => 20, 'default' => '']
             ],
             'name' => [
@@ -108,7 +108,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
         ],
         'palettes' => [
            '__selector__' => ['type'],
-           'default' => '{title_legend},type',
+           'default' => '{title_legend},name',
            'text' => '{title_legend},name,description',
            'image'=> '{image_legend},singleSRC, name',
        ],
