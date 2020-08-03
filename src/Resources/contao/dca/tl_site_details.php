@@ -39,7 +39,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
             'headerFields' => ['unescoid'],
             'panelLayout' => 'search,limit',
             'child_record_callback' => function (array $row) {
-                return '<div class="tl_content_left">'.$row['unescoid'].' ['.$row['number'].']</div>';
+                return '<div class="tl_content_left">'.$row['name'].' ['.$row['number'].']</div>';
             },
         ],
         'operations' => [
