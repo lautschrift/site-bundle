@@ -24,7 +24,10 @@ class SiteModuleController extends AbstractFrontendModuleController
       global $objPage;
 
       //$template->unescoid = 'Hello World';
-      $template->unescoid = PageModel::findByPk(1);
+      $objPage = \PageModel::findByPK(1); //PageModel Object
+      $arrPage = $objPage->row();
+
+      $template->unescoid = $arrPage;
       return $template->getResponse();
   }
 }
