@@ -7,7 +7,7 @@ use Contao\CoreBundle\Controller\FrontendModule\AbstractFrontendModuleController
 use Contao\CoreBundle\ServiceAnnotation\FrontendModule;
 use Contao\ModuleModel;
 use Contao\Template;
-use Contao\PageModel;
+use Contao\Database;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -23,11 +23,12 @@ class SiteModuleController extends AbstractFrontendModuleController
   {
       global $objPage;
 
-      //$template->unescoid = 'Hello World';
-      $objPage = \PageModel::findByPK(1); //PageModel Object
-      $arrPage = $objPage->row();
+     $sql = Database::getInstance()->execute("SELECT * FROM tl_site")->fetchAllAssoc();
+     while($sql->next())
+    {
+       $template->unescoid .= $sql->id;
+    }
 
-      $template->unescoid = $arrPage;
       return $template->getResponse();
   }
 }
