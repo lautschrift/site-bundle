@@ -1,3 +1,4 @@
-<div class="my-content-module">
+<div class="site_module">
+    <h1>Mein Modul</h1>
     <?= $this->unescoid; ?>
 </div>
