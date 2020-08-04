@@ -1,4 +1,5 @@
 <div class="site_module">
     <h1>Mein Modul</h1>
+      <?= $this->dumpTemplateVars(); ?>
     <?= $this->unescoid; ?>
 </div>
