@@ -28,7 +28,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                              ->execute([$pid]);
                 $prefix = $result->name; //strtoupper(substr($result->name, 0, 2));
                 $GLOBALS['TL_DCA']['tl_site_details']['fields']['number']['default'] = $prefix;
-                $GLOBALS['TL_DCA']['tl_site_details']['fields']['name']['default'] = $result->name;
+                $GLOBALS['TL_DCA']['tl_site_details']['fields']['name']['default'] = $prefix;//$result->name;
             },
         ]
     ],
@@ -37,7 +37,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
         'sorting' => [
             'mode' => 4,
             'fields' => ['name'],
-            'headerFields' => ['name', 'unescoid'],
+            'headerFields' => ['unescoid', 'name'],
             'panelLayout' => 'search,limit',
             'child_record_callback' => function (array $row) {
                 return '<div class="tl_content_left">'.$row['name'].' ['.$row['number'].']</div>';
@@ -134,7 +134,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                 'flag' => 1,
                 'inputType' => 'text',
                 'eval' => ['tl_class' => 'w50', 'maxlength' => 255, 'mandatory' => true],
-                'sql' => ['type' => 'string', 'length' => 255, 'default' => 0]
+                'sql' => ['type' => 'string', 'length' => 255, 'default' => '']
             ],
             'number' => [
                 'label' => &$GLOBALS['TL_LANG']['tl_site_details']['number'],
