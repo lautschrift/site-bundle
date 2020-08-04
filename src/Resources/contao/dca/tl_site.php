@@ -46,7 +46,7 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
             'panelLayout' => 'search,limit'
         ],
         'label' => [
-            'fields' => ['unescoid', 'name'],
+            'fields' => ['name'],
             'format' => '%s',
         ],
         'operations' => [
