@@ -28,7 +28,9 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                              ->execute([$pid]);
                 $prefix = $result->unescoid; //strtoupper(substr($result->name, 0, 2));
                 $GLOBALS['TL_DCA']['tl_site_details']['fields']['number']['default'] = $prefix;
-                //$GLOBALS['TL_DCA']['tl_site_details']['fields']['name']['default'] = $prefix;//$result->name;
+                $result = $db->prepare('SELECT `name` FROM `tl_site` WHERE `id` = ?')
+                             ->execute([$pid]);
+                $GLOBALS['TL_DCA']['tl_site_details']['fields']['name']['default'] = $result->name;
             },
         ]
     ],
