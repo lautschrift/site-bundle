@@ -8,4 +8,4 @@ services:
             calls:
                 - ["setContainer", ["@service_container"]]
 
-    Lautschrift\SiteBundle\Controller\FrontendModule\SiteModuleController:
+    Lautschrift\SiteBundle\Controller\FrontendModule\SiteModuleController: ~
