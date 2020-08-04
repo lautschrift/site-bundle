@@ -43,6 +43,10 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                 return '<div class="tl_content_left">'.$row['name'].' ['.$row['number'].']</div>';
             },
         ],
+        'label' => [
+            'fields' => ['name'],
+            'format' => '%s',
+        ],
         'operations' => [
             'edit' => [
                 'href' => 'act=edit',
