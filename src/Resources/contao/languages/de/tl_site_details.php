@@ -11,3 +11,4 @@ $GLOBALS['TL_LANG']['tl_site_details']['description'] = ['Beschreibung', 'Kurzbe
 $GLOBALS['TL_LANG']['tl_site_details']['activities'] = ['Aktuelle Aktivitäten', 'Kurzbeschreibung der aktuellen Aktivitätenaufe der Fundstelle'];
 $GLOBALS['TL_LANG']['tl_site_details']['features'] = ['Highlights & Besonderheiten', 'Hinweise zu speziellen Objekten, Auffindungsumständen, etc.'];
 $GLOBALS['TL_LANG']['tl_site_details']['museumlink'] = ['Museum', 'Link zum Museum mit den Funden'];
+$GLOBALS['TL_LANG']['tl_site_details']['number'] = ['Kennung', 'Kennungdes Eintrags'];
