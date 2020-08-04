@@ -37,7 +37,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
         'sorting' => [
             'mode' => 4,
             'fields' => ['name'],
-            'headerFields' => ['name'],
+            'headerFields' => ['name', 'unescoid'],
             'panelLayout' => 'search,limit',
             'child_record_callback' => function (array $row) {
                 return '<div class="tl_content_left">'.$row['name'].' ['.$row['number'].']</div>';
@@ -134,7 +134,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                 'flag' => 1,
                 'inputType' => 'text',
                 'eval' => ['tl_class' => 'w50', 'maxlength' => 255, 'mandatory' => true],
-                'sql' => ['type' => 'string', 'length' => 255, 'default' => '']
+                'sql' => ['type' => 'string', 'length' => 255, 'default' => 0]
             ],
             'number' => [
                 'label' => &$GLOBALS['TL_LANG']['tl_site_details']['number'],
