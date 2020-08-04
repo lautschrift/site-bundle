@@ -24,11 +24,8 @@ class SiteModuleController extends AbstractFrontendModuleController
       global $objPage;
 
      $sql = Database::getInstance()->execute("SELECT * FROM tl_site")->fetchAllAssoc();
-     while($sql->next())
-    {
-       $template->unescoid .= $sql->id;
-    }
+     $template->unescoid = $sql;
 
-      return $template->getResponse();
+     return $template->getResponse();
   }
 }
