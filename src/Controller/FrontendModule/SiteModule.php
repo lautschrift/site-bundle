@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * @FrontendModule("site_module",
  *   category="miscellaneous",
- *   template="mod_site",
+ *
  *   renderer="forward"
  * )
  */
@@ -21,7 +21,6 @@ class SiteModule extends AbstractFrontendModuleController
 {
     protected function getResponse(Template $template, ModuleModel $model, Request $request): ?Response
   {
-      print_r("mach was");
       return $template->getResponse();
   }
 }
