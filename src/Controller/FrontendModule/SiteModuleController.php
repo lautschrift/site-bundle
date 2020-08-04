@@ -22,7 +22,7 @@ class SiteModuleController extends AbstractFrontendModuleController
   {
       global $objPage;
 
-      $template->unescoid = $model;
+      $template->unescoid = 'Hello World';
       return $template->getResponse();
   }
 }
