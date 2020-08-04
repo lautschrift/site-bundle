@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @FrontendModule("site_module",
- *   category="miscellaneous",
+ *   category="Fundstellen",
  *   template="mod_site",
  * )
  */
