@@ -28,7 +28,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                              ->execute([$pid]);
                 $prefix = $result->name; //strtoupper(substr($result->name, 0, 2));
                 $GLOBALS['TL_DCA']['tl_site_details']['fields']['number']['default'] = $prefix;
-                $GLOBALS['TL_DCA']['tl_site_details']['fields']['name']['default'] = $prefix;//$result->name;
+                //$GLOBALS['TL_DCA']['tl_site_details']['fields']['name']['default'] = $prefix;//$result->name;
             },
         ]
     ],
