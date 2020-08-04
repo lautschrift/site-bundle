@@ -7,5 +7,6 @@ services:
         Symfony\Component\DependencyInjection\ContainerAwareInterface:
             calls:
                 - ["setContainer", ["@service_container"]]
-
+     _defaults:
+            autoconfigure: true
     Lautschrift\SiteBundle\Controller\FrontendModule\SiteModuleController: ~
