@@ -1,7 +1,7 @@
 <?php
 
-//namespace Lautschrift\SiteBundle\Controller;
-namespace App\Controller\FrontendModule;
+namespace Lautschrift\SiteBundle\Controller\FrontendModule;
+//namespace App\Controller\FrontendModule;
 
 use Contao\CoreBundle\Controller\FrontendModule\AbstractFrontendModuleController;
 use Contao\CoreBundle\ServiceAnnotation\FrontendModule;
@@ -13,11 +13,10 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * @FrontendModule("site_module",
  *   category="miscellaneous",
- *
- *   renderer="forward"
+ *   template="mod_site",
  * )
  */
-class SiteModule extends AbstractFrontendModuleController
+class SiteModuleController extends AbstractFrontendModuleController
 {
     protected function getResponse(Template $template, ModuleModel $model, Request $request): ?Response
   {
