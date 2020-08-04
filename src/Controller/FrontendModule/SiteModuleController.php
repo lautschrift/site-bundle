@@ -20,6 +20,7 @@ class SiteModuleController extends AbstractFrontendModuleController
 {
     protected function getResponse(Template $template, ModuleModel $model, Request $request): ?Response
   {
+      $template->unescoid = $model->unescoid;
       return $template->getResponse();
   }
 }
