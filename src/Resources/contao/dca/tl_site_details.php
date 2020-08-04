@@ -24,7 +24,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
             function (\Contao\DataContainer $dc) {
                 $db = \Contao\Database::getInstance();
                 $pid = \Contao\Input::get('pid');
-                $result = $db->prepare('SELECT `name` FROM `tl_site` WHERE `id` = ?')
+                $result = $db->prepare('SELECT `unescoid` FROM `tl_site` WHERE `id` = ?')
                              ->execute([$pid]);
                 $prefix = $result->name; //strtoupper(substr($result->name, 0, 2));
                 $GLOBALS['TL_DCA']['tl_site_details']['fields']['number']['default'] = $prefix;
