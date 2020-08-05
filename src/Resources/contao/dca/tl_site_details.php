@@ -34,12 +34,24 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
             function (\Contao\DataContainer $dc) {
                 $db = \Contao\Database::getInstance();
                 $id = \Contao\Input::get('id');
+
                 $result = $db->prepare('SELECT `pid` FROM `tl_site_details` WHERE `id`= ?')
                             ->execute([$id]);
                 $pid = $result->pid;
 
+                $getStoredIds = $db->prepare('SELECT `details_link` FROM `tl_site` WHERE `id` = ?')
+                                    -> execute([$pid])
+
+                $allIds = [];
+                if($getStoredIds->details_link != '') {
+                    array_push($allIds,  unserialize($getStoredIds->details_link) ;
+                }
+
+                array_push($allIds, $id);
+                $allIdsAsString = serialize($allIds);
+
                 $setChildToParent = $db->prepare('UPDATE `tl_site` SET `details_link` = ? WHERE `id` = ?')
-                                        ->execute([$id, $pid]);
+                                        ->execute([$allIdsAsString, $pid]);
             },
         ],
         'ondelete_callback' => [
