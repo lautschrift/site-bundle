@@ -30,7 +30,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                 $prefix = $result->unescoid; //strtoupper(substr($result->name, 0, 2));
                 $GLOBALS['TL_DCA']['tl_site_details']['fields']['number']['default'] = $prefix;
                 // add linkId
-                $setChildToParent = $db->prepare('UPDATE `tl_site` SET `details_link` = '.[$id].' WHERE `tl_site`.`id` = ?')
+                $setChildToParent = $db->prepare('UPDATE `tl_site` SET `details_link` = `.$id.` WHERE `id` = ?')
                                         ->execute([$pid]);
             },
         ]
