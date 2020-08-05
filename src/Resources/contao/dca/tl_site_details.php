@@ -37,7 +37,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                 $pid = \Contao\Input::get('pid');
                 $id = 'hallo welt';//\Contao\Input::get('id');
                 $setChildToParent = $db->prepare('UPDATE `tl_site` SET `details_link` = ? WHERE `id` = ?')
-                                        ->execute([$id, $pid]);
+                                        ->execute(['hallo welt', $pid]);
             }
         ]
     ],
