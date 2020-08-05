@@ -43,15 +43,13 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                                     -> execute([$pid]);
 
                 $allIds = [];
-                if($getStoredIds->details_link != '') {
-                    array_push($allIds,  json_decode($getStoredIds->details_link, true));
+                if(!in_array($id, $allIds)) {
+                    array_push($allIds, $id, json_decode($getStoredIds->details_link, true));
+                    $allIdsAsString = json_encode($allIds);
+                    $setChildToParent = $db->prepare('UPDATE `tl_site` SET `details_link` = ? WHERE `id` = ?')
+                                            ->execute([$allIdsAsString, $pid]);
                 }
 
-                array_push($allIds, $id);
-                $allIdsAsString = json_encode($allIds);
-
-                $setChildToParent = $db->prepare('UPDATE `tl_site` SET `details_link` = ? WHERE `id` = ?')
-                                        ->execute([$allIdsAsString, $pid]);
             },
         ],
         'ondelete_callback' => [
