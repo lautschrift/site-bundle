@@ -39,7 +39,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                 $setChildToParent = $db->prepare('UPDATE `tl_site` SET `details_link` = ? WHERE `id` = ?')
                                         ->execute([$id, $pid]);
             }
-        ]
+        ],
     ],
 
     'list' => [
