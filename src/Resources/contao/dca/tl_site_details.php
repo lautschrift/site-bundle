@@ -31,7 +31,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                 $GLOBALS['TL_DCA']['tl_site_details']['fields']['number']['default'] = $prefix;
                 // add linkId
                 $setChildToParent = $db->prepare('UPDATE `tl_site` SET `details_link` = '.[$id].' WHERE `tl_site`.`id` = ?')
-                                        ->execute([$pid])
+                                        ->execute([$pid]);
             },
         ]
     ],
