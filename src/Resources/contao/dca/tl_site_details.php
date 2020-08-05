@@ -33,8 +33,8 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
         'onsubmit_callback' => [
             function (\Contao\DataContainer $dc) {
                 $db = \Contao\Database::getInstance();
-                $pid = $GLOBALS['TL_DCA']['tl_site_details']['fields']['pid'];
-                $id = 'hallo welt';//\Contao\Input::get('id');
+                $pid = '1';//\Contao\Input::get('id');
+                $id = \Contao\Input::get('id');//\Contao\Input::get('id');
                 $setChildToParent = $db->prepare('UPDATE `tl_site` SET `details_link` = ? WHERE `id` = ?')
                                         ->execute([$id, $pid]);
             },
