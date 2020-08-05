@@ -44,7 +44,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
 
                 $allIds = [];
                 if($getStoredIds->details_link != '') {
-                    array_push($allIds,  unserialize($getStoredIds->details_link) ;
+                    array_push($allIds,  unserialize($getStoredIds->details_link));
                 }
 
                 array_push($allIds, $id);
