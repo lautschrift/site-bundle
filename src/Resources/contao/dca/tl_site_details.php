@@ -24,15 +24,21 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
             function (\Contao\DataContainer $dc) {
                 $db = \Contao\Database::getInstance();
                 $pid = \Contao\Input::get('pid');
-                $id =$GLOBALS['TL_DCA']['tl_site_details']['fields']['id'];
                 $result = $db->prepare('SELECT `unescoid` FROM `tl_site` WHERE `id` = ?')
                              ->execute([$pid]);
                 $prefix = $result->unescoid; //strtoupper(substr($result->name, 0, 2));
                 $GLOBALS['TL_DCA']['tl_site_details']['fields']['number']['default'] = $prefix;
-                // add linkId
+
+            },
+        ],
+        'onsubmit_callback' => [
+            function (\Contao\DataContainer $dc) {
+                $db = \Contao\Database::getInstance();
+                $pid = \Contao\Input::get('pid');
+                $id = $GLOBALS['TL_DCA']['tl_site_details']['fields']['id'];
                 $setChildToParent = $db->prepare('UPDATE `tl_site` SET `details_link` = ? WHERE `id` = ?')
                                         ->execute([$id, $pid]);
-            },
+            }
         ]
     ],
 
