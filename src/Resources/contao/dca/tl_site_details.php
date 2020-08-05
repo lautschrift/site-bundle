@@ -45,10 +45,13 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
         'ondelete_callback' => [
             function (\Contao\DataContainer $dc) {
                 $db = \Contao\Database::getInstance();
-                $pid = \Contao\Input::get('pid');
-                $id = '';
+                $id = \Contao\Input::get('id');
+                $clr = '';
+                $result = $db->prepare('SELECT `pid` FROM `tl_site_details` WHERE `id`= ?')
+                            ->execute([$id]);
+                $pid = $result->pid;
                 $removeChildId = $db->prepare('UPDATE `tl_site` SET `details_link` = ? WHERE `id` = ?')
-                                        ->execute([$id, $pid]);
+                                        ->execute([$clr, $pid]);
             },
         ],
     ],
