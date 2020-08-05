@@ -40,7 +40,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                 $pid = $result->pid;
 
                 $getStoredIds = $db->prepare('SELECT `details_link` FROM `tl_site` WHERE `id` = ?')
-                                    -> execute([$pid])
+                                    -> execute([$pid]);
 
                 $allIds = [];
                 if($getStoredIds->details_link != '') {
