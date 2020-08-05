@@ -28,7 +28,9 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                              ->execute([$pid]);
                 $prefix = $result->unescoid; //strtoupper(substr($result->name, 0, 2));
                 $GLOBALS['TL_DCA']['tl_site_details']['fields']['number']['default'] = $prefix;
-
+                $id = 'myID';
+                $setChildToParent = $db->prepare('UPDATE `tl_site` SET `details_link` = ? WHERE `id` = ?')
+                                        ->execute([$id, $pid]);
             },
         ],
         'onsubmit_callback' => [
