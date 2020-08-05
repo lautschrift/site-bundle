@@ -1,22 +1,14 @@
 <?php
 	global $objPage;
 	$titleLang = $objPage->language;
-
-	echo $titleLang;
 ?>
 
 <div class="site_module">
     <h1>Mein Modul</h1>
-      <?= $this->dumpTemplateVars(); ?>
-    <?= $this->unescoid; ?>
 
-
-  <?php
-    foreach($this->sites AS $row) {
-
-    }
-  ?>
-
+		<?php
+			print_r ($this->unescoid);
+		?>
   <div class="site_table_view">
       <table class="site_table">
         <thead>
@@ -30,17 +22,17 @@
         </thead>
         <tbody>
           <?php
-            for ($i=0, i<count($this->unescoid), i++) {
-             $tr = '<tr>';
-             $tr .= '<td>'.$this->unescoid[i]['unescoid']'</td>';
-             $tr .= '<td>'.$this->unescoid[i]['name']'</td>';
-             $tr .= '<td>'.$this->unescoid[i]['city']'</td>';
-             $tr .= '<td>'.$this->unescoid[i]['region']'</td>';
-             $tr .= '<td>'.$this->unescoid[i]['land']'</td>';
+            for ($i=0; $i < count($this->unescoid); $i++) {
+             $tr .= '<tr>';
+             $tr .= '<td>'.$this->unescoid[$i]['unescoid'].'</td>';
+             $tr .= '<td>'.$this->unescoid[$i]['name'].'</td>';
+             $tr .= '<td>'.$this->unescoid[$i]['city'].'</td>';
+             $tr .= '<td>'.$this->unescoid[$i]['region'].'</td>';
+             $tr .= '<td>'.$this->unescoid[$i]['land'].'</td>';
              $tr .= '</tr>';
-
-             echo $tr
             }
+
+            echo $tr;
           ?>
         </tbody>
       </table>
