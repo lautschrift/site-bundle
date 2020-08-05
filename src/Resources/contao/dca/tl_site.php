@@ -148,6 +148,13 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
             'eval'                  => ['fieldType'=>'radio', 'tl_class'=>'clr'],
             'sql'                   => 'blob NULL'
         ],
+        'details_link' => [
+            'label'                 => &$GLOBALS['TL_LANG'][tl_site]['details_link'],
+            'exclude'               => true,
+            'inputType'             => 'text',
+            'eval' => ['tl_class' => 'w50', 'maxlength' => 255, 'mandatory' => false],
+            'sql' => ['type' => 'string', 'length' => 255, 'default' => '']
+        ],
     ],
 
      // Palettes
