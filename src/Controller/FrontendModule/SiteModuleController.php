@@ -29,7 +29,7 @@ class SiteModuleController extends AbstractFrontendModuleController
          $pid = $resultDetails->pid;
          $resultSite = $db->prepare('SELECT * FROM `tl_site` WHERE `id`= ?')
                ->execute([$pid])->fetchAllAssoc();
-
+$template->pid = $pid;
          $template->sitedetails = $resultDetails;
          $template->site = $resultSite;
 
