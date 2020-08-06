@@ -27,6 +27,7 @@ class SiteModuleController extends AbstractFrontendModuleController
          $sql = $db->prepare('SELECT * FROM `tl_site_details` WHERE `id`= ?')
             ->execute([$myId])->fetchAllAssoc();
 
+         $template->test = $sql->number;
          $template->unescoid = $sql;
          $template->sid = $myID;
 
