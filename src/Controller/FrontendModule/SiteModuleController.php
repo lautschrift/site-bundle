@@ -24,7 +24,7 @@ class SiteModuleController extends AbstractFrontendModuleController
          global $objPage;
          $myID = \Contao\Input::get('sid');
          $db = \Contao\Database::getInstance();
-         $sql = $db->prepare('SELECT * FROM `tl_site_details` WHERE `id`= ?')
+         $sql = $db->prepare('SELECT * FROM `tl_site_details` WHERE `id`=76')
             ->execute([$myId])->fetchAllAssoc();
 
          $template->test = $sql->number;
