@@ -33,7 +33,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
         'onsubmit_callback' => [
             function (\Contao\DataContainer $dc) {
                 $db = \Contao\Database::getInstance();
-                $id[] = \Contao\Input::get('id');
+                $id = \Contao\Input::get('id');
 
                 $result = $db->prepare('SELECT `pid` FROM `tl_site_details` WHERE `id`= ?')
                             ->execute([$id]);
@@ -41,8 +41,9 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
 
                 $getStoredIds = $db->prepare('SELECT `details_link` FROM `tl_site` WHERE `id` = ?')
                                     -> execute([$pid]);
+
                 if($getStoredIds->details_link != '') {
-                    $allIds[] = json_decode($getStoredIds->details_link, true);
+                    $allIds = json_decode($getStoredIds->details_link, true);
                 }
 
                 if(!in_array($id, $allIds)) {
