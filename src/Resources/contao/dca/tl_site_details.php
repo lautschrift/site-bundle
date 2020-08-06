@@ -59,12 +59,23 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
             function (\Contao\DataContainer $dc) {
                 $db = \Contao\Database::getInstance();
                 $id = \Contao\Input::get('id');
-                $clr = '';
                 $result = $db->prepare('SELECT `pid` FROM `tl_site_details` WHERE `id`= ?')
                             ->execute([$id]);
                 $pid = $result->pid;
+                $getStoredIds = $db->prepare('SELECT `details_link` FROM `tl_site` WHERE `id` = ?')
+                                    -> execute([$pid]);
+                if($getStoredIds->details_link != '') {
+                    $allIds = json_decode($getStoredIds->details_link, true);
+
+                    foreach ($allIds as $key=>$val) {
+                       if ($val == $id) {
+                           unset($allIds[$key]);
+                       }
+                   }
+                    $actId = json_encode($allIds);
+                }
                 $removeChildId = $db->prepare('UPDATE `tl_site` SET `details_link` = ? WHERE `id` = ?')
-                                        ->execute([$clr, $pid]);
+                                        ->execute([$actId, $pid]);
             },
         ],
     ],
