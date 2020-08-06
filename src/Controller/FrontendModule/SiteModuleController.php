@@ -32,7 +32,8 @@ class SiteModuleController extends AbstractFrontendModuleController
          $resultSite = $db->prepare('SELECT * FROM `tl_site` WHERE `id`= ?')
                ->execute([$detailParent])->fetchAllAssoc();
          $template->detailParent = $detailParent;
-         $template->sitedetails = $sitedetails[0] = $resultDetails->fetchAllAssoc();
+         $sitedetails = $resultDetails->fetchAllAssoc();
+         $template->sitedetails = $sitedetails[0];
          $template->site = $resultSite[0];
 
          return $template->getResponse();
