@@ -6,13 +6,27 @@ use Contao\CoreBundle\ServiceAnnotation\Hook;
 use Contao\FrontendTemplate;
 use Contao\Module;
 
-class GetSiteListener {
+
+class GetSiteListener implements ServiceAnnotationInterface
+{
     /**
      * @Hook("getSite")
      */
-    public function onParseArticles(FrontendTemplate $template, array $newsEntry, Module $module): void
+    public function onReplaceInsertTags(
+        string $insertTag,
+        bool $useCache,
+        string $cachedValue,
+        array $flags,
+        array $tags,
+        array $cache,
+        int $_rit,
+        int $_cnt
+    )
     {
-        // Do something …
-        echo "GetSiteListener -> Test";
+        if ('mytag' === $insertTag) {
+            return 'mytag replacement';
+        }
+
+        return false;
     }
 }
