@@ -24,12 +24,13 @@ class SiteModuleController extends AbstractFrontendModuleController
          global $objPage;
          $myID = \Contao\Input::get('sid');
          $db = \Contao\Database::getInstance();
-         $sql = $db->prepare('SELECT * FROM `tl_site_details` WHERE `id`= ?')
+         $resultDetails = $db->prepare('SELECT * FROM `tl_site_details` WHERE `id`= ?')
             ->execute([$myID])->fetchAllAssoc();
+        $resultSite = $db->prepare('SELECT * FROM `tl_site` WHERE `pid`= ?')
+               ->execute([$resultDetails->pid])->fetchAllAssoc();
 
-         $template->test = $sql->number;
-         $template->unescoid = $sql;
-         $template->sid = $myID;
+         $template->sitedetails = $resultDetails;
+         $template->site = $resultSite;
 
          return $template->getResponse();
       }
