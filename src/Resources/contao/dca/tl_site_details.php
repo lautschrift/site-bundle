@@ -41,8 +41,10 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
 
                 $getStoredIds = $db->prepare('SELECT `details_link` FROM `tl_site` WHERE `id` = ?')
                                     -> execute([$pid]);
-                $allIds = [];
-                $allIds[] = json_decode($getStoredIds->details_link, true);
+                if($getStoredIds->details_link != '') {
+                    $allIds[] = json_decode($getStoredIds->details_link, true);
+                }
+
                 if(!in_array($id, $allIds)) {
                     $allIds[] = $id;
                     $allIdsAsString = json_encode($allIds);
