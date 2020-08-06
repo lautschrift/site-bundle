@@ -25,8 +25,7 @@ class SiteModuleController extends AbstractFrontendModuleController
          $myID = \Input::get('sid');
          $db = \Contao\Database::getInstance();
          $sql = $db->prepare('SELECT * FROM `tl_site_details` WHERE id= ?')
-            ->execute([$myId])
-            ->fetchAllAssoc();
+            ->execute([$myId]);
 
          $template->unescoid = $sql;
 
