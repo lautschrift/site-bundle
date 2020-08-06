@@ -28,6 +28,7 @@ class SiteModuleController extends AbstractFrontendModuleController
             ->execute([$myId]);
 
          $template->unescoid = $sql;
+         $template->sid = $myID;
 
          return $template->getResponse();
       }

@@ -8,6 +8,7 @@
 
 		<?php
 			print_r ($this->unescoid);
+			print_r ($this->myID);
 		?>
   <div class="site_table_view">
       <table class="site_table">
