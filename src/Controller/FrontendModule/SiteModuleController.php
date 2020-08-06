@@ -28,12 +28,12 @@ class SiteModuleController extends AbstractFrontendModuleController
             ->execute([$myID])->fetchAllAssoc();
          //$detailParent = $resultDetails[0]->pid;
 
-         while($resultDetails->next())
-        {
-          if($resultDetails->pid != NULL) {
-              $detailParent = $resultDetails->pid;
-          }
-        }
+         foreach ($resultDetails as $key => $value) {
+             if($value == 'pid') {
+                 $detailParent = $value;
+             }
+         }
+
 
          $resultSite = $db->prepare('SELECT * FROM `tl_site` WHERE `id`= ?')
                ->execute([$detailParent])->fetchAllAssoc();
