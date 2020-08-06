@@ -22,10 +22,10 @@ class SiteModuleController extends AbstractFrontendModuleController
     protected function getResponse(Template $template, ModuleModel $model, Request $request): ?Response
       {
          global $objPage;
-         $myID = \Input::get('sid');
+         $myID = \Contao\Input::get('sid');
          $db = \Contao\Database::getInstance();
          $sql = $db->prepare('SELECT * FROM `tl_site_details` WHERE id= ?')
-            ->execute([$myId]);
+            ->execute([$myId])->fetchAllAssoc();
 
          $template->unescoid = $sql;
          $template->sid = $myID;
