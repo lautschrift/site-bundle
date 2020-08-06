@@ -33,7 +33,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
         'onsubmit_callback' => [
             function (\Contao\DataContainer $dc) {
                 $db = \Contao\Database::getInstance();
-                $id = \Contao\Input::get('id');
+                $id[] = \Contao\Input::get('id');
 
                 $result = $db->prepare('SELECT `pid` FROM `tl_site_details` WHERE `id`= ?')
                             ->execute([$id]);
