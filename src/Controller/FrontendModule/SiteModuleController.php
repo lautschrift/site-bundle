@@ -26,10 +26,10 @@ class SiteModuleController extends AbstractFrontendModuleController
          $db = \Contao\Database::getInstance();
          $resultDetails = $db->prepare('SELECT * FROM `tl_site_details` WHERE `id`= ?')
             ->execute([$myID])->fetchAllAssoc();
-         $pid = $resultDetails->pid;
+         $detailParent = $resultDetails->pid;
          $resultSite = $db->prepare('SELECT * FROM `tl_site` WHERE `id`= ?')
-               ->execute([$pid])->fetchAllAssoc();
-$template->pid = $pid;
+               ->execute([$detailParent])->fetchAllAssoc();
+         $template->detailParent = $detailParent;
          $template->sitedetails = $resultDetails;
          $template->site = $resultSite;
 
