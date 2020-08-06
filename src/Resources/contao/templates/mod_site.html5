@@ -4,38 +4,11 @@
 ?>
 
 <div class="site_module">
-    <h1>Mein Modul</h1>
+    <h1><?= $this->site.unescoid></h1>
 
 		<?php
 			print_r ($this->unescoid);
 			print_r ($this->myID);
 		?>
-  <div class="site_table_view">
-      <table class="site_table">
-        <thead>
-          <tr>
-            <th class="head">unesconame</th>
-            <th class="head">fundort</th>
-            <th class="head">gemeinde</th>
-            <th class="head">region</th>
-            <th class="head">land</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php
-            for ($i=0; $i < count($this->unescoid); $i++) {
-             $tr .= '<tr>';
-             $tr .= '<td>'.$this->unescoid[$i]['unescoid'].'</td>';
-             $tr .= '<td>'.$this->unescoid[$i]['name'].'</td>';
-             $tr .= '<td>'.$this->unescoid[$i]['city'].'</td>';
-             $tr .= '<td>'.$this->unescoid[$i]['region'].'</td>';
-             $tr .= '<td>'.$this->unescoid[$i]['land'].'</td>';
-             $tr .= '</tr>';
-            }
 
-            echo $tr;
-          ?>
-        </tbody>
-      </table>
-  </div>
 </div>
