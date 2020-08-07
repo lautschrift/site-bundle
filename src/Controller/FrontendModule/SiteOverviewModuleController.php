@@ -32,6 +32,7 @@ class SiteOverviewModuleController extends AbstractFrontendModuleController
 
          $sites = $result->fetchAllAssoc();
          $template->sites = $sites;
+         $template->myimage = $image;
 
          Controller::addImageToTemplate($template, [
             'singleSRC' => $image->path,
