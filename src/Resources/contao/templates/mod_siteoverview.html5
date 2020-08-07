@@ -1,0 +1,13 @@
+<?php
+	global $objPage;
+	$titleLang = $objPage->language;
+?>
+
+<div class="siteoverview_module">
+    <h1></h1>
+
+		<?php
+			print_r ($this->sites);
+		?>
+
+</div>
