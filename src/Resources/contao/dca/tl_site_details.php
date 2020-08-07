@@ -29,6 +29,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                              ->execute([$pid]);
                 $prefix = $result->unescoid; //strtoupper(substr($result->name, 0, 2));
                 $GLOBALS['TL_DCA']['tl_site_details']['fields']['number']['default'] = $prefix;
+                $GLOBALS['TL_DCA']['tl_site_details']['fields']['speech']['default'] ='XXX';
             },
         ],
         'onsubmit_callback' => [
@@ -76,7 +77,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                     $allIds = json_decode($getStoredIds->details_link, true);
 
                     foreach ($allIds as $key=>$val) {
-                       if ($val ==  $locatedLink) {
+                       if ($val ==  $locatedLink || strpos($val ,"XXX")!==false) {
                            unset($allIds[$key]);
                        }
                    }
@@ -95,7 +96,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
             'headerFields' => ['unescoid', 'name'],
             'panelLayout' => 'search,limit',
             'child_record_callback' => function (array $row) {
-                return '<div class="tl_content_left">'.$row['speech'].' ['.$row['number'].']</div>';
+                return '<div class="tl_content_left"><b>'.$row['speech'].'</b> ['.$row['number'].']</div>';
             },
         ],
         'label' => [
