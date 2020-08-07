@@ -10,3 +10,4 @@ services:
     _defaults:
         autoconfigure: true
     Lautschrift\SiteBundle\Controller\FrontendModule\SiteModuleController: ~
+    Lautschrift\SiteBundle\Controller\FrontendModule\SiteOverviewModuleController: ~
