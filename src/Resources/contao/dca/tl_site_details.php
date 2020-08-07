@@ -63,16 +63,20 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
             function (\Contao\DataContainer $dc) {
                 $db = \Contao\Database::getInstance();
                 $id = \Contao\Input::get('id');
-                $result = $db->prepare('SELECT `pid` FROM `tl_site_details` WHERE `id`= ?')
+                $result = $db->prepare("SELECT pid, CONCAT_WS(';',pid,speech) AS detaillink FROM `tl_site_details` AS namegesamt WHERE `id` = ?")
                             ->execute([$id]);
-                $pid = $result->pid;
+                $link = $result->detaillink;
+                $link_parts = explode(";",$link);
+                $pid = $link_parts[0];
+                $locatedLink = $id.';'.$link_parts[1];
+
                 $getStoredIds = $db->prepare('SELECT `details_link` FROM `tl_site` WHERE `id` = ?')
                                     -> execute([$pid]);
                 if($getStoredIds->details_link != '') {
                     $allIds = json_decode($getStoredIds->details_link, true);
 
                     foreach ($allIds as $key=>$val) {
-                       if ($val == $id) {
+                       if ($val ==  $locatedLink) {
                            unset($allIds[$key]);
                        }
                    }
@@ -88,14 +92,14 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
         'sorting' => [
             'mode' => 4,
             'fields' => ['type'],
-            'headerFields' => ['unescoid', 'name'],
+            'headerFields' => ['speech', 'unescoid', 'name'],
             'panelLayout' => 'search,limit',
             'child_record_callback' => function (array $row) {
                 return '<div class="tl_content_left">'.$row['name'].' ['.$row['number'].']</div>';
             },
         ],
         'label' => [
-            'fields' => ['name'],
+            'fields' => ['speech'],
             'format' => '%s',
         ],
         'operations' => [
