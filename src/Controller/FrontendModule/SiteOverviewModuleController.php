@@ -25,19 +25,13 @@ class SiteOverviewModuleController extends AbstractFrontendModuleController
          global $objPage;
          $myID = \Contao\Input::get('id');
          $db = \Contao\Database::getInstance();
-         $image = FilesModel::findByUuid($uuid);
+
 
          $result = $db->prepare('SELECT * FROM `tl_site`')
             ->execute();
 
          $sites = $result->fetchAllAssoc();
          $template->sites = $sites;
-         $template->myimage = $image;
-
-         Controller::addImageToTemplate($template, [
-            'singleSRC' => $image->path,
-            'size' => $size,
-        ], null, null, $image);
 
          return $template->getResponse();
       }
