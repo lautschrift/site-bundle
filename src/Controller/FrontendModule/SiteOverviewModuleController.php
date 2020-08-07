@@ -27,7 +27,7 @@ class SiteOverviewModuleController extends AbstractFrontendModuleController
             ->execute();
 
          $sites = $result->fetchAllAssoc();
-         $template->sites = $sites[0];
+         $template->sites = $sites;
 
          return $template->getResponse();
       }
