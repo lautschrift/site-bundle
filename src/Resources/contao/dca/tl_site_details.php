@@ -92,10 +92,10 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
         'sorting' => [
             'mode' => 4,
             'fields' => ['type'],
-            'headerFields' => ['speech', 'unescoid', 'name'],
+            'headerFields' => ['unescoid', 'name'],
             'panelLayout' => 'search,limit',
             'child_record_callback' => function (array $row) {
-                return '<div class="tl_content_left">'.$row['name'].' ['.$row['number'].']</div>';
+                return '<div class="tl_content_left">'.$row['speech'].' ['.$row['number'].']</div>';
             },
         ],
         'label' => [
