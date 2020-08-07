@@ -141,11 +141,11 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
             ],
             'sql' => ['type' => 'binary', 'length' => 16, 'notnull' => false, 'fixed' => true]
         ],
-        'mypagetree' => [
-            'label'                 => &$GLOBALS['TL_LANG'][$table]['mypagetree'],
+        'imageSize' => [
+            'label'                 => &$GLOBALS['TL_LANG'][$table]['imageSize'],
             'exclude'               => true,
-            'inputType'             => 'pageTree',
-            'eval'                  => ['fieldType'=>'radio', 'tl_class'=>'clr'],
+            'inputType'             => 'imageSize',
+            'eval'                  => ['size'],
             'sql'                   => 'blob NULL'
         ],
         'details_link' => [
@@ -159,7 +159,7 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
 
      // Palettes
      'palettes' => [
-         'default' => '{site_legend},unescoid, name;{place_legend},city,region, country, geoX, geoY;{pic_legend},singleSRC, mypagetree'
+         'default' => '{site_legend},unescoid, name;{place_legend},city,region, country, geoX, geoY;{image_legend},addImage'
     ]
 ];
 
