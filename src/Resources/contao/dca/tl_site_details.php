@@ -36,9 +36,11 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                 $db = \Contao\Database::getInstance();
                 $id = \Contao\Input::get('id');
 
-                $result = $db->prepare('SELECT `pid` FROM `tl_site_details` WHERE `id`= ?')
+                $result = $db->prepare('SELECT pid, CONCAT_WS(';',pid,speech) AS detaillink FROM `tl_site_details` AS namegesamt WHERE `id` = v')
                             ->execute([$id]);
-                $pid = $result->pid;
+                $link = $result->detaillink;
+                $link_parts = explode(";",$link);
+                $pid = $link_parts[0];
 
                 $getStoredIds = $db->prepare('SELECT `details_link` FROM `tl_site` WHERE `id` = ?')
                                     -> execute([$pid]);
