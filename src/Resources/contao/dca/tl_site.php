@@ -145,8 +145,10 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
             'label'                 => &$GLOBALS['TL_LANG'][$table]['imageSize'],
             'exclude'               => true,
             'inputType'             => 'imageSize',
-            'eval'                  => ['size'],
-            'sql'                   => 'blob NULL'
+            'options'               => \Contao\System::getImageSizes(),
+            'reference'             => &$GLOBALS['TL_LANG']['MSC'],
+            'eval'                  => ['size', 'rgxp'=>'natural', 'includeBlankOption'=>true, 'nospace'=>true, 'helpwizard'=>true, 'tl_class'=>'w50'],
+            'sql'                   => ['type' => 'string', 'length' => 64, 'default' => '']
         ],
         'details_link' => [
             'label'                 => &$GLOBALS['TL_LANG'][tl_site]['details_link'],
@@ -159,7 +161,7 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
 
      // Palettes
      'palettes' => [
-         'default' => '{site_legend},unescoid, name;{place_legend},city,region, country, geoX, geoY;{image_legend},addImage'
+         'default' => '{site_legend},unescoid, name;{place_legend},city,region, country, geoX, geoY;{pic_legend},singleSRC, imageSize'
     ]
 ];
 
