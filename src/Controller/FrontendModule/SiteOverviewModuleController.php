@@ -27,7 +27,7 @@ class SiteOverviewModuleController extends AbstractFrontendModuleController
          $db = \Contao\Database::getInstance();
 
 
-         $result = $db->prepare('SELECT * FROM `tl_site`')
+         $result = $db->prepare('SELECT * FROM `tl_site` ORDER BY RAND()')
             ->execute();
 
          $sites = $result->fetchAllAssoc();
