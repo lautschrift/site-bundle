@@ -24,7 +24,7 @@ class SiteModuleController extends AbstractFrontendModuleController
          global $objPage;
          $myID = \Contao\Input::get('sid');
          $db = \Contao\Database::getInstance();
-         $resultDetails = $db->prepare('SELECT * FROM `tl_site_details` WHERE `id`= ?')
+         $resultDetails = $db->prepare('SELECT * FROM `tl_site_details` WHERE `id`= ? AND `published`=1')
             ->execute([$myID]);
 
          $detailParent = $resultDetails->pid;
