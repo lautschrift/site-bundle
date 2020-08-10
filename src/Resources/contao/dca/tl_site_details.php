@@ -92,7 +92,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                     $actId = json_encode($allIds);
                 }
                 $removeChildId = $db->prepare('UPDATE `tl_site` SET `details_link` = ? WHERE `id` = ?')
-                                        ->execute([$actId, $pid]);
+                                        ->execute(["test", $pid]);
             },
         ],
     ],
