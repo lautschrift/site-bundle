@@ -81,18 +81,19 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                 $getStoredIds = $db->prepare('SELECT `details_link` FROM `tl_site` WHERE `id` = ?')
                                     -> execute([$pid]);
 
-                if($getStoredIds->details_link != '') {
-                    $allIds = json_decode($getStoredIds->details_link, true);
 
-                    foreach ($allIds as $key=>$val) {
-                       if ($val ==  $id || strpos($val ,"XXX")!==false) {
-                           unset($allIds[$key]);
-                       }
+                $allIds = json_decode($getStoredIds->details_link, true);
+
+                foreach ($allIds as $key => $val) {
+                   if ($val ==  $id || strpos($val ,"XXX")!==false) {
+                       unset($allIds[$key]);
                    }
-                    $actId = json_encode($allIds);
                 }
+
+                $actId = json_encode($allIds);
+
                 $removeChildId = $db->prepare('UPDATE `tl_site` SET `details_link` = ? WHERE `id` = ?')
-                                        ->execute(["test", $pid]);
+                                        ->execute([$actId, $pid]);
             },
         ],
     ],
