@@ -323,8 +323,8 @@ class tl_site_details extends Backend
         $this->Database->prepare("UPDATE tl_site_details SET tstamp=". time() .", published='" . ($blnVisible ? 1 : 0) . "'  WHERE id=?")
                        ->execute($intId);
 
-       $result = $this->Database->prepare("SELECT pid, CONCAT_WS(';',pid,speech,published) AS detaillink FROM `tl_site_details` ")
-                   ->execute();
+       $result = $this->Database->prepare("SELECT pid, CONCAT_WS(';',pid,speech,published) AS detaillink FROM `tl_site_details` WHERE `id` = ?")
+                   ->execute([$intId]);
 
        $link = $result->detaillink;
        $link_parts = explode(";",$link);
@@ -349,12 +349,12 @@ class tl_site_details extends Backend
        }
 
 
-       if(!in_array($locatedLink, $actIds)) {
-           $actIds[] = $locatedLink;
+       //if(!in_array($locatedLink, $actIds)) {
+           //$actIds[] = $locatedLink;
            $allIdsAsString = json_encode($actIds);
            $setChildToParent = $this->Database->prepare('UPDATE `tl_site` SET `details_link` = ? WHERE `id` = ?')
                                    ->execute([$allIdsAsString, $pid]);
-       }
+       //}
 
         $this->createNewVersion('tl_site_details', $intId);
 
