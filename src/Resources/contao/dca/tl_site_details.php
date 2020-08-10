@@ -318,29 +318,37 @@ class tl_site_details extends Backend
             }
         }
 
-        $result = $this->Database->prepare("SELECT pid, CONCAT_WS(';',pid,speech,published) AS detaillink FROM `tl_site_details` WHERE `id` = ?")
-                    ->execute([$intId]);
-        $link = $result->detaillink;
-        $link_parts = explode(";",$link);
-        $pid = $link_parts[0];
-        $locatedLink = $id.';'.$link_parts[1].';'.$link_parts[2];
-
-        $getStoredIds = $this->Database->prepare('SELECT `details_link` FROM `tl_site` WHERE `id` = ?')
-                            -> execute([$pid]);
-        if($getStoredIds->details_link != '') {
-            $allIds = json_decode($getStoredIds->details_link, true);
-
-            foreach ($allIds as $key=>$val) {
-               if ($val ==  $locatedLink || strpos($val ,"XXX")!==false) {
-                   unset($allIds[$key]);
-               }
-           }
-            $actId = json_encode($allIds);
-        }
-
         // Update the database
         $this->Database->prepare("UPDATE tl_site_details SET tstamp=". time() .", published='" . ($blnVisible ? 1 : '') . "'  WHERE id=?")
                        ->execute($intId);
+
+       $result = $this->Database->prepare("SELECT pid, CONCAT_WS(';',pid,speech,published) AS detaillink FROM `tl_site_details` WHERE `id` = ?")
+                   ->execute([$intId]);
+
+       $link = $result->detaillink;
+       $link_parts = explode(";",$link);
+       $pid = $link_parts[0];
+       $locatedLink = $id.';'.$link_parts[1].';'.$link_parts[2];
+
+       $getStoredIds = $this->Database->prepare('SELECT `details_link` FROM `tl_site` WHERE `id` = ?')
+                           -> execute([$pid]);
+       if($getStoredIds->details_link != '') {
+           $allIds = json_decode($getStoredIds->details_link, true);
+
+           foreach ($allIds as $key=>$val) {
+              if ($val ==  $locatedLink || strpos($val ,"XXX")!==false) {
+                  unset($allIds[$key]);
+              }
+          }
+           $actId = json_encode($allIds);
+       }
+
+       if(!in_array($locatedLink, $allIds)) {
+           $allIds[] = $locatedLink;
+           $allIdsAsString = json_encode($allIds);
+           $setChildToParent = $db->prepare('UPDATE `tl_site` SET `details_link` = ? WHERE `id` = ?')
+                                   ->execute([$allIdsAsString, $pid]);
+       }
 
         $this->createNewVersion('tl_site_details', $intId);
 
