@@ -119,7 +119,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
             'toggle' => array
             (
                 'label'               => &$GLOBALS['TL_LANG']['tl_site_details']['toggle'],
-                'icon'                => 'state.svg',
+                'icon'                => '/system/themes/flexible/icons/visible.svg',
                 'attributes'          => 'onclick="Backend.getScrollOffset(); return AjaxRequest.toggleVisibility(this, %s);"',
                 'button_callback'     => array('tl_site_details', 'toggleIcon')
             ),
@@ -278,7 +278,7 @@ class tl_site_details extends Backend
         $href .= '&amp;tid='.$row['id'].'&amp;state='.($row['published'] ? '' : 1);
 
         if (!$row['published']) {
-            $icon = 'invisible.svg';
+            $icon = '/system/themes/flexible/icons/invisible.svg';
         }
 
         return '<a href="'.$this->addToUrl($href).'" title="'.specialchars($title).'"'.$attributes.'>'.\Image::getHtml($icon, $label).'</a> ';
