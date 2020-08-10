@@ -41,7 +41,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                             ->execute([$id]);
                 $link = $result->detaillink;
                 $link_parts = explode(";",$link);
-                $pid = $link_parts[0];
+                $pid = $result->pid;
                 $locatedLink = $link_parts[0].';'.$link_parts[1].';'.$link_parts[2];
 
                 $getStoredIds = $db->prepare('SELECT `details_link` FROM `tl_site` WHERE `id` = ? ')
@@ -49,13 +49,21 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
 
                 if($getStoredIds->details_link != '') {
                     $allIds = json_decode($getStoredIds->details_link, true);
-                    $all = explode(";",$allIds);
+                    foreach ($allIds as $key=>$val) {
+                       $tmp = explode(";",$val);
+                       $tmpId = $tmp[0];
+                       // Id exists
+                       if ($tmpId  == $intId || strpos($val ,"XXX")!==false) {
+                           unset($allIds[$key]);
+                       }
+                   }
                 }
 
-                if(!in_array($locatedLink, $all[0]) || !in_array($locatedLink, $all[1])) {
+
+                if(!in_array($locatedLink, $allIds)) {
                     $allIds[] = $locatedLink;
                     $allIdsAsString = json_encode($allIds);
-                    $setChildToParent = $db->prepare('UPDATE `tl_site` SET `details_link` = ? WHERE `id` = ?')
+                    $setChildToParent = $this->Database->prepare('UPDATE `tl_site` SET `details_link` = ? WHERE `id` = ?')
                                             ->execute([$allIdsAsString, $pid]);
                 }
 
@@ -69,8 +77,8 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                             ->execute([$id]);
                 $link = $result->detaillink;
                 $link_parts = explode(";",$link);
-                $pid = $link_parts[0];
-                $locatedLink = $id.';'.$link_parts[1].';'.$link_parts[2];
+                $pid = $result->pid;
+                $locatedLink = $link_parts[0].';'.$link_parts[1].';'.$link_parts[2];
 
                 $getStoredIds = $db->prepare('SELECT `details_link` FROM `tl_site` WHERE `id` = ?')
                                     -> execute([$pid]);
@@ -78,7 +86,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                     $allIds = json_decode($getStoredIds->details_link, true);
 
                     foreach ($allIds as $key=>$val) {
-                       if ($val ==  $locatedLink || strpos($val ,"XXX")!==false) {
+                       if ($val ==  $link_parts[0] || strpos($val ,"XXX")!==false) {
                            unset($allIds[$key]);
                        }
                    }
