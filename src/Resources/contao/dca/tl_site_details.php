@@ -336,8 +336,6 @@ class tl_site_details extends Backend
 
        if($getStoredIds->details_link != '') {
            $allIds = json_decode($getStoredIds->details_link, true);
-           /*$all = explode(";",$allIds);
-           $tmp = $all[0].';'.$all[1];
 
            foreach ($allIds as $key=>$val) {
               if ($val ==  $tmp || strpos($val ,"XXX")!==false) {
@@ -345,17 +343,14 @@ class tl_site_details extends Backend
               }
           }
            $actId = json_encode($allIds);
-           */
-           $allIds[] = 'test';
-           $actId = json_encode($allIds);
        }
-       $allIds[] = 'test';
-       //if(!in_array($locatedLink, $allIds)) {
-           //$allIds[] = $locatedLink;
+
+       if(!in_array($locatedLink, $allIds)) {
+           $allIds[] = $locatedLink;
            $allIdsAsString = json_encode($allIds);
            $setChildToParent = $this->Database->prepare('UPDATE `tl_site` SET `details_link` = ? WHERE `id` = ?')
                                    ->execute([$allIdsAsString, $pid]);
-       //}
+       }
 
         $this->createNewVersion('tl_site_details', $intId);
 
