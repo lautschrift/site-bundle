@@ -328,7 +328,7 @@ class tl_site_details extends Backend
 
        $link = $result->detaillink;
        $link_parts = explode(";",$link);
-       $pid = $link_parts[0];
+       $pid = $result->pid;
        $locatedLink = $link_parts[0].';'.$link_parts[1].';'.$link_parts[2];
 
        $getStoredIds = $this->Database->prepare('SELECT `details_link` FROM `tl_site` WHERE `id` = ?')
