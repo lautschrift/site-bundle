@@ -345,10 +345,11 @@ class tl_site_details extends Backend
                   unset($allIds[$key]);
               }
           }
-           $actId = json_encode($allIds);
+           $actIds = json_encode($allIds);
        }
 
-       if(!in_array($locatedLink, $allIds)) {
+
+       if(!in_array($locatedLink, $actIds)) {
            $allIds[] = $locatedLink;
            $allIdsAsString = json_encode($allIds);
            $setChildToParent = $this->Database->prepare('UPDATE `tl_site` SET `details_link` = ? WHERE `id` = ?')
