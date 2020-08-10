@@ -320,11 +320,11 @@ class tl_site_details extends Backend
 
 
         // Update the database
-        $this->Database->prepare("UPDATE tl_c4g_maps SET tstamp=". time() .", published='" . ($blnVisible ? 1 : '') . "' WHERE id=?")
+        $this->Database->prepare("UPDATE tl_site_details SET tstamp=". time() .", published='" . ($blnVisible ? 1 : '') . "' WHERE id=?")
                        ->execute($intId);
 
-        $this->createNewVersion('tl_c4g_maps', $intId);
-        #x$this->Versions->create('tl_c4g_maps', $intId);
+        $this->createNewVersion('tl_site_details', $intId);
+
     }
 
 }
