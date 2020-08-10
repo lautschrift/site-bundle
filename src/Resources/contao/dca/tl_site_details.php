@@ -37,14 +37,14 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                 $db = \Contao\Database::getInstance();
                 $id = \Contao\Input::get('id');
 
-                $result = $db->prepare("SELECT pid, CONCAT_WS(';',pid,speech) AS detaillink FROM `tl_site_details` AS namegesamt WHERE `id` = ?")
+                $result = $db->prepare("SELECT pid, CONCAT_WS(';',pid,speech,published) AS detaillink FROM `tl_site_details` AS namegesamt WHERE `id` = ?")
                             ->execute([$id]);
                 $link = $result->detaillink;
                 $link_parts = explode(";",$link);
                 $pid = $link_parts[0];
-                $locatedLink = $id.';'.$link_parts[1];
+                $locatedLink = $id.';'.$link_parts[1].';',$linkparts[2];
 
-                $getStoredIds = $db->prepare('SELECT `details_link` FROM `tl_site` WHERE `id` = ?')
+                $getStoredIds = $db->prepare('SELECT `details_link` FROM `tl_site` WHERE `id` = ? ')
                                     -> execute([$pid]);
 
                 if($getStoredIds->details_link != '') {
@@ -64,12 +64,12 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
             function (\Contao\DataContainer $dc) {
                 $db = \Contao\Database::getInstance();
                 $id = \Contao\Input::get('id');
-                $result = $db->prepare("SELECT pid, CONCAT_WS(';',pid,speech) AS detaillink FROM `tl_site_details` AS namegesamt WHERE `id` = ?")
+                $result = $db->prepare("SELECT pid, CONCAT_WS(';',pid,speech,published) AS detaillink FROM `tl_site_details` WHERE `id` = ?")
                             ->execute([$id]);
                 $link = $result->detaillink;
                 $link_parts = explode(";",$link);
                 $pid = $link_parts[0];
-                $locatedLink = $id.';'.$link_parts[1];
+                $locatedLink = $id.';'.$link_parts[1].';',$linkparts[2];
 
                 $getStoredIds = $db->prepare('SELECT `details_link` FROM `tl_site` WHERE `id` = ?')
                                     -> execute([$pid]);
