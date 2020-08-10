@@ -339,7 +339,7 @@ class tl_site_details extends Backend
         }
 
         // Update the database
-        $this->Database->prepare("UPDATE tl_site_details SET tstamp=". time() .", published='" . ($blnVisible ? 1 : '') . "' , details_link='".$allIds."' WHERE id=?")
+        $this->Database->prepare("UPDATE tl_site_details SET tstamp=". time() .", published='" . ($blnVisible ? 1 : '') . "'  WHERE id=?")
                        ->execute($intId);
 
         $this->createNewVersion('tl_site_details', $intId);
