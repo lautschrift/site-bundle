@@ -323,8 +323,8 @@ class tl_site_details extends Backend
         $this->Database->prepare("UPDATE tl_site_details SET tstamp=". time() .", published='" . ($blnVisible ? 1 : 0) . "'  WHERE id=?")
                        ->execute($intId);
 
-       $result = $this->Database->prepare("SELECT pid, CONCAT_WS(';',pid,speech,published) AS detaillink FROM `tl_site_details` WHERE `id` = ?")
-                   ->execute([$intId]);
+       $result = $this->Database->prepare("SELECT pid, CONCAT_WS(';',pid,speech,published) AS detaillink FROM `tl_site_details` ")
+                   ->execute();
 
        $link = $result->detaillink;
        $link_parts = explode(";",$link);
