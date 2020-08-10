@@ -116,10 +116,13 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                 'href' => 'act=delete',
                 'icon' => 'delete.svg',
             ],
-            'state' => [
-                'href' => 'act=state',
-                'icon' => 'state.svg',
-            ],
+            'toggle' => array
+            (
+                'label'               => &$GLOBALS['TL_LANG']['site_details_type']['toggle'],
+                'icon'                => 'state.svg',
+                'attributes'          => 'onclick="Backend.getScrollOffset(); return AjaxRequest.toggleVisibility(this, %s);"',
+                'button_callback'     => array('site_details_type', 'toggleIcon')
+            ),
             'show' => [
                 'href' => 'act=show',
                 'icon' => 'show.svg'
@@ -226,6 +229,14 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                 ],
                 'sql' => ['type' => 'binary', 'length' => 16, 'notnull' => false, 'fixed' => true]
             ],
+            'published' => [
+                'label'                   => &$GLOBALS['TL_LANG']['tl_site_details']['published'],
+                'exclude'                 => true,
+                'default'                 => true,
+                'inputType'               => 'checkbox',
+                'eval'                    => array('tl_class'=>'clr'),
+                'sql'                     => "char(1) NOT NULL default '1'"
+            ],
         ],
         'palettes' => [
            '__selector__' => ['type'],
@@ -236,3 +247,74 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
            'wert2' =>   '{type_legend},type;{image_legend},singleSRC, name',
        ],
 ];
+
+class tl_site_details extends Backend
+{
+    /**
+     * Return the "toggle visibility" button
+     */
+    public function toggleIcon($row, $href, $label, $title, $icon, $attributes)
+    {
+        if (strlen($this->Input->get('tid'))) {
+            $this->toggleVisibility($this->Input->get('tid'), ($this->Input->get('state') == 1));
+            $this->redirect($this->getReferer());
+        }
+
+        // Check permissions AFTER checking the tid, so hacking attempts are logged
+        if (!$this->User->isAdmin && !$this->User->hasAccess('tl_site_details::published', 'alexf')) {
+            return '';
+        }
+
+        $href .= '&amp;tid='.$row['id'].'&amp;state='.($row['published'] ? '' : 1);
+
+        if (!$row['published']) {
+            $icon = 'invisible.svg';
+        }
+
+        return '<a href="'.$this->addToUrl($href).'" title="'.specialchars($title).'"'.$attributes.'>'.\Image::getHtml($icon, $label).'</a> ';
+    }
+
+
+    /**
+     * Disable/enable an element
+     * @param integer
+     * @param boolean
+     */
+    public function toggleVisibility($intId, $blnVisible)
+    {
+        // Check permissions to publish
+        if (!$this->User->isAdmin && !$this->User->hasAccess('tl_site_details::published', 'alexf')) {
+
+            //ToDo loggerService
+            $this->log('Not enough permissions to publish/unpublish con4gis\MapsBundle\Resources\contao\classes\Utils ID "'.$intId.'"', 'tl_site_details toggleVisibility', TL_ERROR);
+            $this->redirect('contao/main.php?act=error');
+        }
+        $this->createInitialVersion('tl_site_details', $intId);
+
+
+        $objVersions = new Versions('tl_site_details', $intId);
+        $objVersions->initialize();
+
+        // Trigger the save_callback
+        if (is_array($GLOBALS['TL_DCA']['tl_site_details']['fields']['published']['save_callback'])) {
+            foreach ($GLOBALS['TL_DCA']['tl_site_details']['fields']['published']['save_callback'] as $callback) {
+                $str_class = $callback[0];
+                $str_function = $callback[1];
+
+                if ($str_class && $str_function) {
+                    $this->import($str_class);
+                    $blnVisible = $this->$str_class->$str_function($blnVisible, $this);
+                }
+            }
+        }
+
+
+        // Update the database
+        $this->Database->prepare("UPDATE tl_c4g_maps SET tstamp=". time() .", published='" . ($blnVisible ? 1 : '') . "' WHERE id=?")
+                       ->execute($intId);
+
+        $this->createNewVersion('tl_c4g_maps', $intId);
+        #x$this->Versions->create('tl_c4g_maps', $intId);
+    }
+
+}
