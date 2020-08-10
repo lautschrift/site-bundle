@@ -116,6 +116,10 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                 'href' => 'act=delete',
                 'icon' => 'delete.svg',
             ],
+            'state' => [
+                'href' => 'act=state',
+                'icon' => 'state.svg',
+            ],
             'show' => [
                 'href' => 'act=show',
                 'icon' => 'show.svg'

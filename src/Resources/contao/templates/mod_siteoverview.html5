@@ -1,13 +1,92 @@
 <?php
 	global $objPage;
-	$titleLang = $objPage->language;
+	$lang = $objPage->language;
 ?>
 
 <div class="siteoverview_module">
     <h1></h1>
 
+
+	<ul class="siteoverview">
 		<?php
-			print_r ($this->sites);
+			$row = 0;
+			$col = 0;
+			$cols = 6;
+
+			foreach ($this->sites as $site) {
+
+				if ($col < $cols) {
+					$col ++;
+				} else {
+					$row ++;
+					$col = 0;
+				}
+
+				$links = json_decode($site['details_link']);
+				$arr_length = count($links);
+
+				for ($i=0; $i<$arr_length; $i++) {
+					$linkparts = explode(";",$links[$i]);
+					if($linkparts[1] == strtoupper($lang)) {
+						$link = $linkparts[0];
+					} else if($linkparts[1] == "EN") {
+						$fallback = $linkparts[0];
+					} else {
+						$link = null;
+						$fallback = null;
+					}
+
+				}
+
+				if($link) {
+					$insert_link = "<a href='{{env::url}}/fundstelle.html?sid=".$link."' >";
+				} else if ($fallback) {
+					$insert_link = "<a href='{{env::url}}/fundstelle.html?sid=".$fallback."' >";
+				} else {
+					$insert_link = null;
+				}
+
+				$meta = deserialize(\FilesModel::findByUuid($site['singleSRC'])->meta);
+				if (!$insert_link) {
+					$inactive = "inactive";
+					$inactiveClass = "class='inactive'";
+					$subText = "… coming soon …";
+				} else {
+					$subText = $site['city'];
+				}
+
+				$li  =	"<li class='row_".$row." col_".$col." ".$inactive."'>";
+				if ($insert_link)	$li .=	$insert_link;
+				$li .=	"<div class='site'>";
+				$li .=	"<figure class='image_container'>";
+
+
+				$li .=	"<img src='". \FilesModel::findByUuid($site['singleSRC'])->path ."' width='158' height='106' title='".$meta[$lang]['title']."' alt='' itemprop='image' ". $inactiveClass .">";
+
+
+
+
+				$li .=	"</figure>";
+				$li .= "<div class='fadebox'><div class='site_unesco_id animated'>".$site['unescoid']."<p>".$subText."</p></div></div>";
+				$li .=	"</div>";
+				if ($insert_link)	$li .=	"</a>";
+				$li .=	'</li>';
+
+				// Reset
+				$link = null;
+				$fallback = null;
+				$insert_link = null;
+				$meta = null;
+				$inactive = null;
+				$inactiveText = null;
+				$inactiveClass = null;
+				$subText = null;
+				echo $li;
+			}
 		?>
+	</ul>
+
+
 
 </div>
+	<pre><?php //echo $this->showTemplateVars(); ?></pre>
