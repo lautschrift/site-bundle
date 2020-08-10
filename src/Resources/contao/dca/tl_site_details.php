@@ -345,16 +345,16 @@ class tl_site_details extends Backend
                   unset($allIds[$key]);
               }
           }
-           $actIds = json_encode($allIds);
+           //$actIds = json_encode($allIds);
        }
 
 
-       //if(!in_array($locatedLink, $actIds)) {
+       if(!in_array($locatedLink, $allIds)) {
            //$actIds[] = $locatedLink;
-           $allIdsAsString = json_encode($actIds);
+           $allIdsAsString = json_encode($allIds);
            $setChildToParent = $this->Database->prepare('UPDATE `tl_site` SET `details_link` = ? WHERE `id` = ?')
                                    ->execute([$allIdsAsString, $pid]);
-       //}
+       }
 
         $this->createNewVersion('tl_site_details', $intId);
 
