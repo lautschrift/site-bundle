@@ -353,7 +353,7 @@ class tl_site_details extends Backend
            $allIds[] = $locatedLink;
            $allIdsAsString = json_encode($allIds);
            $setChildToParent = $this->Database->prepare('UPDATE `tl_site` SET `details_link` = ? WHERE `id` = ?')
-                                   ->execute([$allIds, $pid]);
+                                   ->execute([$allIdsAsString, $pid]);
        }
 
         $this->createNewVersion('tl_site_details', $intId);
