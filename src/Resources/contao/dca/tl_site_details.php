@@ -85,7 +85,10 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                 $allIds = json_decode($getStoredIds->details_link, true);
 
                 foreach ($allIds as $key => $val) {
-                   if ($val ==  $id || strpos($val ,"XXX")!==false) {
+                    $tmp = explode(";",$val);
+                    $tmpId = $tmp[0];
+
+                   if ($tmpId ==  $id || strpos($val ,"XXX")!==false) {
                        unset($allIds[$key]);
                    }
                 }
