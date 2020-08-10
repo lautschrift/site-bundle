@@ -37,7 +37,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                 $db = \Contao\Database::getInstance();
                 $id = \Contao\Input::get('id');
 
-                $result = $db->prepare("SELECT pid, CONCAT_WS(';',pid,speech,published) AS detaillink FROM `tl_site_details` AS namegesamt WHERE `id` = ?")
+                $result = $db->prepare("SELECT pid, CONCAT_WS(';',pid,speech,published) AS detaillink FROM `tl_site_details` WHERE `id` = ?")
                             ->execute([$id]);
                 $link = $result->detaillink;
                 $link_parts = explode(";",$link);
@@ -318,9 +318,28 @@ class tl_site_details extends Backend
             }
         }
 
+        $result = $this->Database->prepare("SELECT pid, CONCAT_WS(';',pid,speech,published) AS detaillink FROM `tl_site_details` WHERE `id` = ?")
+                    ->execute([$intId]);
+        $link = $result->detaillink;
+        $link_parts = explode(";",$link);
+        $pid = $link_parts[0];
+        $locatedLink = $id.';'.$link_parts[1].';'.$link_parts[2];
+
+        $getStoredIds = $this->Database->prepare('SELECT `details_link` FROM `tl_site` WHERE `id` = ?')
+                            -> execute([$pid]);
+        if($getStoredIds->details_link != '') {
+            $allIds = json_decode($getStoredIds->details_link, true);
+
+            foreach ($allIds as $key=>$val) {
+               if ($val ==  $locatedLink || strpos($val ,"XXX")!==false) {
+                   unset($allIds[$key]);
+               }
+           }
+            $actId = json_encode($allIds);
+        }
 
         // Update the database
-        $this->Database->prepare("UPDATE tl_site_details SET tstamp=". time() .", published='" . ($blnVisible ? 1 : '') . "' WHERE id=?")
+        $this->Database->prepare("UPDATE tl_site_details SET tstamp=". time() .", published='" . ($blnVisible ? 1 : '') . "', details_link='".$allIds."'" WHERE id=?")
                        ->execute($intId);
 
         $this->createNewVersion('tl_site_details', $intId);
