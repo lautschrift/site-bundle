@@ -51,7 +51,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                     $allIds = json_decode($getStoredIds->details_link, true);
                 }
 
-                if(!in_array($locatedLink, $allIds)) {
+                if(!in_array($locatedLink, $allIds) || strpos($val ,"XXX")!==false) {
                     $allIds[] = $locatedLink;
                     $allIdsAsString = json_encode($allIds);
                     $setChildToParent = $db->prepare('UPDATE `tl_site` SET `details_link` = ? WHERE `id` = ?')
