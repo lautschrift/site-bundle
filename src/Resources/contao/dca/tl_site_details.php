@@ -339,9 +339,8 @@ class tl_site_details extends Backend
 
            foreach ($allIds as $key=>$val) {
               $tmp = explode(";",$val);
-              // Id only
               $tmpId = $tmp[0];
-
+              // Id exists
               if ($tmpId  == $intId || strpos($val ,"XXX")!==false) {
                   unset($allIds[$key]);
               }
