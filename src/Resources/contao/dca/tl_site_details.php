@@ -349,7 +349,7 @@ class tl_site_details extends Backend
            $allIds[] = 'test';
            $actId = json_encode($allIds);
        }
-
+       $allIds[] = 'test';
        //if(!in_array($locatedLink, $allIds)) {
            //$allIds[] = $locatedLink;
            $allIdsAsString = json_encode($allIds);
