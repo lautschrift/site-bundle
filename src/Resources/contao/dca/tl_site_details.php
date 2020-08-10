@@ -73,20 +73,19 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
             function (\Contao\DataContainer $dc) {
                 $db = \Contao\Database::getInstance();
                 $id = \Contao\Input::get('id');
-                $result = $db->prepare("SELECT pid, CONCAT_WS(';',id,speech,published) AS detaillink FROM `tl_site_details` WHERE `id` = ?")
+                $result = $db->prepare("SELECT pid FROM `tl_site_details` WHERE `id` = ?")
                             ->execute([$id]);
-                $link = $result->detaillink;
-                $link_parts = explode(";",$link);
+
                 $pid = $result->pid;
-                $locatedLink = $link_parts[0].';'.$link_parts[1].';'.$link_parts[2];
 
                 $getStoredIds = $db->prepare('SELECT `details_link` FROM `tl_site` WHERE `id` = ?')
                                     -> execute([$pid]);
+
                 if($getStoredIds->details_link != '') {
                     $allIds = json_decode($getStoredIds->details_link, true);
 
                     foreach ($allIds as $key=>$val) {
-                       if ($val ==  $link_parts[0] || strpos($val ,"XXX")!==false) {
+                       if ($val ==  $id || strpos($val ,"XXX")!==false) {
                            unset($allIds[$key]);
                        }
                    }
