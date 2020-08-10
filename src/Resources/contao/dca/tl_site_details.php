@@ -345,7 +345,7 @@ class tl_site_details extends Backend
                   unset($allIds[$key]);
               }
           }
-           $actIds = $allIds; // json_encode($allIds);
+           $actIds = json_encode($allIds);
        }
 
 
