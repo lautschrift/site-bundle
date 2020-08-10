@@ -118,10 +118,10 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
             ],
             'toggle' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['site_details_type']['toggle'],
+                'label'               => &$GLOBALS['TL_LANG']['tl_site_details']['toggle'],
                 'icon'                => 'state.svg',
                 'attributes'          => 'onclick="Backend.getScrollOffset(); return AjaxRequest.toggleVisibility(this, %s);"',
-                'button_callback'     => array('site_details_type', 'toggleIcon')
+                'button_callback'     => array('tl_site_details', 'toggleIcon')
             ),
             'show' => [
                 'href' => 'act=show',
@@ -250,6 +250,16 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
 
 class tl_site_details extends Backend
 {
+    /**
+     * Import BackendUser object
+     */
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->import('BackendUser', 'User');
+    }
+
     /**
      * Return the "toggle visibility" button
      */
