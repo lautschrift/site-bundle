@@ -49,9 +49,10 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
 
                 if($getStoredIds->details_link != '') {
                     $allIds = json_decode($getStoredIds->details_link, true);
+                    $all = explode(";",$allIds);
                 }
 
-                if(!in_array($locatedLink, $allIds) || strpos($val ,"XXX")!==false) {
+                if(!in_array($locatedLink, $all[0]) || !in_array($locatedLink, $all[1])) {
                     $allIds[] = $locatedLink;
                     $allIdsAsString = json_encode($allIds);
                     $setChildToParent = $db->prepare('UPDATE `tl_site` SET `details_link` = ? WHERE `id` = ?')
@@ -332,11 +333,14 @@ class tl_site_details extends Backend
 
        $getStoredIds = $this->Database->prepare('SELECT `details_link` FROM `tl_site` WHERE `id` = ?')
                            -> execute([$pid]);
+
        if($getStoredIds->details_link != '') {
            $allIds = json_decode($getStoredIds->details_link, true);
+           $all = explode(";",$allIds);
+           $tmp = $all[0].';'.$all[1];
 
            foreach ($allIds as $key=>$val) {
-              if ($val ==  $locatedLink || strpos($val ,"XXX")!==false) {
+              if ($val ==  $tmp || strpos($val ,"XXX")!==false) {
                   unset($allIds[$key]);
               }
           }
