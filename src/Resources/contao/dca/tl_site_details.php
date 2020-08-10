@@ -42,7 +42,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                 $link = $result->detaillink;
                 $link_parts = explode(";",$link);
                 $pid = $link_parts[0];
-                $locatedLink = $id.';'.$link_parts[1].';'.$link_parts[2];
+                $locatedLink = $link_parts[0].';'.$link_parts[1].';'.$link_parts[2];
 
                 $getStoredIds = $db->prepare('SELECT `details_link` FROM `tl_site` WHERE `id` = ? ')
                                     -> execute([$pid]);
