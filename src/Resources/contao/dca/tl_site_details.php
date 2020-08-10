@@ -338,8 +338,11 @@ class tl_site_details extends Backend
            $allIds = json_decode($getStoredIds->details_link, true);
 
            foreach ($allIds as $key=>$val) {
-              //$tmp = explode(";",$val);
-              if ($val == $link_parts[1] || strpos($val ,"XXX")!==false) {
+              $tmp = explode(";",$val);
+              // Id only
+              $tmpId = $tmp[0];
+
+              if ($tmpId  == $intId || strpos($val ,"XXX")!==false) {
                   unset($allIds[$key]);
               }
           }
