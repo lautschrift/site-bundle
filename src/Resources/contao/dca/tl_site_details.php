@@ -170,6 +170,13 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
         		'reference' => &$GLOBALS['TL_LANG']['site_details_speech'],
                 'sql' => ['type' => 'string', 'length' => 3, 'default' => 0]
             ],
+            'region' => [
+               'label' => &$GLOBALS['TL_LANG']['tl_site']['region'],
+               'search' => true,
+               'inputType' => 'text',
+               'eval' => ['tl_class' => 'w50', 'maxlength' => 255, 'mandatory' => false],
+               'sql' => ['type' => 'string', 'length' => 255, 'default' => '']
+           ],
             'datation' => [
                 'label' => &$GLOBALS['TL_LANG']['tl_site_details']['datation'],
                 'search' => true,
@@ -241,6 +248,15 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                 ],
                 'sql' => ['type' => 'binary', 'length' => 16, 'notnull' => false, 'fixed' => true]
             ],
+            'imageSize' => [
+                'label'                 => &$GLOBALS['TL_LANG'][$table]['imageSize'],
+                'exclude'               => true,
+                'inputType'             => 'imageSize',
+                'options'               => \Contao\System::getImageSizes(),
+                'reference'             => &$GLOBALS['TL_LANG']['MSC'],
+                'eval'                  => ['size', 'rgxp'=>'natural', 'includeBlankOption'=>true, 'nospace'=>true, 'helpwizard'=>true, 'tl_class'=>'w50'],
+                'sql'                   => ['type' => 'string', 'length' => 64, 'default' => '']
+            ],
             'published' => [
                 'label'                   => &$GLOBALS['TL_LANG']['tl_site_details']['published'],
                 'exclude'                 => true,
@@ -254,8 +270,9 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
            '__selector__' => ['type'],
            'default' => '{type_legend},type',
            'wert1' =>   '{type_legend},type;'.
-                        '{details_legend},speech,genericdatation,datation,description;'.
+                        '{details_legend},speech,genericdatation,datation,region,description;'.
                         '{optionaldetails_legend:hide},activities, features, museumlink;',
+                        '{pic_legend},singleSRC, imageSize;'
            'wert2' =>   '{type_legend},type;{image_legend},singleSRC, name',
        ],
 ];
