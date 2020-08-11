@@ -152,7 +152,7 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
                 'extensions' => \Contao\Config::get('validImageTypes'),
                 'mandatory' => true,
             ],
-            'sql' => ['type' => 'binary', 'length' => 16, 'default' => "0x100239b4d8a711eaa8861c1b0d437c7f"]
+            'sql' => ['type' => 'binary', 'length' => 16, 'default' => '0x100239b4d8a711eaa8861c1b0d437c7f']
         ],
         'imageSize' => [
             'label'                 => &$GLOBALS['TL_LANG'][$table]['imageSize'],
