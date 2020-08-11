@@ -97,13 +97,6 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
            'eval' => ['tl_class' => 'w50', 'maxlength' => 255],
            'sql' => ['type' => 'string', 'length' => 255, 'default' => '']
        ],
-        'region' => [
-           'label' => &$GLOBALS['TL_LANG']['tl_site']['region'],
-           'search' => true,
-           'inputType' => 'text',
-           'eval' => ['tl_class' => 'w50', 'maxlength' => 255, 'mandatory' => false],
-           'sql' => ['type' => 'string', 'length' => 255, 'default' => '']
-       ],
         'country' => [
             'label' => &$GLOBALS['TL_LANG']['tl_site']['country'],
             'inputType' => 'select',
@@ -152,7 +145,7 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
                 'extensions' => \Contao\Config::get('validImageTypes'),
                 'mandatory' => true,
             ],
-            'sql' => ['type' => 'binary', 'length' => 16, 'default' => '0x100239b4d8a711eaa8861c1b0d437c7f']
+            'sql' => ['type' => 'binary', 'length' => 16, 'notnull' => false, 'fixed' => true]
         ],
         'imageSize' => [
             'label'                 => &$GLOBALS['TL_LANG'][$table]['imageSize'],
@@ -174,7 +167,7 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
 
      // Palettes
      'palettes' => [
-         'default' => '{site_legend},unescoid, name;{place_legend},city,region, country, geoX, geoY;{pic_legend},singleSRC, imageSize'
+         'default' => '{site_legend},unescoid, name;{place_legend},city,country, geoX, geoY;{pic_legend},singleSRC, imageSize, fallbackSRC;'
     ]
 ];
 
