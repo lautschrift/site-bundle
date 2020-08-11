@@ -142,7 +142,7 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
             'sql' => ['type' => 'binary', 'length' => 16, 'notnull' => false, 'fixed' => true]
         ],
         'fallbackSRC' => [
-            'label' => &$GLOBALS['TL_LANG']['tl_site_details']['singleSRC'],
+            'label' => &$GLOBALS['TL_LANG']['tl_site_details']['fallbackSRC'],
             'inputType' => 'fileTree',
             'eval' => [
                 'tl_class' => 'clr',
