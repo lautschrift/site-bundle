@@ -271,8 +271,8 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
            'default' => '{type_legend},type',
            'wert1' =>   '{type_legend},type;'.
                         '{details_legend},speech,genericdatation,datation,region,description;'.
-                        '{optionaldetails_legend:hide},activities, features, museumlink;',
-                        '{pic_legend},singleSRC, imageSize;'
+                        '{optionaldetails_legend:hide},activities, features, museumlink;'.
+                        '{pic_legend},singleSRC, imageSize;',
            'wert2' =>   '{type_legend},type;{image_legend},singleSRC, name',
        ],
 ];
