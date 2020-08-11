@@ -4,8 +4,6 @@
 ?>
 
 <div class="siteoverview_module">
-    <h1></h1>
-
 
 	<ul class="siteoverview">
 		<?php
@@ -22,29 +20,40 @@
 					$col = 0;
 				}
 
-				$links = json_decode($site['details_link']);
-				$arr_length = count($links);
+				$links = json_decode($site['details_link'], true);
 
-				for ($i=0; $i<$arr_length; $i++) {
-					$linkparts = explode(";",$links[$i]);
-					if($linkparts[1] == strtoupper($lang)) {
-						$link = $linkparts[0];
-					} else if($linkparts[1] == "EN") {
-						$fallback = $linkparts[0];
-					} else {
+				foreach ($links as $key=>$val) {
+
+					$linkparts = explode(";",$val);
+
+					if ($linkparts[2] != 1 && $fallback != null) {
+						//unpublished
 						$link = null;
-						$fallback = null;
-					}
+						unset($links[$key]);
+					} else {
+						if($linkparts[1] == strtoupper($lang)) {
+							$link = $linkparts[0];
+							break;
+						} else if($linkparts[1] == "EN") {
+							$fallback = $linkparts[0];
+						} else {
+							$link = null;
+							$fallback = null;
+						}
 
+					}
 				}
 
 				if($link) {
 					$insert_link = "<a href='{{env::url}}/fundstelle.html?sid=".$link."' >";
+
 				} else if ($fallback) {
 					$insert_link = "<a href='{{env::url}}/fundstelle.html?sid=".$fallback."' >";
+
 				} else {
 					$insert_link = null;
 				}
+
 
 				$meta = deserialize(\FilesModel::findByUuid($site['singleSRC'])->meta);
 				if (!$insert_link) {
@@ -72,6 +81,7 @@
 				if ($insert_link)	$li .=	"</a>";
 				$li .=	'</li>';
 
+
 				// Reset
 				$link = null;
 				$fallback = null;
@@ -82,6 +92,7 @@
 				$inactiveClass = null;
 				$subText = null;
 				echo $li;
+
 			}
 		?>
 	</ul>

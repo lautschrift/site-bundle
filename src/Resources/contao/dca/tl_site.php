@@ -141,6 +141,19 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
             ],
             'sql' => ['type' => 'binary', 'length' => 16, 'notnull' => false, 'fixed' => true]
         ],
+        'fallbackSRC' => [
+            'label' => &$GLOBALS['TL_LANG']['tl_site_details']['singleSRC'],
+            'inputType' => 'fileTree',
+            'eval' => [
+                'tl_class' => 'clr',
+                'mandatory' => true,
+                'fieldType' => 'radio',
+                'filesOnly' => true,
+                'extensions' => \Contao\Config::get('validImageTypes'),
+                'mandatory' => true,
+            ],
+            'sql' => ['type' => 'binary', 'length' => 16, 'notnull' => "0x100239b4d8a711eaa8861c1b0d437c7f", 'fixed' => true]
+        ],
         'imageSize' => [
             'label'                 => &$GLOBALS['TL_LANG'][$table]['imageSize'],
             'exclude'               => true,
