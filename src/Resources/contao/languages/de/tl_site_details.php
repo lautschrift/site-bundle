@@ -2,7 +2,7 @@ $GLOBALS['TL_LANG']['tl_site_details']['new'] = ['Neuer Eintrag', 'Erzeugt eine 
 $GLOBALS['TL_LANG']['tl_site_details']['type_legend'] = 'Typ des Eintrags';
 $GLOBALS['TL_LANG']['tl_site_details']['details_legend'] = 'Details';
 $GLOBALS['TL_LANG']['tl_site_details']['optionaldetails_legend'] = 'Weitere Detailangaben';
-$GLOBALS['TL_LANG']['tl_site']['pic_legend'] = 'Detailbild zur Fundstelle';
+$GLOBALS['TL_LANG']['tl_site_details']['pic_legend'] = 'Detailbild zur Fundstelle';
 
 $GLOBALS['TL_LANG']['tl_site_details']['type'] = ['Typ', 'Typ des Eintrags'];
 $GLOBALS['TL_LANG']['tl_site_details']['speech'] = ['Sprache', 'Erfassungssprache des Eintrags'];
