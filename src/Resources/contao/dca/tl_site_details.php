@@ -10,7 +10,6 @@ $GLOBALS['TL_LANG']['site_details_type']['FR'] = 'Französisch';
 $GLOBALS['TL_LANG']['site_details_type']['SLO'] = 'Slowenisch';
 $GLOBALS['TL_LANG']['site_details_type']['IT'] = 'Italienisch';
 
-\Controller::loadDataContainer('tl_content');
 
 // contao/dca/tl_parts.php
 $GLOBALS['TL_DCA']['tl_site_details'] = [
