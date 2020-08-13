@@ -11,8 +11,7 @@ $GLOBALS['TL_LANG']['site_details_type']['SLO'] = 'Slowenisch';
 $GLOBALS['TL_LANG']['site_details_type']['IT'] = 'Italienisch';
 
 
-
-// contao/dca/tl_parts.php
+$tl_content = \Controller::loadDataContainer('tl_content');
 $GLOBALS['TL_DCA']['tl_site_details'] = [
     'config' => [
         'dataContainer' => 'Table',
@@ -213,7 +212,6 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                 'label' => &$GLOBALS['TL_LANG']['tl_site_details']['museumlink'],
                 'exclude'               => true,
                 'eval' 		=> array('tl_class' => 'w50 wizard'),
-                \Controller::loadDataContainer('tl_content');
             		'wizard' 	=> array(array('tl_content', 'pagePicker')),
             		'inputType' => 'text',
             		'sql'       => "varchar(255) NOT NULL default ''"
