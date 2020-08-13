@@ -210,9 +210,9 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
             ],
             'museumlink' => [
                 'label' => &$GLOBALS['TL_LANG']['tl_site_details']['museumlink'],
-                'exclude'               => true,
+                'exclude' => true,
                 'eval' 		=> array('tl_class' => 'w50 wizard'),
-            		'wizard' 	=> array(array('\Controller::loadDataContainer(\'tl_content\')', 'pagePicker')),
+            		//'wizard' 	=> array(array('\Controller::loadDataContainer(\'tl_content\')', 'pagePicker')),
             		'inputType' => 'text',
             		'sql'       => "varchar(255) NOT NULL default ''"
             ],
