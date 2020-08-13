@@ -41,7 +41,7 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
      'list' => [
         'sorting' => [
             'mode' => 1,
-            'fields' => ['unescoid','name'],
+            'fields' => ['unescoid'],
             'flag' => 1,
             'panelLayout' => 'search,limit'
         ],
@@ -117,8 +117,8 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
             'label' => &$GLOBALS['TL_LANG']['tl_site']['geoY'],
             'eval'                    => array('mandatory'=>false, 'maxlength'=>20, 'tl_class'=>'w50 wizard' ),
             'inputType'               => 'c4g_text',
-            'save_callback'           => ['tl_site_c4g_maps_site', 'setLocLat'],
-            'wizard'                  => ['\con4gis\MapsBundle\Classes\GeoPicker', 'getPickerLink'],
+            'save_callback'           => [['tl_site_c4g_maps_site', 'setLocLat']],
+            'wizard'                  => [['\con4gis\MapsBundle\Classes\GeoPicker', 'getPickerLink']],
             'sql' => ['type' => 'string', 'length' => 20, 'default' => '']
         ],
         'singleSRC' => [
