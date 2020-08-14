@@ -210,11 +210,10 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
             ],
             'museumlink' => [
                 'label' => &$GLOBALS['TL_LANG']['tl_site_details']['museumlink'],
-                'exclude' => true,
-                'eval' 		=> array('tl_class' => 'w50 wizard'),
-            		//'wizard' 	=> array(array('\Controller::loadDataContainer(\'tl_content\')', 'pagePicker')),
-            		'inputType' => 'text',
-            		'sql'       => "varchar(255) NOT NULL default ''"
+                'search' => true,
+                'inputType' => 'textarea',
+                'eval' => ['tl_class' => 'clr', 'rte' => 'tinyMCE', 'mandatory' => false],
+                'sql' => ['type' => 'text', 'notnull' => false]
             ],
             'name' => [
                 'label' => &$GLOBALS['TL_LANG']['tl_site_details']['name'],
