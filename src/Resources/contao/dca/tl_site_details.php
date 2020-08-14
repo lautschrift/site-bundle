@@ -245,7 +245,7 @@ $GLOBALS['TL_DCA']['tl_site_details'] = [
                     'fieldType' => 'radio',
                     'filesOnly' => true,
                     'extensions' => \Contao\Config::get('validImageTypes'),
-                    'mandatory' => true,
+
                 ],
                 'sql' => ['type' => 'binary', 'length' => 16, 'notnull' => false, 'fixed' => true]
             ],
