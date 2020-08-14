@@ -7,7 +7,7 @@ $GLOBALS['TL_LANG']['site_details_type']['wert2'] = 'Audio Fundstelle';
 $GLOBALS['TL_LANG']['site_details_type']['DE'] = 'Deutsch';
 $GLOBALS['TL_LANG']['site_details_type']['EN'] = 'Englisch';
 $GLOBALS['TL_LANG']['site_details_type']['FR'] = 'Französisch';
-$GLOBALS['TL_LANG']['site_details_type']['SLO'] = 'Slowenisch';
+$GLOBALS['TL_LANG']['site_details_type']['SL'] = 'Slowenisch';
 $GLOBALS['TL_LANG']['site_details_type']['IT'] = 'Italienisch';
 
 
