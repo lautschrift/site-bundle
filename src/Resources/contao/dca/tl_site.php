@@ -5,6 +5,8 @@
 use con4gis\MapsBundle\classes\GeoPicker;
 use con4gis\MapsBundle\classes\Utils;
 
+Controller::loadDataContainer('tl_content');
+
 /**
  * Table tl_site
  */
