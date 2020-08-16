@@ -29,6 +29,7 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
      'config' => [
 
          'dataContainer'               => 'Table',
+         'ptable'                      => 'tl_content',
          'ctable'                      => ['tl_site_details'],
          'enableVersioning'            => true,
                  'sql' => array
