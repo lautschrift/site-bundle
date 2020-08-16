@@ -22,7 +22,7 @@
   "autoload": {
     "psr-4": {
 		    "Lautschrift\\SiteBundle\\": "src/",
-        "Con4gis\\MapsBundle\\": "src/"
+        "Con4gis\\MapsBundle\\": ""
 		}
   },
   "extra": {
