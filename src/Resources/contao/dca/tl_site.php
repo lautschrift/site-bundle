@@ -29,7 +29,7 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
      'config' => [
 
          'dataContainer'               => 'Table',
-         'ptable'                      => 'tl_content',
+         //'ptable'                      => 'tl_content',
          'ctable'                      => ['tl_site_details'],
          'enableVersioning'            => true,
                  'sql' => array
@@ -160,7 +160,7 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
             'sql'                   => ['type' => 'string', 'length' => 64, 'default' => '']
         ],
         'details_link' => [
-            'label'                 => &$GLOBALS['TL_LANG'][tl_site]['details_link'],
+            'label'                 => &$GLOBALS['TL_LANG']['tl_site']['details_link'],
             'exclude'               => true,
             'inputType'             => 'text',
             'eval' => ['tl_class' => 'w50', 'maxlength' => 255, 'mandatory' => false],
