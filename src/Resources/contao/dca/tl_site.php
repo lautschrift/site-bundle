@@ -2,7 +2,7 @@
 
 //namespace Lautschrift\SiteBundle\Resources\contao\dca;
 
-use \con4gis\MapsBundle\Resources\contao\classes\GeoPicker;
+use con4gis\MapsBundle\Resources\contao\classes\GeoPicker;
 use con4gis\MapsBundle\Resources\contao\classes\Utils;
 
 /**
