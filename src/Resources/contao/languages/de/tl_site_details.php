@@ -14,7 +14,7 @@ $GLOBALS['TL_LANG']['tl_site_details']['level'] = ['Meereshöhe', 'Höhe der Fun
 $GLOBALS['TL_LANG']['tl_site_details']['sitesize'] = ['Größe', 'Größe der Fundstelle'];
 $GLOBALS['TL_LANG']['tl_site_details']['sitesizesoccer'] = ['Fußballfeldäquivalent', 'Größe der Fundstelle in Fußballfeldern'];
 $GLOBALS['TL_LANG']['tl_site_details']['sitesizearea'] = ['Größe Pufferzone', 'Größe der Pufferzone'];
-$GLOBALS['TL_LANG']['tl_site_details']['sitesizeareasocceresoccer'] = ['Pufferzone Fußballfeldäquivalent', 'Größe der Pufferzone in Fußballfeldern'];
+$GLOBALS['TL_LANG']['tl_site_details']['sitesizeareasoccer'] = ['Pufferzone Fußballfeldäquivalent', 'Größe der Pufferzone in Fußballfeldern'];
 
 $GLOBALS['TL_LANG']['tl_site_details']['genericdatation'] = ['Zeitalter', 'Angabe der Datierung in Zeitaltern'];
 $GLOBALS['TL_LANG']['tl_site_details']['description'] = ['Beschreibung', 'Kurzbeschreibung der Fundstelle (350 - 600 Zeichen)'];
