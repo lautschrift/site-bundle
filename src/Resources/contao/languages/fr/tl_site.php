@@ -13,9 +13,9 @@ $GLOBALS['TL_LANG']['tl_site']['geoY'] = ['Geokoordinate N', 'WGS84 N - Geokoord
 $GLOBALS['TL_LANG']['tl_site']['singleSRC'] = ['Bild', 'Bild der Fundstelle'];
 $GLOBALS['TL_LANG']['tl_site']['fallbackeSRC'] = ['Platzhalter-Bild', 'Wird angezeigt falls Artikel nicht sichtbar'];
 
-$GLOBALS['TL_LANG']['site_country']['wert1'] = 'Deutschland';
-$GLOBALS['TL_LANG']['site_country']['wert2'] = 'Österreich';
-$GLOBALS['TL_LANG']['site_country']['wert3'] = 'Schweiz';
-$GLOBALS['TL_LANG']['site_country']['wert4'] = 'Italien';
-$GLOBALS['TL_LANG']['site_country']['wert5'] = 'Slowenien';
-$GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
+$GLOBALS['TL_LANG']['tl_site']['wert1'] = 'Allemagne';
+$GLOBALS['TL_LANG']['tl_site']['wert2'] = "L'Autriche";
+$GLOBALS['TL_LANG']['tl_site']['wert3'] = 'Suisse';
+$GLOBALS['TL_LANG']['tl_site']['wert4'] = 'Italie';
+$GLOBALS['TL_LANG']['tl_site']['wert5'] = 'Slovénie';
+$GLOBALS['TL_LANG']['tl_site']['wert6'] = 'France';
