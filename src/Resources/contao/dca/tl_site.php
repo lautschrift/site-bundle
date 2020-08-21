@@ -105,7 +105,7 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
             'inputType' => 'select',
             'eval' 		=> array('submitOnChange' => true, 'tl_class' => 'clr', 'mandatory' => true),
     		'options' 	=> ['wert1', 'wert2', 'wert3','wert4','wert5','wert6'],
-    		'reference' => &$GLOBALS['TL_LANG']['site_country'],
+    		'reference' => &$GLOBALS['TL_LANG']['tl_site']['site_country'],
             'sql' => ['type' => 'string', 'length' => 20, 'default' => '']
         ],
         'geoX' => [

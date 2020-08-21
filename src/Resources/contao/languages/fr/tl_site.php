@@ -4,8 +4,8 @@ $GLOBALS['TL_LANG']['tl_site']['place_legend'] = 'Ortsangaben zur Fundstelle';
 $GLOBALS['TL_LANG']['tl_site']['pic_legend'] = 'Bild zur Fundstelle';
 
 $GLOBALS['TL_LANG']['tl_site']['name'] = ['Nom', 'Fundort der Fundstelle'];
-$GLOBALS['TL_LANG']['tl_site']['city'] = ['COMMUNAUTÉ', 'Gemeinde in der die Fundstelle liegt'];
-$GLOBALS['TL_LANG']['tl_site']['country'] = ['PAYS', 'Land der Fundstelle'];
+$GLOBALS['TL_LANG']['tl_site']['city'] = ['Communauté', 'Gemeinde in der die Fundstelle liegt'];
+$GLOBALS['TL_LANG']['tl_site']['country'] = ['Pays', 'Land der Fundstelle'];
 $GLOBALS['TL_LANG']['tl_site']['unescoid'] = ['ID D´UNESCO', 'Kennung der UNESCO'];
 
 $GLOBALS['TL_LANG']['tl_site']['geoX'] = ['Geokoordinate E', 'WGS84 E - Geokoordinate der Fundstelle'];
