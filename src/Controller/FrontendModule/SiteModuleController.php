@@ -27,10 +27,10 @@ class SiteModuleController extends AbstractFrontendModuleController
          $resultDetails = $db->prepare('SELECT * FROM `tl_site_details` WHERE `id`= ? AND `published`=1')
             ->execute([$myID]);
 
-         $detailParent = $resultDetails->pid;
+         $detailSpeech = $resultDetails->pid;
          $detailSpeech = $resultDetails->speech;
-         $template->detailSpeech = $myspeech ;
-         $template->detailParent = $myParent;
+         $template->detailSpeech = $detailSpeech ;
+         $template->detailParent = $detailSpeech;
 
          if (strtoupper($objPage->language) !== $resultDetails->speech) {
 
