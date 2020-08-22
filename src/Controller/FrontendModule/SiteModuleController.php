@@ -45,20 +45,26 @@ class SiteModuleController extends AbstractFrontendModuleController
                  $template->tmp = $tmp;
                  $template->tmp1 = $tmp[1];
                  if(strtoupper($objPage->language === $tmp[1])) {
+                     $resultDetails = $db->prepare('SELECT * FROM `tl_site_details` WHERE `id`= ? AND `published`=1')
+                        ->execute([$tmp[0]]);
+
                      $resultSite = $db->prepare('SELECT * FROM `tl_site` WHERE `id`= ?')
                            ->execute([$tmp[0]])->fetchAllAssoc();
-                           $template->resu .= ' in '.$tmp[1]. " -> " . $resultSite;
-                     $template->detailParent = $detailParent;
-                     $sitedetails = $resultSite;
-                     $template->sitedetails = $sitedetails[0];
-                     $template->site = $resultSite[0];
+                      $template->detailParent = $detailParent;
+                      $sitedetails = $resultDetails->fetchAllAssoc();
+                      $template->sitedetails = $sitedetails[0];
+                      $template->site = $resultSite[0];
+
                      return false;
                  } else if( $tmp[1] == 'EN') {
+                     $resultDetails = $db->prepare('SELECT * FROM `tl_site_details` WHERE `id`= ?')
+                        ->execute([$tmp[0]]);
+
                      $resultSite = $db->prepare('SELECT * FROM `tl_site` WHERE `id`= ?')
                            ->execute([$tmp[0]])->fetchAllAssoc();
-                           $template->resu .= ' in / EN';
+                           $template->resu .= ' in / EN'.$tmp[1]. " -> " . $resultSite;
                      $template->detailParent = $detailParent;
-                     $sitedetails = $resultSite;
+                     $sitedetails = $resultDetails->fetchAllAssoc();
                      $template->sitedetails = $sitedetails[0];
                      $template->site = $resultSite[0];
                  } else {
