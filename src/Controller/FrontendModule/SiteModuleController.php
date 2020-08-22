@@ -49,7 +49,7 @@ class SiteModuleController extends AbstractFrontendModuleController
                         ->execute([$tmp[0]]);
 
                      $resultSite = $db->prepare('SELECT * FROM `tl_site` WHERE `id`= ?')
-                           ->execute([$tmp[0]])->fetchAllAssoc();
+                           ->execute([$detailParent])->fetchAllAssoc();
                       $template->detailParent = $detailParent;
                       $sitedetails = $resultDetails->fetchAllAssoc();
                       $template->sitedetails = $sitedetails[0];
@@ -58,7 +58,7 @@ class SiteModuleController extends AbstractFrontendModuleController
                      return false;
                  } else if( $tmp[1] == 'EN') {
                      $resultDetails = $db->prepare('SELECT * FROM `tl_site_details` WHERE `id`= ?')
-                        ->execute([$tmp[0]]);
+                        ->execute([$detailParent])->fetchAllAssoc();
 
                      $resultSite = $db->prepare('SELECT * FROM `tl_site` WHERE `id`= ?')
                            ->execute([$tmp[0]])->fetchAllAssoc();
