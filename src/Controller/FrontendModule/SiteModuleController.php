@@ -58,7 +58,7 @@ class SiteModuleController extends AbstractFrontendModuleController
                      return false;
                  } else if( $tmp[1] == 'EN') {
                      $resultDetails = $db->prepare('SELECT * FROM `tl_site_details` WHERE `id`= ?')
-                        ->execute([$detailParent])->fetchAllAssoc();
+                        ->execute([$detailParent]);
 
                      $resultSite = $db->prepare('SELECT * FROM `tl_site` WHERE `id`= ?')
                            ->execute([$tmp[0]])->fetchAllAssoc();
