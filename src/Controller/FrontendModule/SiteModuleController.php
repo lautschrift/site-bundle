@@ -30,7 +30,7 @@ class SiteModuleController extends AbstractFrontendModuleController
          $detailParent = $resultDetails->pid;
          $detailSpeech = $resultDetails->speech;
          $template->detailSpeech = $myspeech ;
-         $template->detailParent $myParent;
+         $template->detailParent = $myParent;
 
          if (strtoupper($objPage->language) !== $resultDetails->speech) {
 
