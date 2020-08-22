@@ -43,8 +43,8 @@ class SiteModuleController extends AbstractFrontendModuleController
              foreach ($allLinks as $key => $val) {
                  $tmp = explode(";",$val);
                  $template->tmp = $tmp;
-
-                 if($tmp[1] == strtoupper($objPage->language || $tmp[1] == 'EN')) {
+                 $template->tmp1 = $tmp[1];
+                 if(strtoupper($objPage->language === $tmp[1])) {
                      $resultSite = $db->prepare('SELECT * FROM `tl_site` WHERE `id`= ?')
                            ->execute([$tmp[0]])->fetchAllAssoc();
                            $template->resu .= ' in';
@@ -52,7 +52,16 @@ class SiteModuleController extends AbstractFrontendModuleController
                      $sitedetails = $resultDetails->fetchAllAssoc();
                      $template->sitedetails = $sitedetails[0];
                      $template->site = $resultSite[0];
-                 } else {
+                     return false;
+                 } else if( $tmp[1] == 'EN'){
+                     $resultSite = $db->prepare('SELECT * FROM `tl_site` WHERE `id`= ?')
+                           ->execute([$tmp[0]])->fetchAllAssoc();
+                           $template->resu .= ' in';
+                     $template->detailParent = $detailParent;
+                     $sitedetails = $resultDetails->fetchAllAssoc();
+                     $template->sitedetails = $sitedetails[0];
+                     $template->site = $resultSite[0];
+                 } else {
                      $template->resu .= ' out: '.$tmp[1].' ';
                  }
             }
