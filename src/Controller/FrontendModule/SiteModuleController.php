@@ -29,13 +29,20 @@ class SiteModuleController extends AbstractFrontendModuleController
 
          $detailParent = $resultDetails->pid;
          $detailSpeech = $resultDetails->speech;
+         $template->detailSpeech = $myspeech ;
+         $template->detailParent $myParent;
 
          if (strtoupper($objPage->language) !== $resultDetails->speech) {
+
+             $template->runIn = 'True';
              $storedLinks = $db->prepare('SELECT `details_link` FROM `tl_site` WHERE `id`= ?')
                    ->execute([$detailParent])->fetchAllAssoc();
              $allLinks = json_decode($storedLinks->details_link, true);
              foreach ($allLinks as $key => $val) {
+
                  $tmp = explode(";",$val);
+                  $template->tmp = $tmp;
+
                  if($tmp[1] === strtoupper($objPage->language || $tmp[1] === 'EN')) {
                      $resultSite = $db->prepare('SELECT * FROM `tl_site` WHERE `id`= ?')
                            ->execute([$tmp[0]])->fetchAllAssoc();
