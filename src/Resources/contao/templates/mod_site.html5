@@ -1,14 +1,146 @@
 <?php
 	global $objPage;
-	$titleLang = $objPage->language;
+	$lang = $objPage->language;
+	$this->loadLanguageFile('tl_site_details');
 ?>
 
+	<?php
+		$title_meta = deserialize(\FilesModel::findByUuid($this->site['singleSRC'])->meta);
+	?>
+
 <div class="site_module">
-    <h1><?= $this->site.unescoid></h1>
+	<div class='site_title'>
+		<div class='site_pic'><img src='<?= \FilesModel::findByUuid($this->site['singleSRC'])->path ?>' width='960px' alt='' title=''></div>
+		<div class='pic_title'><h1><?= $this->site['unescoid'] ?></h1></div>
 
-		<?php
-			print_r ($this->unescoid);
-			print_r ($this->myID);
-		?>
+	</div>
+	<figcaption class="caption"><?= $title_meta[$GLOBALS['TL_LANGUAGE']]['caption'] ?></figcaption>
 
+    <h2><i class="fa">  &nbsp;</i><?=$this->site['city'] ?> &nbsp;|&nbsp; <i class="fa">  &nbsp;</i> <?= $this->site['name'] ?></h2>
+
+
+    <div class='site_content'>
+    	<div class='site_description'>
+	    	<?= $this->sitedetails['description'] ?>
+	    </div>
+		<div class='site_details_box'>
+	    	<div class='site_info'><img src='files/template/core/palafittes_infos_rough.svg'></div>
+			<div class='site_details  grid5'>
+				<div class='site_datations'>
+					<? if ($this->sitedetails['genericdatation']):  ?><p><span><i class="fa"> </i>	</span><?= $this->sitedetails['genericdatation']?></p><? endif ?>
+					<? if ($this->sitedetails['datation']):  ?><p><span><i class="fa"> </i>	</span><?= $this->sitedetails['datation']?></p><? endif ?>
+					<? if ($this->sitedetails['position']):  ?><p><span><i class="fa"> </i> 	</span><?= $this->sitedetails['position']?></p><? endif ?>
+					<? if ($this->sitedetails['level']):  ?><p><span><i class="fa"> </i>	</span><?= $this->sitedetails['level']?></p><? endif ?>
+					<? if ($this->sitedetails['sitesize']):  ?><p><span><?= $GLOBALS['TL_LANG']['tl_site_details']['sitesize'][0]?>	</span><?= $this->sitedetails['sitesize']?></p><? endif ?>
+					<? if ($this->sitedetails['sitesizesoccer']):  ?><p><span><i class="fa"> </i>	</span><?= $this->sitedetails['sitesizesoccer']?></p><? endif ?>
+					<? if ($this->sitedetails['sitesizearea']):  ?><p><span><?= $GLOBALS['TL_LANG']['tl_site_details']['sitesizearea'][0]?>	</span><?= $this->sitedetails['sitesizearea']?></p><? endif ?>
+					<? if ($this->sitedetails['sitesizeareasoccer']):  ?><p><span><i class="fa"> </i>	</span><?= $this->sitedetails['sitesizeareasoccer']?></p><? endif ?>
+				</div>
+			</div>
+		</div>
+	<?php
+		$detail_meta = deserialize(\FilesModel::findByUuid($this->sitedetails['singleSRC'])->meta);
+	?>
+	</div>
+	<div class='site_separator'></div>
+	<div class='site_content'>
+		<div class='site_features'><?= $this->sitedetails['features'] ?></div>
+		<div class='site_detail_image'>
+				<?php
+						$title_meta = deserialize(\FilesModel::findByUuid($this->sitedetails['singleSRC'])->meta);
+						$sizes =  deserialize($this->sitedetails['imageSize']);
+
+				?>
+			<div class="image_container">
+			<img src='<?= \FilesModel::findByUuid($this->sitedetails['singleSRC'])->path ?>' width='<?= $sizes[0] ?>px' alt='<?= $title_meta[$lang]['alt'] ?>' title='<?= $title_meta[$lang]['title'] ?>'>
+			<figcaption class="caption"><?= $detail_meta[$GLOBALS['TL_LANGUAGE']]['caption'] ?></figcaption>
+			</div>
+		</div>
+
+	</div>
+	<div class='site_separator'></div>
+	<div class='site_content'>
+		<div class='site_activities'><?= $this->sitedetails['activities'] ?></div>
+	</div>
+	<div class='site_separator'></div>
+	<div class='site_content'>
+		<div class='site_museum'><?= $this->sitedetails['museumlink'] ?></div>
+	</div>
+	<div class='site_separator'></div>
+	<div class='site_location'>{{insert_module::58}}</div>
+	<div class='site_separator'></div>
 </div>
+	<?php //echo "<pre>".$this->showTemplateVars()."</pre>"; ?>
+
+
+<script>
+
+
+
+ window.c4gMapsHooks = window.c4gMapsHooks || {};
+ window.c4gMapsHooks.hook_layer = []; /* Zuerst wird gesichert, dass das Object mit den Hooks sowie das Array für den spezifischen Hook vorhanden ist */
+   var hookFunction = function(data) {
+       /* Hochzählen des Zählers der Layer, da ein Layer hinzugefügt wird */
+      data.config.countAll++;
+      data.layer.push({
+        activeForBaselayers: 'all', /* Zeige den Layer nur für spezifische Baselayer (Array von Ids). Bei 'all' wird der Layer immer angezeigt */
+        content: [
+           {
+            data: { /* Valides GeoJSON*/
+               geometry: {
+                  coordinates: [<?= $this->site['geoX'] ?>,<?= $this->site['geoY'] ?> ],
+                  type: 'Point'
+               },
+               type: 'Feature',
+               properties: {
+                  graphicTitle: "<?= $this->site['unescoid'] ?>",
+
+                  popup: {
+                      async: false,
+                      content: '<ul><li class="name"><?= $this->site['unescoid'] ?></li><li class="type"><i class="fa">  &nbsp;</i><?=$this->site['city'] ?></li><li class="description"><i class="fa">  &nbsp;</i><?=$this->site['name'] ?></li></ul>' /* HTML mit dem, dass Popup gefüllt werden soll */
+                  },
+                  tooltip: "<?= $this->site['unescoid'] ?>" /* Tooltip, der beim Hovern über die Lokation angezeigt werden soll */
+               },
+
+            },
+
+            type: "GeoJSON",
+            id: 9999, /* IDs sollten einmalig sein */
+            locationStyle: "1" /* Hier solltest Du die ID eines passenden Lokationsstils einfügen. */
+           }
+
+        ],
+        childs: [
+        	{ /* Valides GeoJSON*/
+               geometry: {
+                  coordinates: [8.202634,47.319206],
+                  type: 'Point'
+               },
+               type: 'Feature',
+               properties: {
+                  graphicTitle: "<?= $this->site['unescoid'] ?>",
+
+                  popup: {
+                      async: false,
+                      content: '<ul><li class="name"><?= $this->site['unescoid'] ?></li><li class="type"><i class="fa">  &nbsp;</i><?=$this->site['city'] ?></li><li class="description"><i class="fa">  &nbsp;</i><?=$this->site['name'] ?></li></ul>' /* HTML mit dem, dass Popup gefüllt werden soll */
+                  },
+                  tooltip: "<?= $this->site['unescoid'] ?>" /* Tooltip, der beim Hovern über die Lokation angezeigt werden soll */
+               },
+
+            }
+        ],
+
+        childsCount: 1, /* Zum Array von Kindern passendern Zähler */
+        display: true, /* Hierüber kannst du festlegen, ob der Layer initial dargestellt werden soll. */
+        id: 9999, /* IDs sollten einmalig sein */
+        name: "<?= $this->site['unescoid'] ?>",
+        noFilter: "", /* Layer vom Filter im Starboard ausnehmen. */
+        noRealFilter: false, /* Layer vom Karten-Filter ausnehmen. */
+        type: "GeoJSON"
+      });
+
+
+   };
+   window.c4gMapsHooks.hook_layer.push(hookFunction);
+
+</script>
