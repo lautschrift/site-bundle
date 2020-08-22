@@ -36,7 +36,7 @@ class SiteModuleController extends AbstractFrontendModuleController
 
              $template->runIn = 'True';
              $storedLinks = $db->prepare('SELECT `details_link` FROM `tl_site` WHERE `id`= ?')
-                   ->execute([$detailParent])->fetchAllAssoc();
+                   ->execute([$detailParent]);
              $allLinks = json_decode($storedLinks->details_link, true);
              $template->allLinks = $allLinks;
 
