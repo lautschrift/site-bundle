@@ -54,8 +54,8 @@ class SiteModuleController extends AbstractFrontendModuleController
                       $sitedetails = $resultDetails->fetchAllAssoc();
                       $template->sitedetails = $sitedetails[0];
                       $template->site = $resultSite[0];
+                      break;
 
-                     return false;
                  } else if( $tmp[1] == 'EN') {
                      $resultDetails = $db->prepare('SELECT * FROM `tl_site_details` WHERE `id`= ?')
                         ->execute([$tmp[0]]);
