@@ -49,7 +49,7 @@ class SiteModuleController extends AbstractFrontendModuleController
                            ->execute([$tmp[0]])->fetchAllAssoc();
                            $template->resu .= ' in '.$tmp[1]. " -> " . $resultSite;
                      $template->detailParent = $detailParent;
-                     $sitedetails = $resultSite->fetchAllAssoc();
+                     $sitedetails = $resultSite;
                      $template->sitedetails = $sitedetails[0];
                      $template->site = $resultSite[0];
                      return false;
@@ -58,7 +58,7 @@ class SiteModuleController extends AbstractFrontendModuleController
                            ->execute([$tmp[0]])->fetchAllAssoc();
                            $template->resu .= ' in / EN';
                      $template->detailParent = $detailParent;
-                     $sitedetails = $resultSite->fetchAllAssoc();
+                     $sitedetails = $resultSite;
                      $template->sitedetails = $sitedetails[0];
                      $template->site = $resultSite[0];
                  } else {
