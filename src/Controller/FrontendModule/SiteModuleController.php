@@ -47,18 +47,18 @@ class SiteModuleController extends AbstractFrontendModuleController
                  if(strtoupper($objPage->language === $tmp[1])) {
                      $resultSite = $db->prepare('SELECT * FROM `tl_site` WHERE `id`= ?')
                            ->execute([$tmp[0]])->fetchAllAssoc();
-                           $template->resu .= ' in';
+                           $template->resu .= ' in '.$tmp[1]. " -> " $resultSite;
                      $template->detailParent = $detailParent;
-                     $sitedetails = $resultDetails->fetchAllAssoc();
+                     $sitedetails = $resultSite->fetchAllAssoc();
                      $template->sitedetails = $sitedetails[0];
                      $template->site = $resultSite[0];
                      return false;
                  } else if( $tmp[1] == 'EN') {
                      $resultSite = $db->prepare('SELECT * FROM `tl_site` WHERE `id`= ?')
                            ->execute([$tmp[0]])->fetchAllAssoc();
-                           $template->resu .= ' in';
+                           $template->resu .= ' in / EN';
                      $template->detailParent = $detailParent;
-                     $sitedetails = $resultDetails->fetchAllAssoc();
+                     $sitedetails = $resultSite->fetchAllAssoc();
                      $template->sitedetails = $sitedetails[0];
                      $template->site = $resultSite[0];
                  } else {
