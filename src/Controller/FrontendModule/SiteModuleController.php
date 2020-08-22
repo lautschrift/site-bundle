@@ -53,7 +53,7 @@ class SiteModuleController extends AbstractFrontendModuleController
                      $template->sitedetails = $sitedetails[0];
                      $template->site = $resultSite[0];
                      return false;
-                 } elseif( $tmp[1] == 'EN') {
+                 } else if( $tmp[1] == 'EN') {
                      $resultSite = $db->prepare('SELECT * FROM `tl_site` WHERE `id`= ?')
                            ->execute([$tmp[0]])->fetchAllAssoc();
                            $template->resu .= ' in';
@@ -61,11 +61,10 @@ class SiteModuleController extends AbstractFrontendModuleController
                      $sitedetails = $resultDetails->fetchAllAssoc();
                      $template->sitedetails = $sitedetails[0];
                      $template->site = $resultSite[0];
-                 } else {
+                 } else {
                      $template->resu .= ' out: '.$tmp[1].' ';
                  }
             }
-
 
          } else {
              $resultSite = $db->prepare('SELECT * FROM `tl_site` WHERE `id`= ?')
