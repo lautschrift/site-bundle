@@ -38,10 +38,11 @@ class SiteModuleController extends AbstractFrontendModuleController
              $storedLinks = $db->prepare('SELECT `details_link` FROM `tl_site` WHERE `id`= ?')
                    ->execute([$detailParent])->fetchAllAssoc();
              $allLinks = json_decode($storedLinks->details_link, true);
-             foreach ($allLinks as $key => $val) {
+             $template->allLinks = $allLinks;
 
+             foreach ($allLinks as $key => $val) {
                  $tmp = explode(";",$val);
-                  $template->tmp = $tmp;
+                 $template->tmp = $tmp;
 
                  if($tmp[1] === strtoupper($objPage->language || $tmp[1] === 'EN')) {
                      $resultSite = $db->prepare('SELECT * FROM `tl_site` WHERE `id`= ?')
