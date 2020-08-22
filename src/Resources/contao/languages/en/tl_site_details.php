@@ -14,3 +14,9 @@ $GLOBALS['TL_LANG']['tl_site_details']['activities'] = ['Aktuelle Aktivitäten',
 $GLOBALS['TL_LANG']['tl_site_details']['features'] = ['Highlights & Besonderheiten', 'Hinweise zu speziellen Objekten, Auffindungsumständen, etc.'];
 $GLOBALS['TL_LANG']['tl_site_details']['museumlink'] = ['Museum', 'Link zum Museum mit den Funden'];
 $GLOBALS['TL_LANG']['tl_site_details']['number'] = ['Kennung', 'Kennungdes Eintrags'];
+
+$GLOBALS['TL_LANG']['tl_site_details']['level'] = ['Meereshöhe', 'Höhe der Fundstelle über normalnull'];
+$GLOBALS['TL_LANG']['tl_site_details']['sitesize'] = ['Size of the site', 'Größe der Fundstelle'];
+$GLOBALS['TL_LANG']['tl_site_details']['sitesizesoccer'] = ['Fußballfeldäquivalent', 'Größe der Fundstelle in Fußballfeldern'];
+$GLOBALS['TL_LANG']['tl_site_details']['sitesizearea'] = ['Size of the bufferzone', 'Größe der Pufferzone'];
+$GLOBALS['TL_LANG']['tl_site_details']['sitesizeareasoccer'] = ['Pufferzone Fußballfeldäquivalent', 'Größe der Pufferzone in Fußballfeldern'];

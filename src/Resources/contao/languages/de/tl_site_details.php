@@ -11,7 +11,7 @@ $GLOBALS['TL_LANG']['tl_site_details']['region'] = ['Region', 'Region der Fundst
 $GLOBALS['TL_LANG']['tl_site_details']['position'] = ['Lage', 'Lage der Fundstelle'];
 
 $GLOBALS['TL_LANG']['tl_site_details']['level'] = ['Meereshöhe', 'Höhe der Fundstelle über normalnull'];
-$GLOBALS['TL_LANG']['tl_site_details']['sitesize'] = ['Größe', 'Größe der Fundstelle'];
+$GLOBALS['TL_LANG']['tl_site_details']['sitesize'] = ['Größe Fundstelle', 'Größe der Fundstelle'];
 $GLOBALS['TL_LANG']['tl_site_details']['sitesizesoccer'] = ['Fußballfeldäquivalent', 'Größe der Fundstelle in Fußballfeldern'];
 $GLOBALS['TL_LANG']['tl_site_details']['sitesizearea'] = ['Größe Pufferzone', 'Größe der Pufferzone'];
 $GLOBALS['TL_LANG']['tl_site_details']['sitesizeareasoccer'] = ['Pufferzone Fußballfeldäquivalent', 'Größe der Pufferzone in Fußballfeldern'];
