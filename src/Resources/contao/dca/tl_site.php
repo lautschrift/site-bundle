@@ -6,6 +6,7 @@
 //use con4gis\MapsBundle\classes\Utils;
 use con4gis\MapsBundle\Classes\Utils;
 use con4gis\MapsBundle\Classes\GeoPicker;
+use Contao\BackendUser;
 //use \con4gis\MapsBundle\Resources\contao\classes\GeoPicker;
 //use con4gis\MapsBundle\Resources\contao\classes\Utils;
 
