@@ -186,6 +186,12 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
 
 class tl_site_c4g_maps_site extends Backend
 {
+    public function __construct()
+  	{
+  		parent::__construct();
+  		$this->import('Contao\BackendUser', 'User');
+  	}
+
 
       /**
      * Return all Location Styles as array
