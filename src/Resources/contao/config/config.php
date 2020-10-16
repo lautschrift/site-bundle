@@ -17,10 +17,11 @@ array_insert($GLOBALS['BE_MOD']['Site'],1, array
         ),
 ));
 
+/*
 $GLOBALS['TL_CTE']['Site'] = array(
 	'Site' => 'Lautschrift\\SiteBundle\\Resources\\contao\\classes\\ContentSite'
 );
-
+*/
 //$GLOBALS['TL_CTE']['Museum']['Museum'] = '\\lautschrift\\museum-bundle\\src\\Resources\\contao\\classes\\ContentMuseum';
 
 /**
