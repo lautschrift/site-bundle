@@ -16,7 +16,7 @@ use Contao\BackendUser;
  * Table tl_site
  */
 
-
+Contao\System::loadLanguageFile('tl_content');
 
 $GLOBALS['TL_LANG']['site_country']['wert1'] = 'Deutschland';
 $GLOBALS['TL_LANG']['site_country']['wert2'] = 'Österreich';
@@ -35,7 +35,7 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
 
          'dataContainer'               => 'Table',
          //'ptable'                      => 'tl_content',
-         'ctable'                      => ['tl_site_details'],
+         'ctable'                      => ['tl_site_details', 'tl_content'],
          'enableVersioning'            => true,
                  'sql' => array
          (
