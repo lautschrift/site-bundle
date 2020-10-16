@@ -4,8 +4,8 @@
 
 //use con4gis\MapsBundle\classes\GeoPicker;
 //use con4gis\MapsBundle\classes\Utils;
+use \con4gis\MapsBundle\Classes\GeoPicker;
 use con4gis\MapsBundle\Classes\Utils;
-use con4gis\MapsBundle\Classes\GeoPicker;
 use Contao\BackendUser;
 //use \con4gis\MapsBundle\Resources\contao\classes\GeoPicker;
 //use con4gis\MapsBundle\Resources\contao\classes\Utils;
@@ -193,50 +193,35 @@ class tl_site_c4g_maps_site extends Contao\Backend
   	}
 
 
-      /**
-     * Return all Location Styles as array
-     * @param object
-     * @return array
-     */
-    public function getLocStyles(\DataContainer $dc)
-    {
-        $locStyles = $this->Database->prepare("SELECT id,name FROM tl_c4g_map_locstyles ORDER BY name")
-            ->execute();
-        $return[''] = '-';
-        while ($locStyles->next())
-        {
-            $return[$locStyles->id] = $locStyles->name;
-        }
-        return $return;
-    }
 
     /**
-     * Validate Longitude
-     */
-    public function setLocLon($varValue, \DataContainer $dc)
-    {
-        if ($varValue != 0)
-        {
-            if (!Utils::validateLon($varValue))
-            {
-                throw new \Exception($GLOBALS['TL_LANG']['c4g_maps']['geox_invalid']);
-            }
-        }
-        return $varValue;
-    }
+      * Validate Longitude
+      */
+     public function setLocLon($varValue, \DataContainer $dc)
+     {
+         if ($varValue != 0)
+         {
+             if (!Utils::validateLon($varValue))
+             {
+                 throw new \Exception($GLOBALS['TL_LANG']['c4g_maps']['geox_invalid']);
+             }
+         }
+         return $varValue;
+     }
 
-    /**
-     * Validate Latitude
-     */
-    public function setLocLat($varValue, \DataContainer $dc)
-    {
-        if ($varValue != 0)
-        {
-            if (!Utils::validateLat($varValue))
-            {
-                throw new \Exception($GLOBALS['TL_LANG']['c4g_maps']['geoy_invalid']);
-            }
-        }
-        return $varValue;
-    }
+     /**
+      * Validate Latitude
+      */
+     public function setLocLat($varValue, \DataContainer $dc)
+     {
+         if ($varValue != 0)
+         {
+             if (!Utils::validateLat($varValue))
+             {
+                 throw new \Exception($GLOBALS['TL_LANG']['c4g_maps']['geoy_invalid']);
+             }
+         }
+         return $varValue;
+     }
+
 }
