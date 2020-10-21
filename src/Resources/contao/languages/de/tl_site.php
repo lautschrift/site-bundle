@@ -8,8 +8,8 @@ $GLOBALS['TL_LANG']['tl_site']['city'] = ['Gemeinde', 'Gemeinde in der die Funds
 $GLOBALS['TL_LANG']['tl_site']['country'] = ['Land', 'Land der Fundstelle'];
 $GLOBALS['TL_LANG']['tl_site']['unescoid'] = ['UNESCO Id', 'Kennung der UNESCO'];
 
-$GLOBALS['TL_LANG']['tl_site']['geoX'] = ['Geokoordinate E', 'WGS84 E - Geokoordinate der Fundstelle'];
-$GLOBALS['TL_LANG']['tl_site']['geoY'] = ['Geokoordinate N', 'WGS84 N - Geokoordinate der Fundstelle'];
+$GLOBALS['TL_LANG']['tl_site']['site_geox'] = ['Geokoordinate E', 'WGS84 E - Geokoordinate der Fundstelle'];
+$GLOBALS['TL_LANG']['tl_site']['site_geoy'] = ['Geokoordinate N', 'WGS84 N - Geokoordinate der Fundstelle'];
 $GLOBALS['TL_LANG']['tl_site']['singleSRC'] = ['Bild', 'Bild der Fundstelle'];
 $GLOBALS['TL_LANG']['tl_site']['fallbackeSRC'] = ['Platzhalter-Bild', 'Wird angezeigt falls Artikel nicht sichtbar'];
 

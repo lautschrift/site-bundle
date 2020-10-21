@@ -81,7 +81,7 @@
            {
             data: { /* Valides GeoJSON*/
                geometry: {
-                  coordinates: [<?= $this->site['geoX'] ?>,<?= $this->site['geoY'] ?> ],
+                  coordinates: [<?= $this->site['site_geox'] ?>,<?= $this->site['site_geoy'] ?> ],
                   type: 'Point'
                },
                type: 'Feature',
