@@ -188,8 +188,9 @@ class tl_site_c4g_maps_site extends \Backend
 {
     public function __construct()
   	{
-  		parent::__construct();
-  		$this->import('Contao\BackendUser', 'User');
+      $this->import('Contao\BackendUser', 'User');
+      parent::__construct();
+      $this->User->authenticate();
   	}
 
 
