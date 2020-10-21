@@ -113,16 +113,16 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
     		'reference' => &$GLOBALS['TL_LANG']['tl_site'],
             'sql' => ['type' => 'string', 'length' => 20, 'default' => '']
         ],
-        'geoX' => [
-            'label' => &$GLOBALS['TL_LANG']['tl_site']['geoX'],
+        'site_geox' => [
+            'label' => &$GLOBALS['TL_LANG']['tl_site']['site_geox'],
             'eval'                    => array('mandatory'=>false, 'maxlength'=>20, 'tl_class'=>'w50 wizard' ),
             'inputType'               => 'c4g_text',
             'save_callback'           => [['tl_site_c4g_maps_site', 'setLocLon']],
             'wizard'                  => [['\con4gis\MapsBundle\Classes\GeoPicker', 'getPickerLink']],
             'sql' => ['type' => 'string', 'length' => 20, 'default' => '']
         ],
-        'geoY' => [
-            'label' => &$GLOBALS['TL_LANG']['tl_site']['geoY'],
+        'site_geoy' => [
+            'label' => &$GLOBALS['TL_LANG']['tl_site']['site_geoy'],
             'eval'                    => array('mandatory'=>false, 'maxlength'=>20, 'tl_class'=>'w50 wizard' ),
             'inputType'               => 'c4g_text',
             'save_callback'           => [['tl_site_c4g_maps_site', 'setLocLat']],
@@ -175,7 +175,7 @@ $GLOBALS['TL_LANG']['site_country']['wert6'] = 'Frankreich';
 
      // Palettes
      'palettes' => [
-         'default' => '{site_legend},unescoid, name;{place_legend},city,country, geoX, geoY;{pic_legend},singleSRC, imageSize, fallbackSRC;'
+         'default' => '{site_legend},unescoid, name;{place_legend},city,country, site_geox, site_geoy;{pic_legend},singleSRC, imageSize, fallbackSRC;'
     ]
 ];
 
